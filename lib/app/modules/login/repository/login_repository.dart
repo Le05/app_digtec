@@ -37,24 +37,24 @@ class LoginRepository extends Disposable {
       contracts = await fromJson(response.data["contratos"]);
       // existe mais de um contrato retorno(0)
       if (response.data["contratos"].length > 1) {
-      /*  await enviarDadosDispositivo(
+        await enviarDadosDispositivo(
             response.data["contratos"],
             "https://www.appdoprovedor.com.br/_api/write_dispositivo.php",
             deviceID,
             key,
             token,
-            plataforma);*/
+            plataforma);
         retorno = 0;
       }
       // existe apenas um contrato retorno(2)
       if (response.data["contratos"].length == 1) {
-      /*  await enviarDadosDispositivo(
+       await enviarDadosDispositivo(
             response.data["contratos"],
             "https://www.appdoprovedor.com.br/_api/write_dispositivo.php",
             deviceID,
             key,
             token,
-            plataforma);*/
+            plataforma);
         retorno = 2;
       }
       // nao existe nenhum contrato retorno(3)
@@ -79,7 +79,7 @@ class LoginRepository extends Disposable {
         "key": key,
         "token": token,
         "playerId": deviceID,
-        "contrato": contrato,
+        "contrato": contrato["contrato"],
         "plataforma": plataforma
       });
     }

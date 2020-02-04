@@ -13,7 +13,7 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   void initState() {
-    //appBloc.initOneSignal();
+    appBloc.initOneSignal();
     super.initState();
   }
 

@@ -121,35 +121,62 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height / 20,
                       ),
-                      ButtonTheme(
-                        minWidth: MediaQuery.of(context).size.width / 1.4,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        height: MediaQuery.of(context).size.height / 17,
-                        child: RaisedButton(
-                            child: Text(
-                              "Realizar Promessa de Pagamento",
-                              style:
-                                  TextStyle(fontSize: 18, color: Colors.white),
+                      StreamBuilder(
+                        initialData: false,
+                        stream: paymentPromiseBloc.outputButton,
+                        builder: (context, snapshots) {
+                          return Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: AnimatedCrossFade(
+                              crossFadeState: snapshots.data
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                              duration: Duration(seconds: 1),
+                              firstChild: ButtonTheme(
+                                minWidth:
+                                    MediaQuery.of(context).size.width / 1.4,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                                height: MediaQuery.of(context).size.height / 17,
+                                child: RaisedButton(
+                                    child: Text(
+                                      "Realizar Promessa de Pagamento",
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.white),
+                                    ),
+                                    onPressed: () async {
+                                      paymentPromiseBloc.animacaoButton(true);
+                                      await paymentPromiseBloc
+                                          .paymentPromise(
+                                              snapshot.data["cpfCnpj"],
+                                              snapshot.data["senha"],
+                                              snapshot.data["contrato"],
+                                              snapshot.data["baseUrl"])
+                                          .then((onValue) {
+                                        Scaffold.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text("$onValue"),
+                                        ));
+                                      });
+                                      paymentPromiseBloc.animacaoButton(false);
+                                    }),
+                              ),
+                              secondChild: Container(
+                                width: MediaQuery.of(context).size.width / 2,
+                                height: MediaQuery.of(context).size.height / 15,
+                                margin: EdgeInsets.only(top: 0, bottom: 10),
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.green),
+                                  ),
+                                ),
+                              ),
                             ),
-                            onPressed: () async {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text("Enviando solicitação...."),
-                              ));
-                              await paymentPromiseBloc
-                                  .paymentPromise(
-                                      snapshot.data["cpfcnpj"],
-                                      snapshot.data["senha"],
-                                      snapshot.data["contrato"],
-                                      snapshot.data["baseUrl"])
-                                  .then((onValue) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Text("$onValue"),
-                                ));
-                              });
-                            }),
-                      )
+                          );
+                        },
+                      ),
                     ],
                   ),
                 );

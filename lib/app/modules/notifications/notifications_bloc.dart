@@ -14,9 +14,9 @@ class NotificationsBloc extends BlocBase {
         .then((onValue) {
       if (onValue["error"] == " Nenhum registro encontrado") {
         retorno.addAll({"retornoID": 1, "dados": ""});
-        
       } else {
-        retorno.addAll({"retornoID": 0, "dados": ""});
+        onValue["notificacoes"] = modifyDateView(onValue);
+        retorno.addAll({"retornoID": 0, "dados": onValue});
       }
     }).catchError((onError) {
       retorno.addAll({"retornoID": 2, "dados": ""});
@@ -24,6 +24,23 @@ class NotificationsBloc extends BlocBase {
     return retorno;
   }
 
+  modifyDateView(var date){
+    List dadosFinal = [];
+    var dadosDataNotificacao = date["notificacoes"];
+    for (var item in dadosDataNotificacao) {
+        var data = item["notification_date"];
+        var dataSplitada = data.split(" ");
+        dataSplitada[0] = alterPositionDate(dataSplitada[0]);
+        item["notification_date"] = "Recebida em "+dataSplitada[0]+" às "+dataSplitada[1];
+        dadosFinal.add(item);
+    }
+    return dadosFinal;
+  }
+
+alterPositionDate(String date){
+  var data = date.split("-");
+  return data[2]+"/"+data[1]+"/"+data[0];
+}
   @override
   void dispose() {
     super.dispose();

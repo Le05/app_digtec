@@ -49,14 +49,65 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       Container(
                         child: Text(
                           "Você não tem nenhuma notificação!!!",
-                          style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                       )
                     ],
                   ),
                 );
               }
-              return Container();
+              print(snapshot.data);
+              return ListView.builder(
+                itemCount: snapshot.data["dados"]["notificacoes"].length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 20, top: 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 20),
+                          //width: 3,
+                          height: MediaQuery.of(context).size.height / 15,
+                          // color: Colors.green,
+                          child: Image.asset("images/notificacao.png"),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                "${snapshot.data["dados"]["notificacoes"][index]["notification_title"]}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 21),
+                              ),
+                            ),
+                            Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  "${snapshot.data["dados"]["notificacoes"][index]["notification_desc"]}",
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 17),
+                                )),
+                            Container(
+                                margin: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width / 3,
+                                    top: MediaQuery.of(context).size.height /
+                                        95),
+                                child: Text(
+                                  "${snapshot.data["dados"]["notificacoes"][index]["notification_date"]}",
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 14),
+                                ))
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
             }));
   }
 }
