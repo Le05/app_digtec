@@ -6,6 +6,8 @@ class HomeRepository extends Disposable {
   Future getPropagandaRepo(String cpfCnpj, String senha) async {
     Response response;
     dio.clear();
+    dio.options.connectTimeout = 5000;
+    dio.options.receiveTimeout = 10000;
     response = await dio
         .post("https://www.appdoprovedor.com.br/_api/read_ads.php", data: {
       "cpfcnpj": cpfCnpj,

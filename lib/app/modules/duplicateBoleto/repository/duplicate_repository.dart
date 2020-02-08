@@ -8,6 +8,8 @@ class DuplicateRepository extends Disposable {
   Future getFatura2Via() async {
     Response response;
     var box = await getHiveInstance();//await initHive();
+    dio.options.connectTimeout = 5000;
+    dio.options.receiveTimeout = 10000;
     response = await dio.post(box.get("baseUrl") + "/fatura2via", data: {
       "cpfcnpj": box.get("cpfCnpj"),
       "senha": box.get("senha"),
@@ -19,6 +21,8 @@ class DuplicateRepository extends Disposable {
   Future postFatura2Via(String tipo) async {
     Response response;
     var box = await getHiveInstance();//initHive();
+    dio.options.connectTimeout = 5000;
+    dio.options.receiveTimeout = 10000;
     response = await dio.post(box.get("baseUrl") + "/fatura2via", data: {
       "cpfcnpj": box.get("cpfCnpj"),
       "senha": box.get("senha"),

@@ -17,13 +17,15 @@ class LoginRepository extends Disposable {
     try {
       Response response;
       List<Contracts> contracts;
-      Box box = await getHiveInstance();//initHive();
+      Box box = await getHiveInstance(); //initHive();
       String baseUrl = "https://www.appdoprovedor.com.br/_api/verificaws.php";
       String key = box.get("key");
       String token = box.get("token");
       String deviceID = box.get("deviceID");
       String plataforma = box.get("plataforma");
       dio.clear();
+      dio.options.connectTimeout = 5000;
+      dio.options.receiveTimeout = 10000;
       response = await dio.post(baseUrl, data: {
         "key": key,
         "token": token,
@@ -48,7 +50,7 @@ class LoginRepository extends Disposable {
       }
       // existe apenas um contrato retorno(2)
       if (response.data["contratos"].length == 1) {
-       await enviarDadosDispositivo(
+        await enviarDadosDispositivo(
             response.data["contratos"],
             "https://www.appdoprovedor.com.br/_api/write_dispositivo.php",
             deviceID,
@@ -60,13 +62,13 @@ class LoginRepository extends Disposable {
       // nao existe nenhum contrato retorno(3)
       if (response.data["contratos"].length == 0) retorno = 3;
       // utilizar o write_dispositivo.php linha 103 do index.js do loginscreen
-      //retorno = 0;  
-      retornos.addAll({"retorno":retorno,"contracts":contracts});
+      //retorno = 0;
+      retornos.addAll({"retorno": retorno, "contracts": contracts});
       return retornos;
     } catch (e) {
       print(e);
       retorno = 1;
-      retornos.addAll({"retorno":retorno,"contracts":""});
+      retornos.addAll({"retorno": retorno, "contracts": ""});
       return retornos;
     }
   }

@@ -7,6 +7,8 @@ class SupportRepository extends Disposable {
   Future openCall(String baseUrl,int contato,int contrato,String conteudo) async {
     Response response;
     dio.clear();
+    dio.options.connectTimeout = 5000;
+    dio.options.receiveTimeout = 10000;
     response = await dio.post(baseUrl, data: {
       "contrato": contrato,
       "contato": contato,

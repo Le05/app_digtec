@@ -7,6 +7,8 @@ class InvoicesRepository extends Disposable {
   Future getInvoicesRepository(
       String cpfcnpj, String senha, int contrato, String baseUrl) async {
     dio.clear();
+    dio.options.connectTimeout = 5000;
+    dio.options.receiveTimeout = 10000;
     response = await dio.post(baseUrl + "/titulos",
         data: {"cpfcnpj": cpfcnpj, "senha": senha, "contrato": contrato});
         return response.data["faturas"];
