@@ -49,7 +49,7 @@ class LoginBloc extends BlocBase {
   }
 
   Future saveContracts({Contracts contracts,@required String senha,@required int choose}) async {
-    var box = await initHive();
+    var box = await getHiveInstance();//initHive();
     if(choose == 0){
     box.put("cpfCnpj", contracts.cpfCnpj);
     box.put("senha", senha);
@@ -66,6 +66,16 @@ class LoginBloc extends BlocBase {
     print("salvou a senha dos varios contratos");
     }
     
+  }
+
+  Future getImageLogin() async {
+     var box = await getHiveInstance();
+     return box.get("param_logotipo");
+  }
+  Future getpassword() async {
+     var box = await getHiveInstance();
+     Map retorno = {"param_senha":box.get("param_senha"),"param_senhapadrao":box.get("param_senhapadrao")};
+     return retorno;
   }
   @override
   void dispose() {

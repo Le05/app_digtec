@@ -8,11 +8,14 @@ class NotificationsBloc extends BlocBase {
     Map<String, dynamic> retorno = {};
     var repository =
         NotificationsModule.to.getDependency<NotificationsRepository>();
-    var box = await initHive();
+    var box = await getHiveInstance();//await initHive();
     await repository
         .readNotificationRepository(box.get("contrato"))
         .then((onValue) {
-      if (onValue["error"] == " Nenhum registro encontrado") {
+     /* if(onValue == ""){
+        retorno.addAll({"retornoID":})
+      }*/
+      if (onValue == "") {
         retorno.addAll({"retornoID": 1, "dados": ""});
       } else {
         onValue["notificacoes"] = modifyDateView(onValue);

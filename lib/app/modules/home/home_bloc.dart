@@ -10,13 +10,13 @@ class HomeBloc extends BlocBase {
 
   Future getPropaganda() async {
      var repository = HomeModule.to.getDependency<HomeRepository>();
-      var box = await initHive();
+      var box = await getHiveInstance();//await initHive();
      var propaganda = await repository.getPropagandaRepo(box.get("cpfCnpj"), box.get("senha"));
      return propaganda;
   }
   
   validateContrato() async {
-     var box = await initHive();
+     var box = await getHiveInstance(); //initHive();
      String status = box.get("status");
      if(status.trim() == "Ativo")
       return 0;

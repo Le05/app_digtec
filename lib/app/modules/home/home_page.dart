@@ -44,45 +44,44 @@ class _HomePageState extends State<HomePage> {
                   height: MediaQuery.of(context).size.height / 2.5,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: CarouselSlider(
-                    autoPlayInterval: Duration(seconds: 10),
-                    autoPlay: true,
-                    height: MediaQuery.of(context).size.height / 3,
-                    items: <Widget>[
-                      FutureBuilder(
-                          future: homeBloc.getPropaganda(),
-                          builder:
-                              (BuildContext context, AsyncSnapshot snapshot) {
-                            if (!snapshot.hasData) {
-                              return Container(
-                                child:
-                                    Center(child: CircularProgressIndicator()),
-                              );
-                            }
-                            if (snapshot.hasError) {
-                              return Container(
-                                child: Center(
-                                  child: Text(
-                                      "Ocorreu um erro ao buscar as propagandas"),
-                                ),
-                              );
-                            }
+                    margin: EdgeInsets.only(top: 10),
+                    child: FutureBuilder(
+                        future: homeBloc.getPropaganda(),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (!snapshot.hasData) {
                             return Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(left: 5, right: 5),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                child: Image.network(
-                                  "https://www.appdoprovedor.com.br/uploads/slides/2020/01/teste-01.jpeg",
-                                  fit: BoxFit.cover,
-                                ),
+                              child: Center(child: CircularProgressIndicator()),
+                            );
+                          }
+                          if (snapshot.hasError) {
+                            return Container(
+                              child: Center(
+                                child: Text(
+                                    "Ocorreu um erro ao buscar as propagandas"),
                               ),
                             );
-                          })
-                    ],
-                  ),
-                ),
+                          }
+                          return CarouselSlider.builder(
+                            autoPlayInterval: Duration(seconds: 10),
+                            autoPlay: true,
+                            itemCount: snapshot.data.length,
+                            height: MediaQuery.of(context).size.height / 3,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(left: 5, right: 5),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Image.network(
+                                    "${snapshot.data[index]["ads_image"]}",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        })),
                 FutureBuilder(
                   future: homeBloc.validateContrato(),
                   builder: (context, snapshots) {

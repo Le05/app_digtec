@@ -3,7 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class TestVelocityPage extends StatefulWidget {
   final String title;
-  const TestVelocityPage({Key key, this.title = "TestVelocity"})
+  const TestVelocityPage({Key key, this.title = "Teste de Velocidade"})
       : super(key: key);
 
   @override

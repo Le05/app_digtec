@@ -13,45 +13,55 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   void initState() {
+    //alterColor(color: 0xFF409d42);
     appBloc.initOneSignal();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Franet',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
-        ),
-        home: FutureBuilder(
-            future: initHive(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.green,
-                );
-              }
-              return LoginModule();
-            }));
+    return StreamBuilder(
+      initialData: alterColor(color:0xFF409d42),
+      stream: appBloc.outputColor,
+      builder: (context, snapshot) {
+        return MaterialApp(
+            title: 'Franet',
+            theme: ThemeData(
+              primarySwatch: snapshot.data,
+            ),
+            home: FutureBuilder(
+                future: initHive(context: context),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.green,
+                    );
+                  }
+                  return LoginModule();
+                }));
+      }
+    );
   }
 }
 
-const MaterialColor primaryBlack = MaterialColor(
-  _blackPrimaryValue,
-  <int, Color>{
-    50: Color(0xFF000000),
-    100: Color(0xFF000000),
-    200: Color(0xFF000000),
-    300: Color(0xFF000000),
-    400: Color(0xFF000000),
-    500: Color(_blackPrimaryValue),
-    600: Color(0xFF000000),
-    700: Color(0xFF000000),
-    800: Color(0xFF000000),
-    900: Color(0xFF000000),
-  },
-);
-const int _blackPrimaryValue = 0xFF000000;
+alterColor({var color}) {
+   int _cPrimaryValue = color;
+  MaterialColor primary = MaterialColor(
+    _cPrimaryValue,
+    <int, Color>{
+      50: Color(color),
+      100: Color(color),
+      200: Color(color),
+      300: Color(color),
+      400: Color(color),
+      500: Color(_cPrimaryValue),
+      600: Color(color),
+      700: Color(color),
+      800: Color(color),
+      900: Color(color),
+    },
+  );
+  return primary;
+}

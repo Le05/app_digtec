@@ -6,9 +6,13 @@ class HomeRepository extends Disposable {
   Future getPropagandaRepo(String cpfCnpj, String senha) async {
     Response response;
     dio.clear();
-    response = await dio.post("https://www.appdoprovedor.com.br/_api/read_ads-postman.php",
-        data: {"cpfcnpj": cpfCnpj, "senha": senha},
-        queryParameters: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"});
+    response = await dio
+        .post("https://www.appdoprovedor.com.br/_api/read_ads.php", data: {
+      "cpfcnpj": cpfCnpj,
+      "senha": senha,
+      "key": "franet",
+      "token": "7K74P-LBSB3-XYJXA-G6MQS"
+    });
     return response.data;
   }
 

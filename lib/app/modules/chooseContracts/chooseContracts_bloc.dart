@@ -4,7 +4,7 @@ import 'package:franet/app/models/ContractsModel.dart';
 
 class ChooseContractsBloc extends BlocBase {
   Future saveContractsChoose(Contracts contracts) async {
-    var box = await initHive();
+    var box = await getHiveInstance();//await initHive();
     box.put("cpfCnpj", contracts.cpfCnpj);
     box.put("contrato", contracts.contrato);
     box.put("planoInternet", contracts.planoInternet);

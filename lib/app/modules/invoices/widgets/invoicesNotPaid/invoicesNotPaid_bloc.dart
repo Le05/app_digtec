@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class InvoicesNotPaidBloc extends BlocBase {
   launchPDF(String url) async {
-    var box = await initHive();
+    var box = await getHiveInstance();//initHive();
     String ip = box.get("baseUrl");
     ip = ip.trim();
     List<String> splitada = ip.split("/");

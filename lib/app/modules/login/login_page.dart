@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/login/login_bloc.dart';
 
@@ -23,13 +24,22 @@ class _LoginPageState extends State<LoginPage> {
           child: Stack(
             children: <Widget>[
               Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(70))),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2.5,
-              ),
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(70))),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  child: FutureBuilder(
+                      future: loginBloc.getImageLogin(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Container(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return CachedNetworkImage(imageUrl: snapshot.data);
+                      })),
               Form(
                 key: _formKey,
                 child: Container(
@@ -58,23 +68,39 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                        child: TextFormField(
-                          controller: loginBloc.senhaController,
-                          decoration: InputDecoration(
-                              hintText: "Senha",
-                              border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50)))),
-                          validator: (text) {
-                            if (text.isEmpty)
-                              return "Por Favor,insira a senha!!";
-                            return null;
-                          },
-                          obscureText: true,
-                        ),
-                      ),
+                      FutureBuilder(
+                          future: loginBloc.getpassword(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return Container(
+                                margin: EdgeInsets.only(top: 20),
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            if (snapshot.data["param_senha"] == 1) {
+                              loginBloc.senhaController.text =
+                                  snapshot.data["param_senhapadrao"];
+                              return Container(
+                                margin: EdgeInsets.only(
+                                    left: 20, right: 20, top: 10),
+                                child: TextFormField(
+                                  controller: loginBloc.senhaController,
+                                  decoration: InputDecoration(
+                                      hintText: "Senha",
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(50)))),
+                                  validator: (text) {
+                                    if (text.isEmpty)
+                                      return "Por Favor,insira a senha!!";
+                                    return null;
+                                  },
+                                  obscureText: true,
+                                ),
+                              );
+                            }
+                            return Container();
+                          }),
                       StreamBuilder(
                         initialData: false,
                         stream: loginBloc.outputLogin,
@@ -110,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                                             content: Text(
                                                 "Não foi encontrado nenhum contrato referente a este CPF/CNPJ !!"),
                                           ));
-                                        }else if(onValue == 1){
+                                        } else if (onValue == 1) {
                                           Scaffold.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Text(

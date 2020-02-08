@@ -7,7 +7,7 @@ import 'package:rxdart/rxdart.dart';
 class PaymentPromiseBloc extends BlocBase {
   Future<Map> verifyContractsStatus() async {
     Map<String, dynamic> retorno = {};
-    var box = await initHive();
+    var box = await getHiveInstance();//await initHive();
     if (box.get("status") == " Suspenso") {
       retorno.addAll({
         "statusSupenso": true,
