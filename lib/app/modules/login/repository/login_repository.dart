@@ -24,8 +24,8 @@ class LoginRepository extends Disposable {
       String deviceID = box.get("deviceID");
       String plataforma = box.get("plataforma");
       dio.clear();
-      dio.options.connectTimeout = 5000;
-      dio.options.receiveTimeout = 10000;
+      dio.options.connectTimeout = 10000;
+    dio.options.receiveTimeout = 10000;
       response = await dio.post(baseUrl, data: {
         "key": key,
         "token": token,

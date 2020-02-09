@@ -28,7 +28,9 @@ class _SupportPageState extends State<SupportPage> {
               child: Text(
                 "Leia aqui antes de Prosseguir",
                 style: TextStyle(
-                    fontSize: 18, color: Colors.red, fontWeight: FontWeight.bold),
+                    fontSize: 18,
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Row(
@@ -38,19 +40,27 @@ class _SupportPageState extends State<SupportPage> {
                   width: MediaQuery.of(context).size.width / 4,
                   height: MediaQuery.of(context).size.height / 5.5,
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  height: MediaQuery.of(context).size.height / 5,
-                  child: Text(
-                    "Antes de abrir um chamado,certifique-se que a entrada WAN do seu roteador está ligada(A entrada fica em destaque atrás do seu roteador) se estiver, retire seu roteador da energia por cerca de 2 minutos, se ao religar os problema persistir, solicite o suporte preenchendo os campos abaixos",
-                    style: TextStyle(fontSize: 17),
-                  ),
-                )
+                FutureBuilder(
+                    future: supportBloc.getTxtOs(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Container();
+                      }
+                      return Container(
+                        margin: EdgeInsets.only(left: 10),
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        height: MediaQuery.of(context).size.height / 5,
+                        child: Text(
+                          snapshot.data,
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      );
+                    })
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 15, bottom: 20),
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height / 15, bottom: 20),
               child: Text(
                 "Telefones para Contato",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -117,71 +127,114 @@ class _SupportPageState extends State<SupportPage> {
                 top: MediaQuery.of(context).size.height / 30,
               ),
               child: Form(
-                key: _formKey,
+                  key: _formKey,
                   child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    child: TextFormField(
-                      maxLength: 11,
-                      // controller: loginBloc.cpfCnpjController,
-                      keyboardType: TextInputType.numberWithOptions(),
-                      decoration: InputDecoration(
-                          hintText: "Telefone para Contato",
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
-                      validator: (text) {
-                        if (text.isEmpty)
-                          return "Por Favor,insira um contato";
-                        else if (text.length < 9)
-                          return "Por Favor,insira um contato válido!!";
-                        // else if (text.length < 11)
-                        // return "Por Favor,insira um CPF/CNPJ válido!!";
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    child: TextFormField(
-                      maxLines: 5,
-                      //controller: loginBloc.cpfCnpjController,
-                      keyboardType: TextInputType.multiline,
-                      decoration: InputDecoration(
-                          hintText: "Motivos",
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30)))),
-                      validator: (text) {
-                        if (text.isEmpty) return "Por Favor,insira um motivo!";
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              )),
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: TextFormField(
+                          maxLength: 11,
+                          controller: supportBloc.contatoController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          decoration: InputDecoration(
+                              hintText: "Telefone para Contato",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)))),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "Por Favor,insira um contato";
+                            else if (text.length < 9)
+                              return "Por Favor,insira um contato válido!!";
+                            // else if (text.length < 11)
+                            // return "Por Favor,insira um CPF/CNPJ válido!!";
+                            return null;
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        child: TextFormField(
+                          maxLines: 5,
+                          controller: supportBloc.conteudoController,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                              hintText: "Motivos",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)))),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "Por Favor,insira um motivo!";
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  )),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              child: ButtonTheme(
-                minWidth: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height / 20,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
-                child: RaisedButton(
-                    child: Text(
-                      "Solicitar Suporte",
-                      style: TextStyle(color: Colors.white, fontSize: 17),
+            StreamBuilder(
+              initialData: false,
+              stream: supportBloc.outputanimacaoButton,
+              builder: (context, snapshot) {
+                return Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: AnimatedCrossFade(
+                    crossFadeState: snapshot.data
+                        ? CrossFadeState.showSecond
+                        : CrossFadeState.showFirst,
+                    duration: Duration(seconds: 1),
+                    firstChild: ButtonTheme(
+                      minWidth: MediaQuery.of(context).size.width / 2,
+                      height: MediaQuery.of(context).size.height / 20,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      child: RaisedButton(
+                          child: Text(
+                            "Solicitar Suporte",
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                          onPressed: () async {
+                            supportBloc.animacaoButton(true);
+                            if (_formKey.currentState.validate()) {
+                              await supportBloc.openCall().then((onValue) {
+                                if (onValue["status"] == 0) {
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text(onValue["msg"]),
+                                  ));
+                                }
+                                if (onValue["status"] == 3) {
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text(onValue["msg"]),
+                                  ));
+                                }
+                                if (onValue["status"] == 1) {
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text(onValue["msg"]),
+                                  ));
+                                }
+                              });
+                            }
+                            supportBloc.animacaoButton(false);
+                          }),
                     ),
-                    onPressed: () async {
-                      if(_formKey.currentState.validate()){
-                        await supportBloc.openCall();
-                      }
-                    }),
-              ),
-            )
+                    secondChild: Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: MediaQuery.of(context).size.height / 15,
+                      margin: EdgeInsets.only(top: 0, bottom: 10),
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

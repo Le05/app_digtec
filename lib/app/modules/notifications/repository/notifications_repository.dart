@@ -7,7 +7,7 @@ class NotificationsRepository extends Disposable {
   Future readNotificationRepository(int contrato) async {
     dio.clear();
     Response response;
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     dio.options.receiveTimeout = 10000;
     response = await dio.post(
         "https://www.appdoprovedor.com.br/_api/read_pushnotification.php",

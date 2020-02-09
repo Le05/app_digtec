@@ -24,7 +24,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
             Container(
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30))),
@@ -38,7 +38,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(Colors.green),
+                        valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),
                       ),
                     );
                   }
@@ -361,7 +361,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                       .postFatura2Via("email")
                                       .then((onValue) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text(onValue["msg"]),
+                                      content: Text("Fatura enviada com sucesso"),
                                     ));
                                   }).catchError((onError) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
@@ -406,7 +406,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                       .postFatura2Via("sms")
                                       .then((onValue) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text(onValue["msg"]),
+                                      content: Text("Fatura enviada com sucesso"),
                                     ));
                                   }).catchError((onError) {
                                     Scaffold.of(context).showSnackBar(SnackBar(

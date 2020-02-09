@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               Container(
                   decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Theme.of(context).primaryColor,
                       borderRadius:
                           BorderRadius.only(bottomLeft: Radius.circular(70))),
                   width: MediaQuery.of(context).size.width,
@@ -77,10 +77,12 @@ class _LoginPageState extends State<LoginPage> {
                                 child: CircularProgressIndicator(),
                               );
                             }
-                            if (snapshot.data["param_senha"] == 1) {
+                            if (snapshot.data["param_senha"] == "1") {
                               loginBloc.senhaController.text =
                                   snapshot.data["param_senhapadrao"];
-                              return Container(
+                              return Container();
+                            }
+                            return Container(
                                 margin: EdgeInsets.only(
                                     left: 20, right: 20, top: 10),
                                 child: TextFormField(
@@ -98,8 +100,6 @@ class _LoginPageState extends State<LoginPage> {
                                   obscureText: true,
                                 ),
                               );
-                            }
-                            return Container();
                           }),
                       StreamBuilder(
                         initialData: false,
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                                 minWidth: MediaQuery.of(context).size.width / 2,
                                 height: MediaQuery.of(context).size.height / 15,
                                 child: RaisedButton(
-                                  color: Colors.green,
+                                  color: Theme.of(context).primaryColor,
                                   child: Text(
                                     "Entrar",
                                     style: TextStyle(
@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Center(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.green),
+                                       Theme.of(context).primaryColor,),
                                   ),
                                 ),
                               ),

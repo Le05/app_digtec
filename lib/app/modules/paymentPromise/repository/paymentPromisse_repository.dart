@@ -8,7 +8,7 @@ class PaymentPromisseRepository extends Disposable {
       String cpfcnpj, String senha, int contrato,String baseUrl) async {
     Response response;
     dio.clear();
-    dio.options.connectTimeout = 5000;
+    dio.options.connectTimeout = 10000;
     dio.options.receiveTimeout = 10000;
     response = await dio.post(baseUrl+"/promessapagamento",
         data: {"cpfcnpj": cpfcnpj, "senha": senha, "contrato": contrato});

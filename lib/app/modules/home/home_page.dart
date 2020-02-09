@@ -23,14 +23,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[500],
+        backgroundColor: Theme.of(context).primaryColor,
         /* appBar: AppBar(
           title: Text(widget.title),
           elevation: 0,
         ),*/
         body: SafeArea(
           child: Container(
-            color: Colors.green[700],
+            color: Theme.of(context).primaryColor,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Stack(
@@ -62,6 +62,9 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           }
+                          if(snapshot.data["exibe"] == false){
+                            return Container();
+                          }
                           return CarouselSlider.builder(
                             autoPlayInterval: Duration(seconds: 10),
                             autoPlay: true,
@@ -74,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   child: Image.network(
-                                    "${snapshot.data[index]["ads_image"]}",
+                                    "${snapshot.data["propaganda"][index]["ads_image"]}",
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -139,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                     }
                     return Container(
                       decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(40),
                               topRight: Radius.circular(40))),

@@ -11,7 +11,7 @@ Box box;
 AppBloc appBloc = AppBloc();
 Dio dio = Dio();
 Response response;
-Future<Box> initHive({BuildContext context}) async {
+Future<Map> initHive({BuildContext context}) async {
   String cor;
   // tenta abrir, caso de erro, ele inicializa e tenta abrir denovo
   try {
@@ -19,12 +19,13 @@ Future<Box> initHive({BuildContext context}) async {
   } catch (e) {
     var link;
     var resposta = await getParams();
-    if(resposta[0]["param_status"] == 1){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => MaintenanceModule()));
+    if (resposta[0]["param_status"] == 1) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => MaintenanceModule()));
     }
     cor = resposta[0]["param_corapp"];
     cor = cor.replaceFirst("#", "");
-    appBloc.alteraColor(int.parse(cor,radix: 16));
+    cor = "0xFF" + cor;
     if (e.message ==
         "You need to initialize Hive or provide a path to store the box.") {
       var deviceInfo = await appBloc.getAndroidOrIOS();
@@ -42,28 +43,30 @@ Future<Box> initHive({BuildContext context}) async {
       box.put("param_senhapadrao", resposta[0]["param_senhapadrao"]);
       box.put("param_propaganda", resposta[0]["param_propaganda"]);
       box.put("param_system", resposta[0]["param_system"]);
-      if(box.containsKey("param_logotipo")){
+      box.put("param_txtaberturaos", resposta[0]["param_txtaberturaos"]);
+      if (box.containsKey("param_logotipo")) {
         link = box.get("param_logotipo");
-        if(link != resposta[0]["param_logotipo"]){
+        if (link != resposta[0]["param_logotipo"]) {
           box.put("param_logotipo", resposta[0]["param_logotipo"]);
         }
-      }
-      else
+      } else
         box.put("param_logotipo", resposta[0]["param_logotipo"]);
     }
   }
-  //await Future.delayed(Duration(seconds: 3));
-
-  return box;
+  cor = "0xFF0047AB";
+  Map retorno = {"box": box, "color": alterColor(color: int.parse(cor))};
+  return retorno;
 }
 
 Future getParams() async {
   try {
-   dio.clear();
-  response = await dio.post(
-      "https://www.appdoprovedor.com.br/_api/read_app-new.php",
-      data: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"}); 
-  return response.data;
+    dio.clear();
+    dio.options.connectTimeout = 10000;
+    dio.options.receiveTimeout = 10000;
+    response = await dio.post(
+        "https://www.appdoprovedor.com.br/_api/read_app-new.php",
+        data: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"});
+    return response.data;
   } catch (e) {
     return [];
   }
@@ -73,12 +76,32 @@ Future<Box> getHiveInstance() async {
   if (box.isOpen)
     return box;
   else {
-    box = await initHive();
-    return box;
+    var boxInit = await initHive();
+    return boxInit["box"];
   }
 }
 
 Future updateBaseUrl(String baseUrl) async {
-  Box box = await initHive();
+  Box box = await getHiveInstance();
   box.put("baseUrl", baseUrl);
+}
+
+alterColor({var color}) {
+  int _cPrimaryValue = color;
+  MaterialColor primary = MaterialColor(
+    _cPrimaryValue,
+    <int, Color>{
+      50: Color(color),
+      100: Color(color),
+      200: Color(color),
+      300: Color(color),
+      400: Color(color),
+      500: Color(_cPrimaryValue),
+      600: Color(color),
+      700: Color(color),
+      800: Color(color),
+      900: Color(color),
+    },
+  );
+  return primary;
 }
