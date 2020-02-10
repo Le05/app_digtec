@@ -4,6 +4,7 @@ import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/modules/support/repository/support_repository.dart';
 import 'package:franet/app/modules/support/support_module.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SupportBloc extends BlocBase {
   TextEditingController contatoController = TextEditingController();
@@ -42,6 +43,10 @@ final BehaviorSubject<bool> _animacaoButton = BehaviorSubject<bool>();
   getTxtOs() async {
     var box = await getHiveInstance();
     return box.get("param_txtaberturaos");
+  }
+
+  Future openWhatsApp(String telefone) async {
+    await launch("https://wa.me/+55$telefone?text=Olá,estou com problemas na minha internet");
   }
   @override
   void dispose() {

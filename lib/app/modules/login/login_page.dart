@@ -38,7 +38,12 @@ class _LoginPageState extends State<LoginPage> {
                             child: CircularProgressIndicator(),
                           );
                         }
-                        return CachedNetworkImage(imageUrl: snapshot.data);
+                        return Container(
+                          margin: EdgeInsets.only(left: 20, right: 20),
+                          child: CachedNetworkImage(
+                            imageUrl: snapshot.data,
+                          ),
+                        );
                       })),
               Form(
                 key: _formKey,
@@ -83,23 +88,23 @@ class _LoginPageState extends State<LoginPage> {
                               return Container();
                             }
                             return Container(
-                                margin: EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                child: TextFormField(
-                                  controller: loginBloc.senhaController,
-                                  decoration: InputDecoration(
-                                      hintText: "Senha",
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(50)))),
-                                  validator: (text) {
-                                    if (text.isEmpty)
-                                      return "Por Favor,insira a senha!!";
-                                    return null;
-                                  },
-                                  obscureText: true,
-                                ),
-                              );
+                              margin:
+                                  EdgeInsets.only(left: 20, right: 20, top: 10),
+                              child: TextFormField(
+                                controller: loginBloc.senhaController,
+                                decoration: InputDecoration(
+                                    hintText: "Senha",
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(50)))),
+                                validator: (text) {
+                                  if (text.isEmpty)
+                                    return "Por Favor,insira a senha!!";
+                                  return null;
+                                },
+                                obscureText: true,
+                              ),
+                            );
                           }),
                       StreamBuilder(
                         initialData: false,
@@ -157,7 +162,8 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Center(
                                   child: CircularProgressIndicator(
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                       Theme.of(context).primaryColor,),
+                                      Theme.of(context).primaryColor,
+                                    ),
                                   ),
                                 ),
                               ),

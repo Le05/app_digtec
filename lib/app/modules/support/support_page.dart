@@ -66,61 +66,75 @@ class _SupportPageState extends State<SupportPage> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Image.asset(
-                        "images/telefone.png",
-                        width: MediaQuery.of(context).size.width / 12,
-                        height: MediaQuery.of(context).size.height / 20,
+            FutureBuilder(
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (!snapshot.hasData) {
+                  return Container(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Container();
+                }
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "images/telefone.png",
+                            width: MediaQuery.of(context).size.width / 12,
+                            height: MediaQuery.of(context).size.height / 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            snapshot.data["param_telprincipal"],
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        "0800 6482329",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Image.asset(
-                        "images/telefone.png",
-                        width: MediaQuery.of(context).size.width / 12,
-                        height: MediaQuery.of(context).size.height / 20,
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        "3547-2062",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "images/whatsapp.png",
-                          width: MediaQuery.of(context).size.width / 12,
-                          height: MediaQuery.of(context).size.height / 20,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "991628798",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
                     ),
-                  ),
-                  onTap: () {},
-                ),
-              ],
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "images/telefone.png",
+                            width: MediaQuery.of(context).size.width / 12,
+                            height: MediaQuery.of(context).size.height / 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            snapshot.data["param_telsecundario"],
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      child: Container(
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              "images/whatsapp.png",
+                              width: MediaQuery.of(context).size.width / 12,
+                              height: MediaQuery.of(context).size.height / 20,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              snapshot.data["param_telwhats"],
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onTap: () {
+                        //supportBloc.openWhatsApp(telefone);
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
             Container(
               margin: EdgeInsets.only(
