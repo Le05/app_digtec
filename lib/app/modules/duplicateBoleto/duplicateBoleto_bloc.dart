@@ -9,6 +9,7 @@ class DuplicateBoletoBloc extends BlocBase {
         DuplicateBoletoModule.to.getDependency<DuplicateRepository>();
     var retorno;
     await repository.getFatura2Via().then((onValue) {
+      onValue["vencimento"] = withdrawDate(onValue["vencimento"]);
       retorno = onValue;
     });
     return retorno;
@@ -32,6 +33,17 @@ class DuplicateBoletoBloc extends BlocBase {
     }
   }
 
+withdrawDate(String date) {
+    // retira os traços das datas
+    if (date != null) {
+      var dateProvisorio = date.split("-");
+      var dateProvisorioNew =
+          dateProvisorio[2] + "/" + dateProvisorio[1] + "/" + dateProvisorio[0];
+      return dateProvisorioNew;
+    } else {
+      return date;
+    }
+  }
   @override
   void dispose() {
     super.dispose();

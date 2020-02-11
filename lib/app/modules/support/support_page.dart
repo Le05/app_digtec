@@ -67,6 +67,7 @@ class _SupportPageState extends State<SupportPage> {
               ),
             ),
             FutureBuilder(
+              future: supportBloc.getPhones(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (!snapshot.hasData) {
                   return Container(
@@ -84,10 +85,10 @@ class _SupportPageState extends State<SupportPage> {
                         children: <Widget>[
                           Image.asset(
                             "images/telefone.png",
-                            width: MediaQuery.of(context).size.width / 12,
+                            width: MediaQuery.of(context).size.width / 15,
                             height: MediaQuery.of(context).size.height / 20,
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 5),
                           Text(
                             snapshot.data["param_telprincipal"],
                             style: TextStyle(fontSize: 16),
@@ -100,10 +101,10 @@ class _SupportPageState extends State<SupportPage> {
                         children: <Widget>[
                           Image.asset(
                             "images/telefone.png",
-                            width: MediaQuery.of(context).size.width / 12,
+                            width: MediaQuery.of(context).size.width / 15,
                             height: MediaQuery.of(context).size.height / 20,
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 5),
                           Text(
                             snapshot.data["param_telsecundario"],
                             style: TextStyle(fontSize: 16),
@@ -117,10 +118,10 @@ class _SupportPageState extends State<SupportPage> {
                           children: <Widget>[
                             Image.asset(
                               "images/whatsapp.png",
-                              width: MediaQuery.of(context).size.width / 12,
+                              width: MediaQuery.of(context).size.width / 15,
                               height: MediaQuery.of(context).size.height / 20,
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 5),
                             Text(
                               snapshot.data["param_telwhats"],
                               style: TextStyle(fontSize: 16),
@@ -129,7 +130,7 @@ class _SupportPageState extends State<SupportPage> {
                         ),
                       ),
                       onTap: () {
-                        //supportBloc.openWhatsApp(telefone);
+                        supportBloc.openWhatsApp(snapshot.data["param_telwhats"]);
                       },
                     ),
                   ],

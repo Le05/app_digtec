@@ -55,7 +55,8 @@ class InvoicesPaidWidget extends StatelessWidget {
                 ),
                 children: <Widget>[
                   Container(
-                     margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 35,top: 10),
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 35, top: 10),
                     child: Row(
                       children: <Widget>[
                         Image.asset(
@@ -66,7 +67,8 @@ class InvoicesPaidWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Numero do Documento",style: TextStyle(
+                            Text("Numero do Documento",
+                                style: TextStyle(
                                   fontSize: 17,
                                 )),
                             Text(
@@ -80,7 +82,8 @@ class InvoicesPaidWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 35,top: 10),
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 35, top: 10),
                     child: Row(
                       children: <Widget>[
                         Image.asset(
@@ -91,10 +94,12 @@ class InvoicesPaidWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Data do Vencimento",style: TextStyle(
+                            Text("Data do Vencimento",
+                                style: TextStyle(
                                   fontSize: 17,
                                 )),
-                            Text("${snapshot.data["titlesPaga"][index].vencimento}",
+                            Text(
+                                "${snapshot.data["titlesPaga"][index].vencimento}",
                                 style: TextStyle(
                                   fontSize: 15,
                                 )),
@@ -104,7 +109,8 @@ class InvoicesPaidWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                     margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 35,top: 10),
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 35, top: 10),
                     child: Row(
                       children: <Widget>[
                         Image.asset(
@@ -115,7 +121,8 @@ class InvoicesPaidWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Valor",style: TextStyle(
+                            Text("Valor",
+                                style: TextStyle(
                                   fontSize: 17,
                                 )),
                             Text("${snapshot.data["titlesPaga"][index].valor}",
@@ -128,7 +135,10 @@ class InvoicesPaidWidget extends StatelessWidget {
                     ),
                   ),
                   Container(
-                     margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 35,top: 10,bottom: 10),
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width / 35,
+                        top: 10,
+                        bottom: 10),
                     child: Row(
                       children: <Widget>[
                         Image.asset(
@@ -137,9 +147,10 @@ class InvoicesPaidWidget extends StatelessWidget {
                           height: MediaQuery.of(context).size.height / 20,
                         ),
                         Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                             Text("Data do Pagamento",style: TextStyle(
+                            Text("Data do Pagamento",
+                                style: TextStyle(
                                   fontSize: 17,
                                 )),
                             Text(

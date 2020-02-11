@@ -109,6 +109,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     height:
                                         MediaQuery.of(context).size.height / 15,
                                   ),
+                                  SizedBox(width: 5,),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -138,6 +139,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
+                                    SizedBox(width: 5,),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -168,6 +170,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
+                                    SizedBox(width: 5,),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -198,6 +201,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
+                                    SizedBox(width: 5,),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,

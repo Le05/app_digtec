@@ -178,29 +178,39 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                       ),*/
                       ButtonTheme(
                         child: RaisedButton(
-                          child: Text("Visualizar Boleto",style: TextStyle(color: Colors.white),),
+                          child: Text(
+                            "Visualizar Boleto",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           onPressed: () async {
-                            Scaffold.of(context).showSnackBar(SnackBar(content: Text("Abrindo navegador..."),));
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("Abrindo navegador..."),
+                            ));
                             try {
-                            await InvoicesNotPaidBloc().launchPDF("${snapshot.data["titlesAberta"][index].link}");  
+                              await InvoicesNotPaidBloc().launchPDF(
+                                  "${snapshot.data["titlesAberta"][index].link}");
                             } catch (e) {
-                              Scaffold.of(context).showSnackBar(SnackBar(content: Text("$e"),));
+                              Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text("$e"),
+                              ));
                             }
-                            
                           },
                         ),
                       ),
                       //SizedBox(width: 20,),
                       ButtonTheme(
                         child: RaisedButton(
-                          child: Text("Copiar codigo",style: TextStyle(color: Colors.white),),
+                          child: Text(
+                            "Copiar codigo",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           onPressed: () {
                             Clipboard.setData(ClipboardData(
-                                      text: snapshot.data["titlesAberta"][index].linhaDigitavel));
-                                  Scaffold.of(context).showSnackBar(SnackBar(
-                                    content:
-                                        Text("Código copiado com sucesso!!!"),
-                                  ));
+                                text: snapshot.data["titlesAberta"][index]
+                                    .linhaDigitavel));
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("Código copiado com sucesso!!!"),
+                            ));
                           },
                         ),
                       )
