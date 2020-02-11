@@ -46,7 +46,7 @@ class InvoicesPaidWidget extends StatelessWidget {
                           "Valor: ",
                           style: TextStyle(fontSize: 17),
                         ),
-                        Text("${snapshot.data["titlesPaga"][index].valor}",
+                        Text("R\$ ${snapshot.data["titlesPaga"][index].valor.toStringAsFixed(2)}",
                             style: TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold))
                       ],
@@ -125,7 +125,7 @@ class InvoicesPaidWidget extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 17,
                                 )),
-                            Text("${snapshot.data["titlesPaga"][index].valor}",
+                            Text("R\$${snapshot.data["titlesPaga"][index].valor.toStringAsFixed(2)}",
                                 style: TextStyle(
                                   fontSize: 15,
                                 )),
