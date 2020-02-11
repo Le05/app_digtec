@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           }
-                          if(snapshot.data["exibe"] == false){
+                          if (snapshot.data["exibe"] == false) {
                             return Container();
                           }
                           return CarouselSlider.builder(
@@ -126,7 +126,6 @@ class _HomePageState extends State<HomePage> {
                             "Sua Fatura está vencida, sua internet está bloqueada!!",
                             "Contrato Suspenso");
                       }
-                      //GetBar(message: "A sua fatura está vencida!!!",);
                     }
 
                     if (snapshots.data == 3) {
@@ -147,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                               topLeft: Radius.circular(40),
                               topRight: Radius.circular(40))),
                       margin: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height / 2.5,
+                        top: MediaQuery.of(context).size.height / 2.2,
                         // right: 20,
                         // left: 20
                       ),
@@ -403,7 +402,101 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
-                )
+                ),
+                Container(
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 2.6,
+                        left: 10,
+                        right: 10),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: Card(
+                      child: FutureBuilder(
+                          future: homeBloc.getDataContract(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return Container(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            if (snapshot.hasError) {
+                              return Container(
+                                  child: Text(
+                                      "Ocorreu um erro ao obter os dados"));
+                            }
+                            return Container(
+                              margin:
+                                  EdgeInsets.only(left: 10, right: 10, top: 5),
+                              child: Row(
+                                children: <Widget>[
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            "Nome/Razão Social: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(snapshot.data["razaoSocial"]),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            "CPF/CNPJ: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(snapshot.data["cpfCnpj"]),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            "Status do Contrato: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(snapshot.data["status"]),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            "Contrato: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text("${snapshot.data["contrato"]}"),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                          margin: EdgeInsets.only(
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  8),
+                                          child: Icon(
+                                            Icons.edit,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            size: 30,
+                                          ))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                    )),
               ],
             ),
           ),

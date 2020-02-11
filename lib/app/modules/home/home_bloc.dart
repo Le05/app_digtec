@@ -13,9 +13,9 @@ class HomeBloc extends BlocBase {
       var repository = HomeModule.to.getDependency<HomeRepository>();
       var propaganda = await repository.getPropagandaRepo(
           box.get("cpfCnpj"), box.get("senha"));
-      retorno = {"exibe":true,"propaganda":propaganda};
-    }else{
-      retorno = {"exibe":false,"propaganda":null};
+      retorno = {"exibe": true, "propaganda": propaganda};
+    } else {
+      retorno = {"exibe": false, "propaganda": null};
     }
 
     return retorno;
@@ -28,6 +28,16 @@ class HomeBloc extends BlocBase {
     if (status.trim() == "Cancelado") return 1;
     if (status.trim() == "Suspenso") return 2;
     if (status.trim() == "Ativo V. Reduzida") return 3;
+  }
+
+  Future getDataContract() async {
+    var box = await getHiveInstance();
+    return {
+      "cpfCnpj": box.get("cpfCnpj"),
+      "razaoSocial": box.get("razaoSocial"),
+      "status": box.get("status"),
+      "contrato": box.get("contrato")
+    };
   }
 
   Future<void> mensagemStatusContrato(
