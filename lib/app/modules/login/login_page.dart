@@ -54,23 +54,31 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.only(left: 20, right: 20),
-                        child: TextFormField(
-                          controller: loginBloc.cpfCnpjController,
-                          keyboardType: TextInputType.numberWithOptions(),
-                          decoration: InputDecoration(
-                              hintText: "CPF/CNPJ Ex:42236545852",
-                              border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50)))),
-                          validator: (text) {
-                            if (text.isEmpty)
-                              return "Por Favor,insira um CPF/CNPJ!!";
-                            else if (text.length > 14)
-                              return "Por Favor,insira um CPF/CNPJ válido!!";
-                            else if (text.length < 11)
-                              return "Por Favor,insira um CPF/CNPJ válido!!";
-                            return null;
-                          },
+                        child: FutureBuilder(
+                          future: loginBloc.getSaveLogin(),
+                          builder: (context, snapshot) {
+                            if(!snapshot.hasData){
+                              return Container(child: CircularProgressIndicator(),);
+                            }
+                            return TextFormField(
+                              controller: snapshot.data,
+                              keyboardType: TextInputType.numberWithOptions(),
+                              decoration: InputDecoration(
+                                  hintText: "CPF/CNPJ Ex:42236545852",
+                                  border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(50)))),
+                              validator: (text) {
+                                if (text.isEmpty)
+                                  return "Por Favor,insira um CPF/CNPJ!!";
+                                else if (text.length > 14)
+                                  return "Por Favor,insira um CPF/CNPJ válido!!";
+                                else if (text.length < 11)
+                                  return "Por Favor,insira um CPF/CNPJ válido!!";
+                                return null;
+                              },
+                            );
+                          }
                         ),
                       ),
                       FutureBuilder(
@@ -103,6 +111,30 @@ class _LoginPageState extends State<LoginPage> {
                                   return null;
                                 },
                                 obscureText: true,
+                              ),
+                            );
+                          }),
+                      StreamBuilder(
+                          initialData: false,
+                          stream: loginBloc.outputCheckScwitch,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return Container(
+                                margin: EdgeInsets.only(top: 20),
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            return Container(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Switch(
+                                      value: snapshot.data,
+                                      onChanged: (value) {
+                                        loginBloc.checkScwitch(value);
+                                      }),
+                                      Text("Lembrar-me CPF/CNPJ")
+                                ],
                               ),
                             );
                           }),
