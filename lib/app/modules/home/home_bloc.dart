@@ -2,6 +2,8 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ContractsModel.dart';
+import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
 import 'package:franet/app/modules/home/home_module.dart';
 import 'package:franet/app/modules/home/repository/home_repository.dart';
 
@@ -38,6 +40,19 @@ class HomeBloc extends BlocBase {
       "status": box.get("status"),
       "contrato": box.get("contrato")
     };
+  }
+
+  Future getContractsHive(BuildContext context) async {
+    var box = await getHiveInstance();
+    List<Contracts> contracts = box.get("contracts");
+    if (contracts == null) {
+      return false;
+    } else {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ChooseContractsModule(contracts)));
+    }
   }
 
   Future<void> mensagemStatusContrato(

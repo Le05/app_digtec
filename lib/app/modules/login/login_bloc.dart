@@ -27,6 +27,7 @@ class LoginBloc extends BlocBase {
         retorno = 1;
       } else if (onValue["retorno"] == 0) {
         saveContracts(senha: senhaController.text, choose: 1);
+        saveContractsHive(onValue["contracts"]);
         setUltimoLogin();
         print("envia para tela de escolha de contratos");
         Navigator.pushReplacement(
@@ -81,6 +82,11 @@ class LoginBloc extends BlocBase {
       box.put("senha", senha);
       print("salvou a senha dos varios contratos");
     }
+  }
+
+  Future saveContractsHive(List<Contracts> contracts) async {
+    box = await getHiveInstance();
+    box.put("contracts", contracts);
   }
 
   setUltimoLogin() {

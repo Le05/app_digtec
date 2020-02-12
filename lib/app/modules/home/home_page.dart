@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
-                                              3.4,
+                                              3.1,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height /
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -217,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                                               10,
                                         ),
                                         SizedBox(
-                                          height: 5,
+                                          height: 10,
                                         ),
                                         Text("Faturas"),
                                       ],
@@ -233,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
-                                              3.4,
+                                              3.1,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height /
@@ -260,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
-                                                4,
+                                                5,
                                             child:
                                                 Text("Promessa de Pagamento")),
                                       ],
@@ -281,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -295,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
-                                              3.4,
+                                              3.1,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height /
@@ -318,7 +318,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -332,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
-                                              3.4,
+                                              3.1,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height /
@@ -360,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width / 3.4,
+                                width: MediaQuery.of(context).size.width / 3.1,
                                 height: MediaQuery.of(context).size.height / 5,
                                 child: InkWell(
                                   child: Card(
@@ -478,18 +478,33 @@ class _HomePageState extends State<HomePage> {
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Container(
-                                          margin: EdgeInsets.only(
-                                              left: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  8),
-                                          child: Icon(
-                                            Icons.edit,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: 30,
-                                          ))
+                                      InkWell(
+                                        child: Container(
+                                            margin: EdgeInsets.only(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    8),
+                                            child: Icon(
+                                              Icons.edit,
+                                              color: Theme.of(context)
+                                                  .primaryColor,
+                                              size: 30,
+                                            )),
+                                        onTap: () {
+                                          homeBloc
+                                              .getContractsHive(context)
+                                              .then((onValue) {
+                                            if (onValue == false) {
+                                              Scaffold.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "Não existe outro contrato para ser escolhido"),
+                                              ));
+                                            }
+                                          });
+                                        },
+                                      )
                                     ],
                                   )
                                 ],

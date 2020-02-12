@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:franet/app/modules/support/support_bloc.dart';
 
 class SupportPage extends StatefulWidget {
@@ -47,14 +48,10 @@ class _SupportPageState extends State<SupportPage> {
                         return Container();
                       }
                       return Container(
-                        margin: EdgeInsets.only(left: 10),
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        height: MediaQuery.of(context).size.height / 5,
-                        child: Text(
-                          snapshot.data,
-                          style: TextStyle(fontSize: 17),
-                        ),
-                      );
+                          margin: EdgeInsets.only(left: 10),
+                          width: MediaQuery.of(context).size.width / 1.5,
+                          height: MediaQuery.of(context).size.height / 4.7,
+                          child: Html(data: snapshot.data));
                     })
               ],
             ),
@@ -130,7 +127,8 @@ class _SupportPageState extends State<SupportPage> {
                         ),
                       ),
                       onTap: () {
-                        supportBloc.openWhatsApp(snapshot.data["param_telwhats"]);
+                        supportBloc
+                            .openWhatsApp(snapshot.data["param_telwhats"]);
                       },
                     ),
                   ],

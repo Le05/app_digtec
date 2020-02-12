@@ -38,6 +38,7 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("key", "franet");
       box.put(
           "baseUrl", "https://www.appdoprovedor.com.br/_api/verificaws.php");
+      box.put("contracts", null);
       box.put("param_corapp", resposta[0]["param_corapp"]);
       box.put("param_senha", resposta[0]["param_senha"]);
       box.put("param_senhapadrao", resposta[0]["param_senhapadrao"]);
