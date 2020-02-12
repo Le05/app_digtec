@@ -406,10 +406,10 @@ class _HomePageState extends State<HomePage> {
                 Container(
                     margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height / 2.6,
-                        left: 10,
-                        right: 10),
+                        left: 5,
+                        right: 5),
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 7.5,
                     child: Card(
                       child: FutureBuilder(
                           future: homeBloc.getDataContract(),
@@ -440,9 +440,18 @@ class _HomePageState extends State<HomePage> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text(snapshot.data["razaoSocial"]),
+                                          Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  2.05,
+                                              child: SingleChildScrollView(
+                                                child: Text(snapshot
+                                                    .data["razaoSocial"]),
+                                              )),
                                         ],
                                       ),
+                                      SizedBox(height: 3,),
                                       Row(
                                         children: <Widget>[
                                           Text(
@@ -453,6 +462,7 @@ class _HomePageState extends State<HomePage> {
                                           Text(snapshot.data["cpfCnpj"]),
                                         ],
                                       ),
+                                      SizedBox(height: 3,),
                                       Row(
                                         children: <Widget>[
                                           Text(
@@ -463,6 +473,7 @@ class _HomePageState extends State<HomePage> {
                                           Text(snapshot.data["status"]),
                                         ],
                                       ),
+                                      SizedBox(height: 3,),
                                       Row(
                                         children: <Widget>[
                                           Text(
@@ -480,11 +491,11 @@ class _HomePageState extends State<HomePage> {
                                     children: <Widget>[
                                       InkWell(
                                         child: Container(
-                                            margin: EdgeInsets.only(
+                                           /* margin: EdgeInsets.only(
                                                 left: MediaQuery.of(context)
                                                         .size
                                                         .width /
-                                                    8),
+                                                    20),*/
                                             child: Icon(
                                               Icons.edit,
                                               color: Theme.of(context)
