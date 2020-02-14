@@ -6,6 +6,7 @@ import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
 import 'package:franet/app/modules/home/home_module.dart';
 import 'package:franet/app/modules/home/repository/home_repository.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeBloc extends BlocBase {
   Future getPropaganda() async {
@@ -53,6 +54,18 @@ class HomeBloc extends BlocBase {
           MaterialPageRoute(
               builder: (context) => ChooseContractsModule(contracts)));
     }
+  }
+
+  Future openFBInstagram(int escolha) async {
+    // 0 -> facebook
+    // 1 -> instagram
+    var box = await getHiveInstance();
+    if(escolha == 0){
+      await launch(box.get("param_facebook"));
+    }else if(escolha == 1){
+      await launch(box.get("param_instagram"));
+    }
+    
   }
 
   Future<void> mensagemStatusContrato(

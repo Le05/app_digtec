@@ -116,11 +116,11 @@ class _HomePageState extends State<HomePage> {
                                       title: Row(
                                         children: <Widget>[
                                           Text(
-                                            "CPF/CNPJ: ",
+                                            "Contrato: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text(snapshot.data["cpfCnpj"]),
+                                          Text("${snapshot.data["contrato"]}"),
                                         ],
                                       ),
                                       children: <Widget>[
@@ -638,11 +638,9 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    NotificationsModule()));
+                                       homeBloc.openFBInstagram(0).catchError((onError){
+                                         Scaffold.of(context).showSnackBar(SnackBar(content: Text("Ocorreu um erro ao abrir o Facebook"),));
+                                       });
                                       },
                                     ),
                                   ),
@@ -677,11 +675,9 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    NotificationsModule()));
+                                        homeBloc.openFBInstagram(0).catchError((onError){
+                                         Scaffold.of(context).showSnackBar(SnackBar(content: Text("Ocorreu um erro ao abrir o Instagram"),));
+                                       });
                                       },
                                     ),
                                   ),
