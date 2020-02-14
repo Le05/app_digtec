@@ -60,12 +60,22 @@ class SupportBloc extends BlocBase {
   }
 
   Future openWhatsApp(String telefone) async {
+    telefone = removeCaractersPhone(telefone);
+    await launch(
+        "https://api.whatsapp.com/send?phone=+55$telefone&text=Olá,estou com problemas na minha internet");
+  }
+
+  Future openDiskPhone(String telefone) async {
+    telefone = removeCaractersPhone(telefone);
+    await launch("tel:$telefone");
+  }
+
+  removeCaractersPhone(String telefone) {
     telefone = telefone.replaceAll("(", "");
     telefone = telefone.replaceAll(")", "");
     telefone = telefone.replaceAll("-", "");
-    telefone = telefone.replaceAll(" ","");
-    await launch(
-        "https://api.whatsapp.com/send?phone=+55$telefone&text=Olá,estou com problemas na minha internet");
+    telefone = telefone.replaceAll(" ", "");
+    return telefone;
   }
 
   @override

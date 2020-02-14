@@ -17,11 +17,12 @@ class PaymentPromiseBloc extends BlocBase {
         "status": box.get("status"),
         "cpfCnpj": box.get("cpfCnpj"),
         "senha": box.get("senha"),
-        "baseUrl":box.get("baseUrl")
+        "baseUrl":box.get("baseUrl"),
+        "param_txtpromessapag":box.get("param_txtpromessapag"),
       });
       return retorno;
     } else {
-      retorno.addAll({"status": false});
+      retorno.addAll({"status": false,"param_txtpromessapagok":box.get("param_txtpromessapagok")});
       return retorno;
     }
   }

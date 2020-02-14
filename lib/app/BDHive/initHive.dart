@@ -48,6 +48,8 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_telprincipal", resposta[0]["param_telefones"]["param_telprincipal"]);
       box.put("param_telsecundario", resposta[0]["param_telefones"]["param_telsecundario"]);
       box.put("param_telwhats", resposta[0]["param_telefones"]["param_telwhats"]);
+      box.put("param_txtpromessapag",resposta[0]["param_txtpromessapag"]);
+      box.put("param_txtpromessapagok",resposta[0]["param_txtpromessapagok"]);
       if (box.containsKey("param_logotipo")) {
         link = box.get("param_logotipo");
         if (link != resposta[0]["param_logotipo"]) {

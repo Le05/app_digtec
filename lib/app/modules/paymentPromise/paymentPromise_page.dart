@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:franet/app/modules/paymentPromise/paymentPromise_bloc.dart';
 
 class PaymentPromisePage extends StatefulWidget {
@@ -112,12 +113,10 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                         height: MediaQuery.of(context).size.height / 4,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 1.2,
-                        child: Text(
-                          "Após realizar a promessa de pagamento, sua conexão será liberada em até uma hora,caso o pagamento não seja recebido no proxímo dia útil, sua conexão será suspensa novamente!!",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
+                          width: MediaQuery.of(context).size.width / 1.2,
+                          child: Html(
+                            data: snapshot.data["param_txtpromessapag"],
+                          )),
                       SizedBox(
                         height: MediaQuery.of(context).size.height / 20,
                       ),
@@ -193,13 +192,12 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                       height: MediaQuery.of(context).size.height / 3,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 30, right: 30),
-                      child: Text(
-                        "O seu contrato encontra-se com o status de ativo, portanto não existe nenhuma promessa a ser feita!!!",
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                        margin: EdgeInsets.only(left: 30, right: 30),
+                        child: Html(
+                          defaultTextStyle: TextStyle(
+                              fontSize: 19, fontWeight: FontWeight.bold),
+                          data: snapshot.data["param_txtpromessapagok"],
+                        )),
                   ],
                 ),
               );

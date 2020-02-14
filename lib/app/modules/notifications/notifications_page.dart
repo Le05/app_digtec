@@ -57,7 +57,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   ),
                 );
               }
-              print(snapshot.data);
               return ListView.builder(
                 itemCount: snapshot.data["dados"]["notificacoes"].length,
                 itemBuilder: (BuildContext context, int index) {
@@ -78,6 +77,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
+                              width: MediaQuery.of(context).size.width/1.3,
                               child: Text(
                                 "${snapshot.data["dados"]["notificacoes"][index]["notification_title"]}",
                                 style: TextStyle(
@@ -86,6 +86,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                             ),
                             Container(
                                 margin: EdgeInsets.only(left: 10),
+                                width: MediaQuery.of(context).size.width/1.3,
                                 child: Text(
                                   "${snapshot.data["dados"]["notificacoes"][index]["notification_desc"]}",
                                   style: TextStyle(
@@ -93,9 +94,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                 )),
                             Container(
                                 margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width / 3,
+                                    left: MediaQuery.of(context).size.width / 8,
                                     top: MediaQuery.of(context).size.height /
                                         95),
+                                        width: MediaQuery.of(context).size.width / 1.5,
                                 child: Text(
                                   "${snapshot.data["dados"]["notificacoes"][index]["notification_date"]}",
                                   style: TextStyle(
