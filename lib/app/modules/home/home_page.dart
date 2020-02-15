@@ -7,6 +7,7 @@ import 'package:franet/app/modules/notifications/notifications_module.dart';
 import 'package:franet/app/modules/paymentPromise/paymentPromise_module.dart';
 import 'package:franet/app/modules/support/support_module.dart';
 import 'package:franet/app/modules/testVelocity/testVelocity_module.dart';
+import 'package:franet/app/modules/tips/tips_module.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -603,7 +604,7 @@ class _HomePageState extends State<HomePage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    NotificationsModule()));
+                                                    TipsModule()));
                                       },
                                     ),
                                   ),
@@ -638,9 +639,15 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       onTap: () {
-                                       homeBloc.openFBInstagram(0).catchError((onError){
-                                         Scaffold.of(context).showSnackBar(SnackBar(content: Text("Ocorreu um erro ao abrir o Facebook"),));
-                                       });
+                                        homeBloc
+                                            .openFBInstagram(0)
+                                            .catchError((onError) {
+                                          Scaffold.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                "Ocorreu um erro ao abrir o Facebook"),
+                                          ));
+                                        });
                                       },
                                     ),
                                   ),
@@ -675,9 +682,15 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       onTap: () {
-                                        homeBloc.openFBInstagram(0).catchError((onError){
-                                         Scaffold.of(context).showSnackBar(SnackBar(content: Text("Ocorreu um erro ao abrir o Instagram"),));
-                                       });
+                                        homeBloc
+                                            .openFBInstagram(0)
+                                            .catchError((onError) {
+                                          Scaffold.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Text(
+                                                "Ocorreu um erro ao abrir o Instagram"),
+                                          ));
+                                        });
                                       },
                                     ),
                                   ),
