@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 class TipsBloc extends BlocBase {
   Dio dio = Dio();
   Future getTips() async {
-    List retorno;
+    //List retorno;
     Response response;
     response = await dio.post(
         "https://www.appdoprovedor.com.br/_api/read_dicas.php",
         data: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"});
-    retorno = response.data;
-    var colors = generateColorsList();
+    //retorno = response.data;
+    /*var colors = generateColorsList();
     var index = 0;
     for (var dica in retorno) {
       dica.addAll({"color": colors[index]});
       index = index + 1;
-    }
-    return retorno;
+    }*/
+    return response.data;
   }
 
   List<Color> generateColorsList() {

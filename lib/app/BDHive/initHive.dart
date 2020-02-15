@@ -42,7 +42,9 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_corapp", resposta[0]["param_corapp"]);
       box.put("param_senha", resposta[0]["param_senha"]);
       box.put("param_senhapadrao", resposta[0]["param_senhapadrao"]);
-      box.put("param_propaganda", resposta[0]["param_propaganda"]);
+      box.put("param_propaganda", resposta[0]["param_propagandas"]["param_propaganda"]);
+      box.put("param_propagandaposicao", resposta[0]["param_propagandas"]["param_propagandaposicao"]);
+      box.put("param_propagandatitulo", resposta[0]["param_propagandas"]["param_propagandatitulo"]);
       box.put("param_system", resposta[0]["param_system"]);
       box.put("param_txtaberturaos", resposta[0]["param_txtaberturaos"]);
       box.put("param_telprincipal", resposta[0]["param_telefones"]["param_telprincipal"]);

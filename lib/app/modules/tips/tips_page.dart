@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/tips/tips_bloc.dart';
+import 'package:franet/app/modules/tips/widgets/moreTips/moreTips_widget.dart';
 
 class TipsPage extends StatefulWidget {
   final String title;
@@ -29,35 +30,52 @@ class _TipsPageState extends State<TipsPage> {
                   return Center(
                       child: Text("Ocorreu um erro ao buscar as dicas!!!"));
                 }
-                return GridView.builder(
-                    gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+                return ListView.separated(
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Divider(
+                        height: 5,
+                        color: Colors.grey,
+                      );
+                    },
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                          decoration: BoxDecoration(
-                              color: snapshot.data[index]["color"],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
+                      return InkWell(
+                        child: Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
                                   width:
-                                      MediaQuery.of(context).size.width / 2.5,
+                                      MediaQuery.of(context).size.width / 1.15,
                                   margin: EdgeInsets.only(top: 15),
-                                  child: Center(
-                                    child: Text(
-                                        snapshot.data[index]["dicas_title"],style: TextStyle(fontWeight: FontWeight.bold),),
-                                  )),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2.5,
-                                margin: EdgeInsets.only(top: 10),
-                                child: Text(snapshot.data[index]["dicas_desc"],style: TextStyle(fontWeight: FontWeight.bold)),
-                              )
-                            ],
-                          ));
+                                  child: Text(
+                                    snapshot.data[index]["dicas_title"],
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                ),
+                                /*Container(
+                                      width:
+                                          MediaQuery.of(context).size.width / 2.5,
+                                      margin: EdgeInsets.only(top: 10),
+                                      child: Text(
+                                          snapshot.data[index]["dicas_desc"],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                    )*/
+
+                                Container(
+                                  child: Icon(Icons.chevron_right),
+                                ),
+                              ],
+                            )),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MoreTipsWidget(widget.key,snapshot.data[index])));
+                        },
+                      );
                     });
               }),
         ));
