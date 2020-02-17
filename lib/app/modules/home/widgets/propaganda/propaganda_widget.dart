@@ -27,24 +27,43 @@ class PropagandaWidget extends StatelessWidget {
               if (snapshot.data["exibe"] == false) {
                 return Container();
               }
-              return CarouselSlider.builder(
-                autoPlayInterval: Duration(seconds: 10),
-                autoPlay: true,
-                itemCount: snapshot.data.length,
-                height: MediaQuery.of(context).size.height / 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        "${snapshot.data["propaganda"][index]["ads_image"]}",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
-                },
+              return Column(
+                children: <Widget>[
+                  snapshot.data["param_propagandatitulo"] != null &&
+                          snapshot.data["param_propagandatitulo"] != ""
+                      ? Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.only(bottom: 10),
+                          child: Center(
+                            child: Text(
+                              snapshot.data["param_propagandatitulo"],
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
+                          ),
+                        )
+                      : Container(),
+                  CarouselSlider.builder(
+                    viewportFraction: 1.0,
+                    autoPlayInterval: Duration(seconds: 10),
+                    autoPlay: true,
+                    itemCount: snapshot.data["propaganda"].length,
+                    height: MediaQuery.of(context).size.height / 3,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.only(left: 5, right: 5),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.network(
+                            "${snapshot.data["propaganda"][index]["ads_image"]}",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                ],
               );
             }));
   }

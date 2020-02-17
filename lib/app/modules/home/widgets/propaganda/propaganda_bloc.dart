@@ -10,8 +10,10 @@ class PropagandaBloc extends BlocBase {
     var repository = HomeModule.to.getDependency<HomeRepository>();
     var propaganda = await repository.getPropagandaRepo(
         box.get("cpfCnpj"), box.get("senha"));
-    retorno = {"propaganda": propaganda};
-
+    retorno = {
+      "propaganda": propaganda,
+      "param_propagandatitulo": box.get("param_propagandatitulo")
+    };
     return retorno;
   }
 
