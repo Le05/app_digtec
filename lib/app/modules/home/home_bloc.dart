@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
-import 'package:franet/app/modules/home/home_module.dart';
-import 'package:franet/app/modules/home/repository/home_repository.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeBloc extends BlocBase {
@@ -13,12 +11,9 @@ class HomeBloc extends BlocBase {
     Map retorno = {};
     var box = await getHiveInstance(); //await initHive();
     if (box.get("param_propaganda") == "1") {
-      var repository = HomeModule.to.getDependency<HomeRepository>();
-      var propaganda = await repository.getPropagandaRepo(
-          box.get("cpfCnpj"), box.get("senha"));
-      retorno = {"exibe": true, "propaganda": propaganda};
+      retorno = {"exibe": true,"param_propagandaposicao":box.get("param_propagandaposicao")};
     } else {
-      retorno = {"exibe": false, "propaganda": null};
+      retorno = {"exibe": false};
     }
 
     return retorno;
