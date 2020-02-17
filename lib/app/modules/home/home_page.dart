@@ -724,7 +724,7 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             onTap: () {
                                               homeBloc
-                                                  .openFBInstagram(0)
+                                                  .openFBInstagram(1)
                                                   .catchError((onError) {
                                                 Scaffold.of(context)
                                                     .showSnackBar(SnackBar(

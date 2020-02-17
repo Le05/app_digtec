@@ -22,8 +22,7 @@ class _TestVelocityPageState extends State<TestVelocityPage> {
           height: MediaQuery.of(context).size.height,
           child: WebView(
             javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: "https://franet.speedtestcustom.com/",
-            
+            initialUrl: "http://testedevelocidade.franet.com.br",
           ),
         ));
   }

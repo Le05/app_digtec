@@ -64,11 +64,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       margin: EdgeInsets.only(bottom: 5, top: 5),
                       child: Card(
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))
-                        ),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         elevation: 10,
                         child: Container(
-                          margin: EdgeInsets.symmetric(vertical:10),
+                          margin: EdgeInsets.symmetric(vertical: 10),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -76,7 +76,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                 child: Image.asset(
                                   "images/pushnotification.png",
                                   width: MediaQuery.of(context).size.width / 7,
-                                  height: MediaQuery.of(context).size.height / 10,
+                                  height:
+                                      MediaQuery.of(context).size.height / 10,
                                 ),
                               ),
                               Column(
@@ -84,40 +85,39 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                   Container(
                                     margin: EdgeInsets.only(
                                         left: 10, top: 0, bottom: 5),
-                                    width:
-                                        MediaQuery.of(context).size.width / 1.24,
+                                    width: MediaQuery.of(context).size.width /
+                                        1.24,
                                     child: Text(
                                       snapshot.data["dados"]["notificacoes"]
                                           [index]["notification_title"],
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width / 30,
+                                      left: 10,
                                     ),
-                                    width:
-                                        MediaQuery.of(context).size.width / 1.3,
+                                    width: MediaQuery.of(context).size.width /
+                                        1.24,
                                     child: Text(
                                       snapshot.data["dados"]["notificacoes"]
                                           [index]["notification_desc"],
-                                      style:
-                                          TextStyle(color: Colors.black),
+                                      style: TextStyle(color: Colors.black),
                                     ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width / 2.7,
-                                      top: 10
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.38,
+                                        left:
+                                            MediaQuery.of(context).size.width /
+                                                2.7,
+                                        top: 10),
+                                    width: MediaQuery.of(context).size.width /
+                                        2.38,
                                     child: Text(
                                       snapshot.data["dados"]["notificacoes"]
                                           [index]["notification_date"],
-                                      style:
-                                          TextStyle(color: Colors.grey),
+                                      style: TextStyle(color: Colors.grey),
                                     ),
                                   )
                                 ],
