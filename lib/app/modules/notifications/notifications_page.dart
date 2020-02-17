@@ -61,53 +61,71 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 itemCount: snapshot.data["dados"]["notificacoes"].length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    margin: EdgeInsets.only(bottom: 20, top: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(right: 20),
-                          //width: 3,
-                          height: MediaQuery.of(context).size.height / 15,
-                          // color: Colors.green,
-                          child: Image.asset("images/notificacao.png"),
+                      margin: EdgeInsets.only(bottom: 5, top: 5),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width/1.3,
-                              child: Text(
-                                "${snapshot.data["dados"]["notificacoes"][index]["notification_title"]}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 21),
+                        elevation: 10,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical:10),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                child: Image.asset(
+                                  "images/pushnotification.png",
+                                  width: MediaQuery.of(context).size.width / 7,
+                                  height: MediaQuery.of(context).size.height / 10,
+                                ),
                               ),
-                            ),
-                            Container(
-                                margin: EdgeInsets.only(left: 10),
-                                width: MediaQuery.of(context).size.width/1.3,
-                                child: Text(
-                                  "${snapshot.data["dados"]["notificacoes"][index]["notification_desc"]}",
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 17),
-                                )),
-                            Container(
-                                margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width / 8,
-                                    top: MediaQuery.of(context).size.height /
-                                        95),
-                                        width: MediaQuery.of(context).size.width / 1.5,
-                                child: Text(
-                                  "${snapshot.data["dados"]["notificacoes"][index]["notification_date"]}",
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 14),
-                                ))
-                          ],
+                              Column(
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: 10, top: 0, bottom: 5),
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.24,
+                                    child: Text(
+                                      snapshot.data["dados"]["notificacoes"]
+                                          [index]["notification_title"],
+                                      style:
+                                          TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width / 30,
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.3,
+                                    child: Text(
+                                      snapshot.data["dados"]["notificacoes"]
+                                          [index]["notification_desc"],
+                                      style:
+                                          TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width / 2.7,
+                                      top: 10
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width / 2.38,
+                                    child: Text(
+                                      snapshot.data["dados"]["notificacoes"]
+                                          [index]["notification_date"],
+                                      style:
+                                          TextStyle(color: Colors.grey),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  );
+                      ));
                 },
               );
             }));

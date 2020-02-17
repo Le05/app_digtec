@@ -34,7 +34,7 @@ class NotificationsBloc extends BlocBase {
         var data = item["notification_date"];
         var dataSplitada = data.split(" ");
         dataSplitada[0] = alterPositionDate(dataSplitada[0]);
-        item["notification_date"] = "Recebida em "+dataSplitada[0]+" às "+dataSplitada[1];
+        item["notification_date"] = dataSplitada[0]+" às "+dataSplitada[1];
         dadosFinal.add(item);
     }
     return dadosFinal;
