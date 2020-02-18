@@ -87,6 +87,10 @@ class LoginRepository extends Disposable {
     }
   }
 
+Future verificaInternet() async {
+  dio.clear();
+  await dio.get("https://www.google.com");
+}
   //dispose will be called automatically
   @override
   void dispose() {}

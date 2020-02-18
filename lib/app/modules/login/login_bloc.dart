@@ -139,6 +139,12 @@ class LoginBloc extends BlocBase {
     inputCheckSwitch.add(check);
   }
 
+  verifyInternetAndBox() async {
+     box = await getHiveInstance();
+     var repository = LoginModule.to.getDependency<LoginRepository>();
+     await repository.verificaInternet();
+     return 0;
+  }
   @override
   void dispose() {
     _login.close();

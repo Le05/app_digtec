@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/app_bloc.dart';
@@ -25,8 +27,8 @@ class _AppWidgetState extends State<AppWidget> {
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Container(
-             // height: MediaQuery.of(context).size.height,
-             // width: MediaQuery.of(context).size.width,
+              // height: MediaQuery.of(context).size.height,
+              // width: MediaQuery.of(context).size.width,
               color: Colors.green,
             );
           }
@@ -43,5 +45,3 @@ class _AppWidgetState extends State<AppWidget> {
         });
   }
 }
-
-

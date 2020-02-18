@@ -20,6 +20,9 @@ Future<Map> initHive({BuildContext context}) async {
   } catch (e) {
     var link;
     var resposta = await getParams();
+    if(resposta == null){
+      return {"error":"error"};
+    }
     if (resposta[0]["param_status"] == 1) {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => MaintenanceModule()));
@@ -84,7 +87,7 @@ Future getParams() async {
         data: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"});
     return response.data;
   } catch (e) {
-    return [];
+    return null;
   }
 }
 
