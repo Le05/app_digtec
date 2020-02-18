@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_module.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
