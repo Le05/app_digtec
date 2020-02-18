@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight
-                                                                    .bold),
+                                                                    .bold)
                                                       ),
                                                       Text(snapshot
                                                           .data["cpfCnpj"]),

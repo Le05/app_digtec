@@ -40,6 +40,13 @@ class _AppWidgetState extends State<AppWidget> {
               title: 'Franet',
               theme: ThemeData(
                 primarySwatch: snapshot.data["color"],
+                textTheme: TextTheme(
+                  display1: TextStyle(color: snapshot.data["fontColor"]),
+                  display2: TextStyle(color: snapshot.data["fontColor"]),
+                  display3: TextStyle(color: snapshot.data["fontColor"]),
+                  display4: TextStyle(color: snapshot.data["fontColor"]),
+                  title: TextStyle(color:snapshot.data["fontColor"],fontWeight:FontWeight.bold)
+                )
               ),
               home: LoginModule());
         });
