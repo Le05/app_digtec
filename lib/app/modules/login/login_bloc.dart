@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
@@ -98,7 +99,14 @@ class LoginBloc extends BlocBase {
 
   Future getImageLogin() async {
     box = await getHiveInstance();
-    return box.get("param_logotipo");
+    var file =
+        await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
+    if (file == null) {
+      await DefaultCacheManager().downloadFile(box.get("param_logotipo"));
+      return await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
+    } else {
+      return file;
+    }
   }
 
   Future getpassword() async {

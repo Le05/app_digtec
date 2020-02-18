@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:franet/app/app_bloc.dart';
 import 'package:franet/app/modules/maintenance/maintenance_module.dart';
 import 'package:hive/hive.dart';
@@ -58,12 +59,16 @@ Future<Map> initHive({BuildContext context}) async {
         link = box.get("param_logotipo");
         if (link != resposta[0]["param_logotipo"]) {
           box.put("param_logotipo", resposta[0]["param_logotipo"]);
+          await DefaultCacheManager().downloadFile(resposta[0]["param_logotipo"]);
         }
-      } else
-        box.put("param_logotipo", resposta[0]["param_logotipo"]);
+      } else{
+          box.put("param_logotipo", resposta[0]["param_logotipo"]);
+          await DefaultCacheManager().downloadFile(resposta[0]["param_logotipo"]);
+      }
+        
     }
   }
-  cor = "0xFF0047AB";
+  //cor = "0xFF0047AB";
   Map retorno = {"box": box, "color": alterColor(color: int.parse(cor))};
   return retorno;
 }

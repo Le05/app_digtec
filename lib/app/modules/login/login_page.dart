@@ -40,9 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         return Container(
                           margin: EdgeInsets.only(left: 20, right: 20),
-                          child: CachedNetworkImage(
-                            imageUrl: snapshot.data,
-                          ),
+                          child: Image.asset(snapshot.data.file.path)
                         );
                       })),
               Form(
