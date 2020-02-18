@@ -57,7 +57,8 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_instagram",resposta[0]["param_instagram"]);
       if (box.containsKey("param_logotipo")) {
         link = box.get("param_logotipo");
-        if (link != resposta[0]["param_logotipo"]) {
+        var linkParam = resposta[0]["param_logotipo"]; 
+        if (link != linkParam) {
           box.put("param_logotipo", resposta[0]["param_logotipo"]);
           await DefaultCacheManager().downloadFile(resposta[0]["param_logotipo"]);
         }
