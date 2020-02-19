@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/modules/support/repository/support_repository.dart';
 import 'package:franet/app/modules/support/support_module.dart';
@@ -7,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SupportBloc extends BlocBase {
-  TextEditingController contatoController = TextEditingController();
+  TextEditingController contatoController = new MaskedTextController(mask: '(00)00000-0000');
   TextEditingController conteudoController = TextEditingController();
 
   Future openCall() async {
@@ -17,7 +18,7 @@ class SupportBloc extends BlocBase {
     await repository
         .openCall(
             box.get("baseUrl"),
-            int.parse(contatoController.text),
+            int.parse(removeCaractersPhone(contatoController.text)),
             box.get("contrato"),
             conteudoController.text,
             box.get("cpfCnpj"),

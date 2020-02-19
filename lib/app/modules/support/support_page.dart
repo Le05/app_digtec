@@ -194,7 +194,7 @@ class _SupportPageState extends State<SupportPage> {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 5),
                             child: TextFormField(
-                              maxLength: 11,
+                              maxLength: 14,
                               controller: supportBloc.contatoController,
                               keyboardType: TextInputType.numberWithOptions(),
                               decoration: InputDecoration(

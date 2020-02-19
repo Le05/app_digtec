@@ -24,7 +24,7 @@ Future<Map> initHive({BuildContext context}) async {
     if (resposta == null) {
       return {"error": "error"};
     }
-    if (resposta[0]["param_status"] == 1) {
+    if (resposta[0]["param_status"] != "1") {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => MaintenanceModule()));
     }
@@ -86,8 +86,8 @@ Future<Map> initHive({BuildContext context}) async {
       }
     }
   }
-  //cor = "0xFF0047AB";
-  //corFonte = "0xFF000000";
+  cor = "0xFF0047AB";
+  corFonte = "0xFF000000";
   Map retorno = {
     "box": box,
     "color": alterColor(color: int.parse(cor)),
