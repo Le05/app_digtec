@@ -21,7 +21,9 @@ class SupportBloc extends BlocBase {
             box.get("contrato"),
             conteudoController.text,
             box.get("cpfCnpj"),
-            box.get("senha"))
+            box.get("senha"),
+            box.get("param_ocorrenciatipo"),
+            box.get("param_motivoos"))
         .then((onValue) {
       if (onValue["status"] == 0) {
         retorno = {"status": 0, "msg": "Chamado aberto com sucesso"};

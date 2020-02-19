@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
-import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 
@@ -25,198 +23,124 @@ class InvoicesNotPaidWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: snapshot.data["titlesAberta"].length,
             itemBuilder: (BuildContext context, int index) {
-              return ExpansionTile(
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          "Data do Vencimento: ",
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Text(
-                          "${snapshot.data["titlesAberta"][index].vencimento}",
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          "Valor: ",
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Text("R\$${snapshot.data["titlesAberta"][index].valor.toStringAsFixed(2)}",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold))
-                      ],
-                    )
-                  ],
-                ),
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 35, top: 10),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "images/copiar.png",
-                          width: MediaQuery.of(context).size.width / 9,
-                          height: MediaQuery.of(context).size.height / 20,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Numero do Documento",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                )),
-                            Text(
-                                "${snapshot.data["titlesAberta"][index].numeroDocumento}",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                )),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 35, top: 10),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "images/data.png",
-                          width: MediaQuery.of(context).size.width / 9,
-                          height: MediaQuery.of(context).size.height / 20,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Data do Vencimento",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                )),
-                            Text(
-                                "${snapshot.data["titlesAberta"][index].vencimento}",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                )),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 35, top: 10),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "images/devendo.png",
-                          width: MediaQuery.of(context).size.width / 9,
-                          height: MediaQuery.of(context).size.height / 20,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Valor",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                )),
-                            Text(
-                                "R\$${snapshot.data["titlesAberta"][index].valor.toStringAsFixed(2)}",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                )),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 35,
-                        top: 10,
-                        bottom: 10),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "images/codigobarra.png",
-                          width: MediaQuery.of(context).size.width / 9,
-                          height: MediaQuery.of(context).size.height / 20,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 1.19,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+              return Container(
+                margin: EdgeInsets.only(bottom: 5),
+                child: Card(
+                  elevation: 10,
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: MediaQuery.of(context).size.height / 50),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.03,
+                            child: Center(
+                              child: Text(
+                                "Data do Vencimento: ${snapshot.data["titlesAberta"][index].vencimento}",
+                                style: TextStyle(fontSize: 17),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Divider(
+                        height: 10,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Column(
                             children: <Widget>[
-                              Text("Codigo de Barra",
+                              Container(
+                                child: Text(
+                                  "Status do Pagamento ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  "${snapshot.data["titlesAberta"][index].status}",
                                   style: TextStyle(
-                                    fontSize: 17,
-                                  )),
-                              Text(
-                                  "${snapshot.data["titlesAberta"][index].linhaDigitavel}",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                  )),
+                                      fontSize: 15,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              )
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      /*SizedBox(
-                        width: MediaQuery.of(context).size.width / 9,
-                        height: MediaQuery.of(context).size.height / 20,
-                      ),*/
-                      ButtonTheme(
-                        child: RaisedButton(
-                          child: Text(
-                            "Visualizar Boleto",
-                            style: TextStyle(color: Colors.white),
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                child: Text(
+                                  "Data do Vencimento ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  "${snapshot.data["titlesAberta"][index].vencimento}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              ),
+                            ],
                           ),
-                          onPressed: () async {
-                            Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text("Abrindo navegador..."),
-                            ));
-                            try {
-                              await InvoicesNotPaidBloc().launchPDF(
-                                  "${snapshot.data["titlesAberta"][index].link}");
-                            } catch (e) {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text("$e"),
-                              ));
-                            }
-                          },
-                        ),
+                        ],
                       ),
-                      //SizedBox(width: 20,),
-                      ButtonTheme(
-                        child: RaisedButton(
-                          child: Text(
-                            "Copiar codigo",
-                            style: TextStyle(color: Colors.white),
+                      SizedBox(height: MediaQuery.of(context).size.height / 50),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                child: Text(
+                                  "Valor do Pagamento ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  "R\$${snapshot.data["titlesAberta"][index].valor.toStringAsFixed(2)}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              )
+                            ],
                           ),
-                          onPressed: () {
-                            Clipboard.setData(ClipboardData(
-                                text: snapshot.data["titlesAberta"][index]
-                                    .linhaDigitavel));
-                            Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text("Código copiado com sucesso!!!"),
-                            ));
-                          },
-                        ),
-                      )
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                child: Text(
+                                  "Data do Pagamento ",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  "-",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: MediaQuery.of(context).size.height / 50),
                     ],
                   ),
-                ],
+                ),
               );
             },
           );

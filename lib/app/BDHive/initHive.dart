@@ -70,6 +70,8 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_txtpromessapagok", resposta[0]["param_txtpromessapagok"]);
       box.put("param_facebook", resposta[0]["param_facebook"]);
       box.put("param_instagram", resposta[0]["param_instagram"]);
+      box.put("param_ocorrenciatipo", resposta[0]["param_ocorrenciatipo"]);
+      box.put("param_motivoos", resposta[0]["param_motivoos"]);
       if (box.containsKey("param_logotipo")) {
         link = box.get("param_logotipo");
         var linkParam = resposta[0]["param_logotipo"];
@@ -85,6 +87,7 @@ Future<Map> initHive({BuildContext context}) async {
     }
   }
   //cor = "0xFF0047AB";
+  //corFonte = "0xFF000000";
   Map retorno = {
     "box": box,
     "color": alterColor(color: int.parse(cor)),
