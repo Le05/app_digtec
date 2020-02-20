@@ -13,11 +13,30 @@ class _MaintenancePageState extends State<MaintenancePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          Center(
+            child: Container(
+              margin:
+                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 6),
+              child: Image.asset(
+                "images/manutencao.png",
+                width: MediaQuery.of(context).size.width / 2,
+                height: MediaQuery.of(context).size.height / 3,
+              ),
+            ),
+          ),
+          SizedBox(height: 20,),
+          Container(
+             margin:
+                  EdgeInsets.symmetric(horizontal: 20),
+            child: Center(
+              child: Text(
+                  "Estamos fazendo manutenção em nossos servidores para melhor atende-lo, voltaremos em breve!!!",
+                  style: TextStyle(fontSize: 20),),
+            ),
+          )
+        ],
       ),
     );
   }

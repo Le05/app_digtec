@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/app_bloc.dart';
 import 'package:franet/app/modules/login/login_module.dart';
+import 'package:franet/app/modules/maintenance/maintenance_module.dart';
 
 AppBloc appBloc = AppBloc();
 
@@ -36,18 +37,21 @@ class _AppWidgetState extends State<AppWidget> {
             return Container(
                 child: Text("Ocorreu um erro ao iniciar os parametros no app"));
           }
+          if (snapshot.data["error"] == "param_status") {
+            return MaterialApp(title: 'Franet', home: MaintenanceModule());
+          }
           return MaterialApp(
               title: 'Franet',
               theme: ThemeData(
-                primarySwatch: snapshot.data["color"],
-                textTheme: TextTheme(
-                  display1: TextStyle(color: snapshot.data["fontColor"]),
-                  display2: TextStyle(color: snapshot.data["fontColor"]),
-                  display3: TextStyle(color: snapshot.data["fontColor"]),
-                  display4: TextStyle(color: snapshot.data["fontColor"]),
-                  title: TextStyle(color:snapshot.data["fontColor"],fontWeight:FontWeight.bold)
-                )
-              ),
+                  primarySwatch: snapshot.data["color"],
+                  textTheme: TextTheme(
+                      display1: TextStyle(color: snapshot.data["fontColor"]),
+                      display2: TextStyle(color: snapshot.data["fontColor"]),
+                      display3: TextStyle(color: snapshot.data["fontColor"]),
+                      display4: TextStyle(color: snapshot.data["fontColor"]),
+                      title: TextStyle(
+                          color: snapshot.data["fontColor"],
+                          fontWeight: FontWeight.bold))),
               home: LoginModule());
         });
   }
