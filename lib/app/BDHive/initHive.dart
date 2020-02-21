@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:franet/app/app_bloc.dart';
-import 'package:franet/app/modules/maintenance/maintenance_module.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -85,8 +84,8 @@ Future<Map> initHive({BuildContext context}) async {
       }
     }
   }
-  //cor = "0xFF0047AB";
-  //corFonte = "0xFF000000";
+  cor = "0xFF0047AB";
+  corFonte = "0xFF000000";
   Map retorno = {
     "box": box,
     "color": alterColor(color: int.parse(cor)),

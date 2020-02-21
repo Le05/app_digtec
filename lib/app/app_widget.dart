@@ -30,7 +30,8 @@ class _AppWidgetState extends State<AppWidget> {
             return Container(
               // height: MediaQuery.of(context).size.height,
               // width: MediaQuery.of(context).size.width,
-              color: Colors.green,
+              child: Image.asset("images/loading.gif"),
+              color: Colors.white,
             );
           }
           if (snapshot.hasError) {

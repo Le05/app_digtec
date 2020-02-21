@@ -111,7 +111,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                         left:
                                             MediaQuery.of(context).size.width /
                                                 2.7,
-                                        top: 10),
+                                        top: MediaQuery.of(context).size.height / 40),
                                     width: MediaQuery.of(context).size.width /
                                         2.38,
                                     child: Text(
