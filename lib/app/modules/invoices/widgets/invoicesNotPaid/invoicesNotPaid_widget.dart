@@ -16,9 +16,28 @@ class InvoicesNotPaidWidget extends StatelessWidget {
             );
           }
           if (snapshot.hasError) {
-            return Center(
-              child: Text("Ocorreu um erro ao buscar as faturas"),
-            );
+            return Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "images/semInternet.png",
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 5,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Parece que você está sem internet!",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      SizedBox(height: 10),
+                      Text("Verique sua conexão para acessar o app",
+                          style: TextStyle(fontSize: 20, color: Colors.black)),
+                    ],
+                  ),
+                );
           }
           return ListView.builder(
             itemCount: snapshot.data["titlesAberta"].length,

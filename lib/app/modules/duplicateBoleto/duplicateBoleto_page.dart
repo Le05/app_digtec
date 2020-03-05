@@ -43,9 +43,28 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                     );
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text("Ocorreu um erro ao obter os dados"),
-                    );
+                    return Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "images/semInternet.png",
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 5,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Parece que você está sem internet!",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      SizedBox(height: 10),
+                      Text("Verique sua conexão para acessar o app",
+                          style: TextStyle(fontSize: 20, color: Colors.black)),
+                    ],
+                  ),
+                );
                   }
                   if (snapshot.data["links"].length == 0) {
                     // se nao tiver links, significa que não existe nada para exibir

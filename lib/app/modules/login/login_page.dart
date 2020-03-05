@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:franet/app/app_module.dart';
 import 'package:franet/app/modules/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -22,13 +23,40 @@ class _LoginPageState extends State<LoginPage> {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Container(
-                  width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
-                  child: Center(
-                    child: Text(
-                      "Por favor,verifique sua conexão com a internet! \n Após verificar, feche o app, e abra-o novamente!",
-                      style: TextStyle(fontSize: 18),
-                    ),
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        "images/semInternet.png",
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 5,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Parece que você está sem internet!",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      SizedBox(height: 10),
+                      Text("Verique sua conexão para acessar o app",
+                          style: TextStyle(fontSize: 20, color: Colors.black)),
+                      Container(
+                        margin: EdgeInsets.only(top: 30),
+                        child: InkWell(
+                            child: Text(
+                              "Tente novamente",
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 17),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AppModule()));
+                            }),
+                      )
+                    ],
                   ),
                 );
               }
