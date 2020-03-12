@@ -67,11 +67,20 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       ),
                       Container(
                         child: Text(
-                          "Você não tem nenhuma notificação!!!",
+                          "Não encontramos nenhuma ",
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 21,
+                          ),
                         ),
-                      )
+                      ),
+                      Container(
+                        child: Text(
+                          "notificaçao para ser exibida!!!",
+                          style: TextStyle(
+                            fontSize: 21,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );
