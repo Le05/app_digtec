@@ -1,3 +1,5 @@
+List<Contracts> contracts;
+
 class Contracts {
   String status;
   String razaoSocial;

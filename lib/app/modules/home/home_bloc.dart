@@ -38,9 +38,9 @@ class HomeBloc extends BlocBase {
     };
   }
 
-  Future getContractsHive(BuildContext context) async {
-    var box = await getHiveInstance();
-    List<Contracts> contracts = box.get("contracts");
+  Future getContracts(BuildContext context) async {
+    //var box = await getHiveInstance();
+    //List<Contracts> contractss = contracts;//box.get("contracts");
     if (contracts == null) {
       return false;
     } else {

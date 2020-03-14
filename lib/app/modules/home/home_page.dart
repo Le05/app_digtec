@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                                                           ),
                                                           onPressed: () {
                                                             homeBloc
-                                                                .getContractsHive(
+                                                                .getContracts(
                                                                     context)
                                                                 .then(
                                                                     (onValue) {

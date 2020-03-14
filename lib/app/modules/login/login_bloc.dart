@@ -85,9 +85,10 @@ class LoginBloc extends BlocBase {
     }
   }
 
-  Future saveContractsHive(List<Contracts> contracts) async {
-    box = await getHiveInstance();
-    box.put("contracts", contracts);
+  Future saveContractsHive(List<Contracts> contract) async {
+    contracts = contract;
+    //box = await getHiveInstance();
+    //box.put("contracts", contracts);
   }
 
   setUltimoLogin() {
