@@ -334,7 +334,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                 ),
                                 onTap: () {
                                   DuplicateBoletoBloc().launchPDF(
-                                      snapshot.data["links"][0]["link"]);
+                                      snapshot.data["link"]);
                                 },
                               ),
                             ),
