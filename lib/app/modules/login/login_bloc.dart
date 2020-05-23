@@ -12,7 +12,7 @@ import 'package:hive/hive.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LoginBloc extends BlocBase {
-  TextEditingController cpfCnpjController = TextEditingController();
+TextEditingController cpfCnpjController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
   // classe que controla a regra de negocio da aplicação, no caso so da tela de login
 
@@ -85,8 +85,8 @@ class LoginBloc extends BlocBase {
     }
   }
 
-  Future saveContractsHive(List<Contracts> contract) async {
-    contracts = contract;
+  Future saveContractsHive(List<Contracts> contractss) async {
+    contracts = contractss;
     //box = await getHiveInstance();
     //box.put("contracts", contracts);
   }
@@ -114,7 +114,8 @@ class LoginBloc extends BlocBase {
     box = await getHiveInstance();
     Map retorno = {
       "param_senha": box.get("param_senha"),
-      "param_senhapadrao": box.get("param_senhapadrao")
+      "param_senhapadrao": box.get("param_senhapadrao"),
+      "senha":box.get("senha")
     };
     return retorno;
   }

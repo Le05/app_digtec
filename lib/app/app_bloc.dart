@@ -25,8 +25,8 @@ class AppBloc extends BlocBase {
     return deviceID;
   }
 
-  Future<void> initOneSignal() async {
-    OneSignal.shared.init("220eaff6-dbb1-4793-9a20-114d67619362", iOSSettings: {
+  Future<void> initOneSignal(String key) async {
+    OneSignal.shared.init(key, iOSSettings: {
       OSiOSSettings.autoPrompt: true,
       OSiOSSettings.inAppLaunchUrl: true
     });

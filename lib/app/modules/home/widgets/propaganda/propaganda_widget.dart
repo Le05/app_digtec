@@ -38,7 +38,7 @@ class PropagandaWidget extends StatelessWidget {
                             child: Text(
                               snapshot.data["param_propagandatitulo"],
                               style:
-                                  TextStyle(fontSize: 20, color: Theme.of(context).textTheme.display2.color),
+                                  TextStyle(fontSize: 20, color: Theme.of(context).textTheme.headline3.color),
                             ),
                           ),
                         )

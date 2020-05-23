@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:franet/app/app_module.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:franet/app/modules/login/dialogs/dialog_cidades.dart';
+import 'package:franet/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
 import 'package:franet/app/modules/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -87,7 +91,9 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               }
                               return Container(
-                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  margin: EdgeInsets.only(
+                                      left: paramlogotipomarginleft,
+                                      right: paramlogotipomarginright),
                                   child: Image.file(snapshot.data.file));
                             })),
                     Form(
@@ -153,6 +159,11 @@ class _LoginPageState extends State<LoginPage> {
                                     loginBloc.senhaController.text =
                                         snapshot.data["param_senhapadrao"];
                                     return Container();
+                                  }
+                                  if (snapshot.data["param_senhapadrao"] ==
+                                      null) {
+                                    loginBloc.senhaController.text =
+                                        snapshot.data["senha"];
                                   }
                                   return Container(
                                     margin: EdgeInsets.only(
@@ -280,6 +291,44 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               },
                             ),
+                            Container(
+                                margin: EdgeInsets.only(
+                                    top: MediaQuery.of(context).size.height /
+                                        25),
+                                child: InkWell(
+                                  child: Html(
+                                    data: parammsgprecadastro,
+                                    defaultTextStyle: TextStyle(fontSize: 17),
+                                    customTextAlign: (element) {
+                                      return TextAlign.center;
+                                    },
+                                  ),
+                                  onTap: () async {
+                                    if (preCadastros.length == 1) {
+                                      await mensagemChooseTipoPessoa(
+                                          context,
+                                          [
+                                            {
+                                              "url": preCadastros[0]
+                                                  ["app_precadastropj"],
+                                              "tipo": "Pessoa Juridica"
+                                            },
+                                            {
+                                              "url": preCadastros[0]
+                                                  ["app_precadastropf"],
+                                              "tipo": "Pessoa Fisica"
+                                            }
+                                          ],
+                                          "Escolha o seu tipo");
+                                    } else {
+                                      await mensagemChooseCidadeProvedor(
+                                        context,
+                                        preCadastros,
+                                        "Escolha a sua localização",
+                                      );
+                                    }
+                                  },
+                                ))
                           ],
                         ),
                       ),

@@ -73,13 +73,9 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Não existe segunda via para ser exibida!!",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
                           Center(
                             child: Image.asset(
                               "images/semSegundaVia.png",
@@ -87,6 +83,14 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                               height: MediaQuery.of(context).size.height / 15,
                             ),
                           ),
+                          Center(
+                            child: Text(
+                              "Não existe segunda via para ser exibida!!",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                          
+                          
                         ],
                       ),
                     );

@@ -10,7 +10,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -81,3 +80,5 @@ dependencies {
     implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
 }
 
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'

@@ -20,12 +20,56 @@ class HomeBloc extends BlocBase {
   }
 
   validateContrato() async {
+    Map retorno = {};
     var box = await getHiveInstance(); //initHive();
     String status = box.get("status");
-    if (status.trim() == "Ativo") return 0;
-    if (status.trim() == "Cancelado") return 1;
-    if (status.trim() == "Suspenso") return 2;
-    if (status.trim() == "Ativo V. Reduzida") return 3;
+ if (status.trim() == "Ativo") retorno.addAll({"status": 0});
+      if (status.trim() == "Cancelado") retorno.addAll({"status": 1});
+      if (status.trim() == "Suspenso") retorno.addAll({"status": 2});
+      if (status.trim() == "Ativo V. Reduzida") retorno.addAll({"status": 3});
+
+    if (box.get("param_icones_custom") == "1") {
+     /* var file = await DefaultCacheManager()
+          .getFileFromCache(box.get("param_ico_segundavia"));*/
+    /*  if (file == null) {
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_segundavia"));
+        await DefaultCacheManager().downloadFile(box.get("param_ico_faturas"));
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_promessapag"));
+        await DefaultCacheManager().downloadFile(box.get("param_ico_suporte"));
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_testedevelocidade"));
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_notificacoes"));
+        await DefaultCacheManager().downloadFile(box.get("param_ico_dicas"));
+        await DefaultCacheManager().downloadFile(box.get("param_ico_facebook"));
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_instagram"));
+        await DefaultCacheManager()
+            .downloadFile(box.get("param_ico_graficoconsumo"));
+      } else {*/
+        retorno.addAll({
+          "param_icones_custom": box.get("param_icones_custom"),
+          "param_ico_segundavia": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_segundavia"),
+          "param_ico_faturas": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_faturas"),
+          "param_ico_promessapag": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_promessapag"),
+          "param_ico_suporte": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_suporte"),
+          "param_ico_testedevelocidade": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_testedevelocidade"),
+          "param_ico_notificacoes": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_notificacoes"),
+          "param_ico_dicas": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_dicas"),
+          "param_ico_facebook": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_facebook"),
+          "param_ico_instagram": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_instagram"),
+          "param_ico_graficoconsumo": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_graficoconsumo"),
+          "param_ico_contatowhats": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_contatowhats"),
+          "param_ico_contratoscm": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_contratoscm"),
+          "param_ico_siteprovedor": /*await DefaultCacheManager().getFileFromCache(*/box.get("param_ico_siteprovedor")
+        });
+      //}
+    } else {
+      retorno.addAll({"param_icones_custom": box.get("param_icones_custom")});
+    }
+    return retorno;
   }
 
   Future getDataContract() async {
@@ -38,9 +82,9 @@ class HomeBloc extends BlocBase {
     };
   }
 
-  Future getContracts(BuildContext context) async {
+  Future getContractsHive(BuildContext context) async {
     //var box = await getHiveInstance();
-    //List<Contracts> contractss = contracts;//box.get("contracts");
+    //List<Contracts> contracts = box.get("contracts");
     if (contracts == null) {
       return false;
     } else {
@@ -61,6 +105,16 @@ class HomeBloc extends BlocBase {
       await launch(box.get("param_instagram"));
     }
     
+  }
+
+    Future openContratoSCM(String urlContrato) async {
+      await launch(urlContrato);
+  }
+    Future openSite(String site) async {
+      await launch(site);
+  }
+      Future openWhatsApp(String urlWhats) async {
+      await launch(urlWhats);
   }
 
   Future<void> mensagemStatusContrato(

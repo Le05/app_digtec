@@ -14,12 +14,6 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
-  @override
-  void initState() {
-    //alterColor(color: 0xFF409d42);
-    appBloc.initOneSignal();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +40,11 @@ class _AppWidgetState extends State<AppWidget> {
               theme: ThemeData(
                   primarySwatch: snapshot.data["color"],
                   textTheme: TextTheme(
-                      display1: TextStyle(color: snapshot.data["fontColor"]),
-                      display2: TextStyle(color: snapshot.data["fontColor"]),
-                      display3: TextStyle(color: snapshot.data["fontColor"]),
-                      display4: TextStyle(color: snapshot.data["fontColor"]),
-                      title: TextStyle(
+                      headline4: TextStyle(color: snapshot.data["fontColor"]),
+                      headline3: TextStyle(color: snapshot.data["fontColor"]),
+                      headline2: TextStyle(color: snapshot.data["fontColor"]),
+                      headline1: TextStyle(color: snapshot.data["fontColor"]),
+                      headline6: TextStyle(
                           color: snapshot.data["fontColor"],
                           fontWeight: FontWeight.bold))),
               home: LoginModule());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_module.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/propaganda/propaganda_widget.dart';
@@ -45,12 +46,14 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Column(
                         children: <Widget>[
-                          snapshot.data["exibe"] == false ? Container():
-                          snapshot.data["exibe"] == true &&
-                                  snapshot.data["param_propagandaposicao"] ==
-                                      "0"
-                              ? PropagandaWidget()
-                              : Container(),
+                          snapshot.data["exibe"] == false
+                              ? Container()
+                              : snapshot.data["exibe"] == true &&
+                                      snapshot.data[
+                                              "param_propagandaposicao"] ==
+                                          "0"
+                                  ? PropagandaWidget()
+                                  : Container(),
                           Container(
                               margin: EdgeInsets.only(
                                   top: MediaQuery.of(context).size.height / 40,
@@ -121,13 +124,11 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                   Row(
                                                     children: <Widget>[
-                                                      Text(
-                                                        "CPF/CNPJ: ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold)
-                                                      ),
+                                                      Text("CPF/CNPJ: ",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold)),
                                                       Text(snapshot
                                                           .data["cpfCnpj"]),
                                                     ],
@@ -175,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                                                           ),
                                                           onPressed: () {
                                                             homeBloc
-                                                                .getContracts(
+                                                                .getContractsHive(
                                                                     context)
                                                                 .then(
                                                                     (onValue) {
@@ -199,554 +200,892 @@ class _HomePageState extends State<HomePage> {
                                           ));
                                     }),
                               )),
-                          FutureBuilder(
-                            future: homeBloc.validateContrato(),
-                            builder: (context, snapshots) {
-                              if (!snapshots.hasData) {
-                                return Container();
-                              }
-                              if (snapshots.data == 1) {
-                                // contrato cancelado
-                                //Contrato cancelado, volte a utilizar nossos serviços
-                                return Container(
-                                  margin: EdgeInsets.only(
-                                      top: MediaQuery.of(context).size.height /
-                                          2.4,
-                                      left: 30,
-                                      right: 30),
-                                  height:
-                                      MediaQuery.of(context).size.height / 3,
-                                  child: Center(
-                                      child: Column(
-                                    children: <Widget>[
-                                      Image.asset(
-                                        "images/contratoCancelado.png",
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3,
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                5,
-                                      ),
-                                      Text(
-                                        "O seu contrato está cancelado! Por Favor, entre em contato conosco para ativa-lo novamente",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ],
-                                  )),
-                                );
-                              }
-                              if (snapshots.data == 2) {
-                                // contrato suspenso
-                                //Fatura vencida, sua internet está bloqueada.
-                                if (exibiuMsgContrato == false) {
-                                  exibiuMsgContrato = true;
-                                  homeBloc.mensagemStatusContrato(
-                                      context,
-                                      "Sua Fatura está vencida, sua internet está bloqueada!!",
-                                      "Contrato Suspenso");
-                                }
-                              }
+                      FutureBuilder(
+                        future: homeBloc.validateContrato(),
+                        builder: (context, snapshots) {
+                          if (!snapshots.hasData) {
+                            return Container();
+                          }
+                          if (snapshots.data["status"] == 1) {
+                            // contrato cancelado
+                            //Contrato cancelado, volte a utilizar nossos serviços
+                            return Container(
+                              margin: EdgeInsets.only(
+                                  top: MediaQuery.of(context).size.height / 2.4,
+                                  left: 30,
+                                  right: 30),
+                              height: MediaQuery.of(context).size.height / 3,
+                              child: Center(
+                                  child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "images/contratoCancelado.png",
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                    height:
+                                        MediaQuery.of(context).size.height / 5,
+                                  ),
+                                  Text(
+                                    "O seu contrato está cancelado! Por Favor, entre em contato conosco para ativa-lo novamente",
+                                    style: TextStyle(fontSize: 19),
+                                  ),
+                                ],
+                              )),
+                            );
+                          }
+                          if (snapshots.data["status"] == 2) {
+                            // contrato suspenso
+                            //Fatura vencida, sua internet está bloqueada.
+                            if (exibiuMsgContrato == false) {
+                              exibiuMsgContrato = true;
+                              homeBloc.mensagemStatusContrato(
+                                  context,
+                                  "Sua Fatura está vencida, sua internet está bloqueada!!",
+                                  "Contrato Suspenso");
+                            }
+                          }
 
-                              if (snapshots.data == 3) {
-                                //conta vencida
-                                //Fatura vencida, sua velocidade está reduzida.
-                                if (exibiuMsgContrato == false) {
-                                  exibiuMsgContrato = true;
-                                  homeBloc.mensagemStatusContrato(
-                                      context,
-                                      "Sua Fatura está vencida, sua internet está com a velocidade reduzida",
-                                      "Fatura Vencida");
-                                }
-                              }
-                              return Container(
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context).primaryColor,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(40),
-                                        topRight: Radius.circular(40))),
-                                margin: EdgeInsets.only(
-                                    //top: MediaQuery.of(context).size.height / 2.2,
-                                    // right: 20,
-                                    // left: 20
-                                    ),
-                                child: Column(
+                          if (snapshots.data["status"] == 3) {
+                            //conta vencida
+                            //Fatura vencida, sua velocidade está reduzida.
+                            if (exibiuMsgContrato == false) {
+                              exibiuMsgContrato = true;
+                              homeBloc.mensagemStatusContrato(
+                                  context,
+                                  "Sua Fatura está vencida, sua internet está com a velocidade reduzida",
+                                  "Fatura Vencida");
+                            }
+                          }
+                          return Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(40),
+                                    topRight: Radius.circular(40),
+                                    bottomLeft: Radius.circular(40),
+                                    bottomRight: Radius.circular(40))),
+                            margin: EdgeInsets.only(
+                                //top: MediaQuery.of(context).size.height / 2.2,
+                                // right: 20,
+                                // left: 20
+                                ),
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 25,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
-                                    SizedBox(
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
                                       height:
                                           MediaQuery.of(context).size.height /
-                                              35,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
                                               5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/codigobarra.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3.1,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Container(
-                                                      child:
-                                                          Text("Segunda via")),
-                                                ],
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (_) =>
-                                                          DuplicateBoletoModule()));
-                                            },
-                                          ),
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/fatura.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Text("Faturas"),
-                                                ],
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          InvoicesModule()));
-                                            },
-                                          ),
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/propagamento.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3.1,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            11,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Container(
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_segundavia"],
                                                       width:
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .width /
-                                                              5,
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: <Widget>[
-                                                          Text("Promessa"),
-                                                          Text("de"),
-                                                          Text("Pagamento")
-                                                        ],
-                                                      )),
-                                                ],
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          PaymentPromiseModule()));
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/suporte.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3.1,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text("Suporte"),
-                                                ],
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          SupportModule()));
-                                            },
-                                          ),
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/velocidade.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3.1,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Container(
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/codigobarra.png",
                                                       width:
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .width /
-                                                              5,
-                                                      child: Column(
-                                                        children: <Widget>[
-                                                          Text("Teste de"),
-                                                          Text("Velocidade")
-                                                        ],
-                                                      )),
-                                                ],
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
                                               ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TestVelocityModule()));
-                                            },
+                                              Container(
+                                                  child: Text("Segunda via")),
+                                            ],
                                           ),
                                         ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/notificacao.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text("Notificações"),
-                                                ],
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          NotificationsModule()));
-                                            },
-                                          ),
-                                        ),
-                                      ],
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      DuplicateBoletoModule()));
+                                        },
+                                      ),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
                                               5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/dicas.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text("Dicas"),
-                                                ],
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_faturas"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/fatura.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 10,
                                               ),
-                                            ),
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TipsModule()));
-                                            },
+                                              Text("Faturas"),
+                                            ],
                                           ),
                                         ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      InvoicesModule()));
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
                                               5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/facebook.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text("Facebook"),
-                                                ],
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_promessapag"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/propagamento.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              11,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
                                               ),
-                                            ),
-                                            onTap: () {
-                                              homeBloc
-                                                  .openFBInstagram(0)
-                                                  .catchError((onError) {
-                                                Scaffold.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                  content: Text(
-                                                      "Ocorreu um erro ao abrir o Facebook"),
-                                                ));
-                                              });
-                                            },
+                                              Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Text("Promessa"),
+                                                      Text("de"),
+                                                      Text("Pagamento")
+                                                    ],
+                                                  )),
+                                            ],
                                           ),
                                         ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              3.1,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PaymentPromiseModule()));
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
                                               5,
-                                          child: InkWell(
-                                            child: Card(
-                                              elevation: 15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Image.asset(
-                                                    "images/instagram.png",
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height /
-                                                            10,
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Text("Instagram"),
-                                                ],
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_suporte"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/suporte.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
                                               ),
-                                            ),
-                                            onTap: () {
-                                              homeBloc
-                                                  .openFBInstagram(1)
-                                                  .catchError((onError) {
-                                                Scaffold.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                  content: Text(
-                                                      "Ocorreu um erro ao abrir o Instagram"),
-                                                ));
-                                              });
-                                            },
+                                              Text("Suporte"),
+                                            ],
                                           ),
                                         ),
-                                      ],
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SupportModule()));
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_testedevelocidade"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/velocidade.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5,
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      Text("Teste de"),
+                                                      Text("Velocidade")
+                                                    ],
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      TestVelocityModule()));
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_notificacoes"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/notificacao.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text("Notificações"),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      NotificationsModule()));
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
-                              );
-                            },
-                          ),
-                          snapshot.data["exibe"] == false ? Container():
-                          snapshot.data["exibe"] == true &&
-                                  snapshot.data["param_propagandaposicao"] ==
-                                      "1"
-                              ? PropagandaWidget()
-                              : Container(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_dicas"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/dicas.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text("Dicas"),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      TipsModule()));
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_facebook"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/facebook.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text("Facebook"),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          homeBloc
+                                              .openFBInstagram(0)
+                                              .catchError((onError) {
+                                            Scaffold.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  "Ocorreu um erro ao abrir o Facebook"),
+                                            ));
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_instagram"] !=
+                                                          ""
+                                                  ? Image.network(
+                                                      snapshots.data[
+                                                          "param_ico_instagram"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/instagram.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text("Instagram"),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          homeBloc
+                                              .openFBInstagram(1)
+                                              .catchError((onError) {
+                                            Scaffold.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  "Ocorreu um erro ao abrir o Instagram"),
+                                            ));
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                //SizedBox(height: MediaQuery.of(context).size.height / 20,)
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    paramurlcontratoscm != "" ||
+                                            paramurlcontratoscm != null
+                                        ? Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3.1,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                5,
+                                            child: InkWell(
+                                              child: Card(
+                                                elevation: 15,
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    snapshots.data["param_icones_custom"] ==
+                                                                "1" &&
+                                                            snapshots.data[
+                                                                    "param_ico_contratoscm"] !=
+                                                                ""
+                                                        ? Image.network(
+                                                            snapshots.data[
+                                                                "param_ico_contratoscm"],
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.1,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                10,
+                                                          )
+                                                        : Image.asset(
+                                                            "images/contrato.png",
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                10,
+                                                          ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text("Contrato"),
+                                                  ],
+                                                ),
+                                              ),
+                                              onTap: () async {
+                                                Scaffold.of(context)
+                                                    .showSnackBar(SnackBar(
+                                                        content: Text(
+                                                            "Contrato será baixado, verifique na pasta de Downloads")));
+                                                await Future.delayed(
+                                                    Duration(seconds: 3));
+                                                await homeBloc.openContratoSCM(
+                                                    paramurlcontratoscm);
+                                              },
+                                            ),
+                                          )
+                                        : Container(),
+                                    paramurlcontatowhats != "" ||
+                                            paramurlcontratoscm != null
+                                        ? Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3.1,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                5,
+                                            child: InkWell(
+                                              child: Card(
+                                                elevation: 15,
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    snapshots.data["param_icones_custom"] ==
+                                                                "1" &&
+                                                            snapshots.data[
+                                                                    "param_ico_contatowhats"] !=
+                                                                ""
+                                                        ? Image.network(
+                                                            snapshots.data[
+                                                                "param_ico_contatowhats"],
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3.1,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                10,
+                                                          )
+                                                        : Image.asset(
+                                                            "images/whatsapp.png",
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                3,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                10,
+                                                          ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text("WhatsApp"),
+                                                  ],
+                                                ),
+                                              ),
+                                              onTap: () async {
+                                                await homeBloc.openWhatsApp(
+                                                    paramurlcontatowhats);
+                                              },
+                                            ),
+                                          )
+                                        : Container(),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.1,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5,
+                                      child: InkWell(
+                                        child: Card(
+                                          elevation: 15,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              snapshots.data["param_icones_custom"] ==
+                                                          "1" &&
+                                                      snapshots.data[
+                                                              "param_ico_siteprovedor"] !=
+                                                          ""
+                                                  ? Image.file(
+                                                      snapshots.data[
+                                                          "param_ico_siteprovedor"],
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3.1,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    )
+                                                  : Image.asset(
+                                                      "images/site.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              10,
+                                                    ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text("Nosso Site"),
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: () async {
+                                          await homeBloc
+                                              .openSite(paramsiteprovedor);
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                          snapshot.data["exibe"] == false
+                              ? Container()
+                              : snapshot.data["exibe"] == true &&
+                                      snapshot.data[
+                                              "param_propagandaposicao"] ==
+                                          "1"
+                                  ? PropagandaWidget()
+                                  : Container(),
                         ],
                       ),
                     ],
