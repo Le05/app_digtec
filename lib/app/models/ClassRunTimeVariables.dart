@@ -10,3 +10,4 @@ String paramsiteprovedor;
 String parammsgprecadastro;
 double paramlogotipomarginright;
 double paramlogotipomarginleft;
+String playerId;

@@ -53,6 +53,7 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
                                     "Contrato: ${widget.contracts[index].contrato} ${widget.contracts[index].razaoSocial}"),
                                 onTap: () async {
                                  await ChooseContractsBloc().saveContractsChoose( widget.contracts[index]);
+                                 await ChooseContractsBloc().enviarDadosDispositivo(widget.contracts[index]);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

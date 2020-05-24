@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:device_info/device_info.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class AppBloc extends BlocBase {
   Future getAndroidOrIOS() async {
@@ -9,17 +10,17 @@ class AppBloc extends BlocBase {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       await deviceInfo.androidInfo.then((onValue) {
-      if (onValue != null) {
-        deviceID.add(onValue.androidId);
-        deviceID.add("android");
-      }
-    });
+        if (onValue != null) {
+          deviceID.add(onValue.androidId);
+          deviceID.add("android");
+        }
+      });
     } else if (Platform.isIOS) {
       await deviceInfo.iosInfo.then((onValue) {
-      if (onValue != null) {
-        deviceID.add(onValue.identifierForVendor);
-        deviceID.add("ios");
-      }
+        if (onValue != null) {
+          deviceID.add(onValue.identifierForVendor);
+          deviceID.add("ios");
+        }
       });
     }
     return deviceID;
@@ -34,8 +35,11 @@ class AppBloc extends BlocBase {
         .setInFocusDisplayType(OSNotificationDisplayType.notification);
     var deviceID = await getAndroidOrIOS();
     OneSignal.shared.setExternalUserId(deviceID[0]);
+    var status = await OneSignal.shared.getPermissionSubscriptionState();
+
+    playerId = status.subscriptionStatus.userId;
   }
-  
+
   @override
   void dispose() {
     super.dispose();

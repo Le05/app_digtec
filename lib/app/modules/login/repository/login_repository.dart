@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/models/ContractsModel.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:hive/hive.dart';
 
 class LoginRepository extends Disposable {
@@ -39,13 +40,13 @@ class LoginRepository extends Disposable {
       contracts = await fromJson(response.data["contratos"]);
       // existe mais de um contrato retorno(0)
       if (response.data["contratos"].length > 1) {
-        await enviarDadosDispositivo(
+        /*await enviarDadosDispositivo(
             response.data["contratos"],
             "https://www.appdoprovedor.com.br/_api/write_dispositivo.php",
             deviceID,
             key,
             token,
-            plataforma);
+            plataforma);*/
         retorno = 0;
       }
       // existe apenas um contrato retorno(2)
@@ -80,7 +81,7 @@ class LoginRepository extends Disposable {
         "codAparelho": deviceID,
         "key": key,
         "token": token,
-        "playerId": deviceID,
+        "playerId": playerId,
         "contrato": contrato["contrato"],
         "plataforma": plataforma
       });
