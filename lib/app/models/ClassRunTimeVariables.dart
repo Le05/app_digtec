@@ -15,3 +15,5 @@ String corFundoLogoTipoExibir;
 Color corFundoLogoTipo;
 String corFundoBackgroundExibir;
 Color corFundoBackground;
+Color corfontebuttonhome;
+Color corfontehome;

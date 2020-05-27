@@ -221,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
                                             onChanged: (value) {
                                               loginBloc.checkScwitch(value);
                                             }),
-                                        Text("Lembrar-me CPF/CNPJ")
+                                        Text("Lembrar-me CPF/CNPJ",style: TextStyle(color: corfontehome),)
                                       ],
                                     ),
                                   );
@@ -251,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
                                         child: Text(
                                           "Entrar",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: corfontebuttonhome,
                                               fontSize: 16),
                                         ),
                                         onPressed: () async {
