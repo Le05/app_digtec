@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
 
               return Container(
                 decoration: corFundoBackgroundExibir == "0" ? BoxDecoration(
-                  color: Colors.black
+                  color: Colors.white
                 ):BoxDecoration(
                   color: corFundoBackground
                 ),
