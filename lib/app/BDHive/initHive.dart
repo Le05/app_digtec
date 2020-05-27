@@ -60,7 +60,8 @@ Future<Map> initHive({BuildContext context}) async {
     corfontebuttonhome = Color(int.parse(corfontebuttonhome2));
 
     corfontehome = Color(int.parse("0xFF${resposta[0]["cor_fonte_home"].replaceFirst("#","")}"));
-
+    /* fim da cores fundo*/
+    
     if (e.message ==
         "You need to initialize Hive or provide a path to store the box.") {
       var deviceInfo = await appBloc.getAndroidOrIOS();
