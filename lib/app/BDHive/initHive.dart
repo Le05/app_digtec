@@ -47,6 +47,16 @@ Future<Map> initHive({BuildContext context}) async {
     cor = "0xFF" + cor;
     corFonte = corFonte.replaceFirst("#", "");
     corFonte = "0xFF" + corFonte;
+
+    corFundoBackgroundExibir = resposta[0]["cor_fundo_background_exibir"];
+    String corFundoBackground2 = "0xFF"+resposta[0]["cor_fundo_background"].replaceFirst("#", "");
+    corFundoBackground = Color(int.parse(corFundoBackground2));
+    
+    corFundoLogoTipoExibir = resposta[0]["cor_fundo_logotipo_exibir"];
+    String corFundoLogoTipo2 = "0xFF"+resposta[0]["cor_fundo_logotipo"].replaceFirst("#", "");
+    corFundoBackground = Color(int.parse(corFundoLogoTipo2));
+
+    
     if (e.message ==
         "You need to initialize Hive or provide a path to store the box.") {
       var deviceInfo = await appBloc.getAndroidOrIOS();

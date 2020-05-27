@@ -11,3 +11,7 @@ String parammsgprecadastro;
 double paramlogotipomarginright;
 double paramlogotipomarginleft;
 String playerId;
+String corFundoLogoTipoExibir;
+Color corFundoLogoTipo;
+String corFundoBackgroundExibir;
+Color corFundoBackground;

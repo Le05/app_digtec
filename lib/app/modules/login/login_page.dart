@@ -71,15 +71,26 @@ class _LoginPageState extends State<LoginPage> {
               }
 
               return Container(
+                decoration: corFundoBackgroundExibir == "0" ? BoxDecoration(
+                  color: Colors.black
+                ):BoxDecoration(
+                  color: corFundoBackground
+                ),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: <Widget>[
                     Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(70))),
+                        decoration: corFundoLogoTipoExibir == "0"
+                            ? BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(70)))
+                            : BoxDecoration(
+                              color: corFundoLogoTipo,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(70))
+                            ),
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height / 2.5,
                         child: FutureBuilder(
