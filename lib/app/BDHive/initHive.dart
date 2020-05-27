@@ -54,7 +54,7 @@ Future<Map> initHive({BuildContext context}) async {
     
     corFundoLogoTipoExibir = resposta[0]["cor_fundo_logotipo_exibir"];
     String corFundoLogoTipo2 = "0xFF"+resposta[0]["cor_fundo_logotipo"].replaceFirst("#", "");
-    corFundoBackground = Color(int.parse(corFundoLogoTipo2));
+    corFundoLogoTipo = Color(int.parse(corFundoLogoTipo2));
 
     String corfontebuttonhome2 = "0xFF"+resposta[0]["cor_fonte_button_home"].replaceFirst("#","");
     corfontebuttonhome = Color(int.parse(corfontebuttonhome2));
