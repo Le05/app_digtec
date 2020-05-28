@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                         decoration: corFundoLogoTipoExibir == "0"
                             ? BoxDecoration(
-                                color: Theme.of(context).primaryColor,
+                                color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(70)))
                             : BoxDecoration(
