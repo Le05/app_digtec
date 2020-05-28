@@ -82,10 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     Container(
                         decoration: corFundoLogoTipoExibir == "0"
-                            ? BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(70)))
+                            ? BoxDecoration()
                             : BoxDecoration(
                               color: corFundoLogoTipo,
                                 borderRadius: BorderRadius.only(
