@@ -77,7 +77,7 @@ class LoginRepository extends Disposable {
   Future enviarDadosDispositivo(
       List contratos, String baseUrl, deviceID, key, token, plataforma) async {
     for (var contrato in contratos) {
-      await dio.post(baseUrl + "/write_dispositivo.php", data: {
+      await dio.post(baseUrl, data: {
         "codAparelho": deviceID,
         "key": key,
         "token": token,
