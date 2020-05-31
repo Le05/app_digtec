@@ -35,8 +35,8 @@ class SupportRepository extends Disposable {
         "contrato": contrato,
         "contato": contato,
         "conteudo": conteudo,
-        "param_ocorrenciatipo":paramOcorrenciatipo,
-        "param_motivoos":paramMotivos
+        "ocorrenciatipo":paramOcorrenciatipo,
+        "motivoos":paramMotivos
       });
     }
     return response.data;
