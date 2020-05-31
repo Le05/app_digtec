@@ -21,7 +21,7 @@ class SupportRepository extends Disposable {
         paramOcorrenciatipo == null ||
         paramMotivos == "" ||
         paramOcorrenciatipo == "") {
-      response = await dio.post(baseUrl + "/chamado", data: {
+     response = await dio.post(baseUrl + "/chamado", data: {
         "cpfcnpj": cpfCnpj,
         "senha": senha,
         "contrato": contrato,
