@@ -256,8 +256,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                 ),
                                 paymentCardcredit == "1" ? Container(
                                   margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width / 4,
-                                    right: MediaQuery.of(context).size.width / 4,
+                                    left: MediaQuery.of(context).size.width / 4.5,
+                                    right: MediaQuery.of(context).size.width / 4.5,
                                     top: MediaQuery.of(context).size.height / 70
                                           ),
                                   child: ButtonTheme(
