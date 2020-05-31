@@ -5,6 +5,7 @@ import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/login/dialogs/dialog_cidades.dart';
 import 'package:franet/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
 import 'package:franet/app/modules/login/login_bloc.dart';
+import 'package:hive/hive.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -71,23 +72,28 @@ class _LoginPageState extends State<LoginPage> {
               }
 
               return Container(
-                decoration: corFundoBackgroundExibir == "0" ? BoxDecoration(
-                  color: Colors.white
-                ):BoxDecoration(
-                  color: corFundoBackground
-                ),
+                decoration: corFundoBackgroundExibir == "0"
+                    ? BoxDecoration(color: Colors.white)
+                    : BoxDecoration(color: corFundoBackground),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: <Widget>[
+                    imagemFundoExibir == "1"
+                        ? Image.network(
+                            imagemFundo,
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
+                          )
+                        : Container(),
                     Container(
                         decoration: corFundoLogoTipoExibir == "0"
                             ? BoxDecoration()
                             : BoxDecoration(
-                              color: corFundoLogoTipo,
+                                color: corFundoLogoTipo,
                                 borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(70))
-                            ),
+                                    bottomLeft: Radius.circular(70))),
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height / 2.5,
                         child: FutureBuilder(
@@ -218,7 +224,13 @@ class _LoginPageState extends State<LoginPage> {
                                             onChanged: (value) {
                                               loginBloc.checkScwitch(value);
                                             }),
-                                        Text("Lembrar-me CPF/CNPJ",style: TextStyle(color: corfontehome == null ? Colors.black : corfontehome),)
+                                        Text(
+                                          "Lembrar-me CPF/CNPJ",
+                                          style: TextStyle(
+                                              color: corfontehome == null
+                                                  ? Colors.black
+                                                  : corfontehome),
+                                        )
                                       ],
                                     ),
                                   );
@@ -248,7 +260,9 @@ class _LoginPageState extends State<LoginPage> {
                                         child: Text(
                                           "Entrar",
                                           style: TextStyle(
-                                              color: corfontebuttonhome == null ? Colors.black : corfontebuttonhome,
+                                              color: corfontebuttonhome == null
+                                                  ? Colors.black
+                                                  : corfontebuttonhome,
                                               fontSize: 16),
                                         ),
                                         onPressed: () async {

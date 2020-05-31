@@ -17,3 +17,5 @@ String corFundoBackgroundExibir;
 Color corFundoBackground;
 Color corfontebuttonhome;
 Color corfontehome;
+String imagemFundoExibir;
+String imagemFundo;

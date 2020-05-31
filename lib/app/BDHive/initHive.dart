@@ -85,6 +85,9 @@ Future<Map> initHive({BuildContext context}) async {
       paramurlcontatowhats = resposta[0]["param_urlcontatowhats"];
       parammsgprecadastro = resposta[0]["param_msgprecadastro"];
       paramsiteprovedor = resposta[0]["param_urlsiteprovedor"];
+      imagemFundoExibir = resposta[0]["imagem_fundo_exibir"];
+      imagemFundo = resposta[0]["imagem_fundo"];
+      
       if (resposta[0]["param_logotipomarginright"] != "") {
         paramlogotipomarginright =
             double.parse(resposta[0]["param_logotipomarginright"]);
