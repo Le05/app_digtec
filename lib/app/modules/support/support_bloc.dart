@@ -15,7 +15,7 @@ class SupportBloc extends BlocBase {
   Map retorno;
   Future openCall() async {
     var box = await getHiveInstance();
-    if (box.get("param_abreos") == 0) {
+    if (box.get("param_abreos") == "0") {
       // aqui ele passa um no sem_os
       await repository
           .openCall0(
