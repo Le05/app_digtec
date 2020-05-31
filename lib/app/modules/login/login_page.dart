@@ -5,7 +5,6 @@ import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/login/dialogs/dialog_cidades.dart';
 import 'package:franet/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
 import 'package:franet/app/modules/login/login_bloc.dart';
-import 'package:hive/hive.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;

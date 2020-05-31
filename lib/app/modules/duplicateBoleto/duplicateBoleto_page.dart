@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_bloc.dart';
 
 class DuplicateBoletoPage extends StatefulWidget {
@@ -38,33 +39,35 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                   if (!snapshot.hasData) {
                     return Center(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),
+                        valueColor: AlwaysStoppedAnimation(
+                            Theme.of(context).primaryColor),
                       ),
                     );
                   }
                   if (snapshot.hasError) {
                     return Container(
-                  height: MediaQuery.of(context).size.height,
-                  color: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset(
-                        "images/semInternet.png",
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 5,
+                      height: MediaQuery.of(context).size.height,
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            "images/semInternet.png",
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height / 5,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            "Parece que você está sem internet!",
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                          SizedBox(height: 10),
+                          Text("Verique sua conexão para acessar o app",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black)),
+                        ],
                       ),
-                      SizedBox(height: 10),
-                      Text(
-                        "Parece que você está sem internet!",
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                      ),
-                      SizedBox(height: 10),
-                      Text("Verique sua conexão para acessar o app",
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                    ],
-                  ),
-                );
+                    );
                   }
                   if (snapshot.data["links"].length == 0) {
                     // se nao tiver links, significa que não existe nada para exibir
@@ -89,8 +92,6 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
-                          
-                          
                         ],
                       ),
                     );
@@ -100,7 +101,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                     children: <Widget>[
                       Container(
                         width: MediaQuery.of(context).size.width / 1.1,
-                        height: MediaQuery.of(context).size.height / 2.1,
+                        height: MediaQuery.of(context).size.height / 2,
                         child: Card(
                           shape: RoundedRectangleBorder(
                               borderRadius:
@@ -132,7 +133,9 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     height:
                                         MediaQuery.of(context).size.height / 15,
                                   ),
-                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -162,7 +165,9 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -193,7 +198,9 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -224,7 +231,9 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -243,7 +252,36 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     )
                                   ],
                                 ),
-                              )
+                              ),
+                              paymentCardcredit == "1" ? Container(
+                                margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width / 4,
+                                  right: MediaQuery.of(context).size.width / 4,
+                                  top: MediaQuery.of(context).size.height / 70
+                                        ),
+                                child: ButtonTheme(
+                                  minWidth: MediaQuery.of(context).size.width /3,
+                                  height: MediaQuery.of(context).size.height / 17,
+                                  child: RaisedButton(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            "images/propagamento.png",
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                13,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                17,
+                                          ),
+                                          Text("Pagar com cartão",style: TextStyle(color: corfontebuttonhome),)
+                                        ],
+                                      ),
+                                      onPressed: () {}),
+                                ),
+                              ):Container()
                             ],
                           ),
                         ),
@@ -337,8 +375,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                   ),
                                 ),
                                 onTap: () {
-                                  DuplicateBoletoBloc().launchPDF(
-                                      snapshot.data["link"]);
+                                  DuplicateBoletoBloc()
+                                      .launchPDF(snapshot.data["link"]);
                                 },
                               ),
                             ),
@@ -388,7 +426,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                       .postFatura2Via("email")
                                       .then((onValue) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text("Fatura enviada com sucesso"),
+                                      content:
+                                          Text("Fatura enviada com sucesso"),
                                     ));
                                   }).catchError((onError) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
@@ -433,7 +472,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                       .postFatura2Via("sms")
                                       .then((onValue) {
                                     Scaffold.of(context).showSnackBar(SnackBar(
-                                      content: Text("Fatura enviada com sucesso"),
+                                      content:
+                                          Text("Fatura enviada com sucesso"),
                                     ));
                                   }).catchError((onError) {
                                     Scaffold.of(context).showSnackBar(SnackBar(

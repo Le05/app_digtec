@@ -13,8 +13,8 @@ AppBloc appBloc = AppBloc();
 Dio dio = Dio();
 Response response;
 Future<Map> initHive({BuildContext context}) async {
-  String cor;
-  String corFonte;
+  //String cor;
+  //String corFonte;
   // tenta abrir, caso de erro, ele inicializa e tenta abrir denovo
   try {
     box = await Hive.openBox('Configs');
@@ -41,12 +41,12 @@ Future<Map> initHive({BuildContext context}) async {
 
     appBloc.initOneSignal(resposta[0]["param_appidonesignal"]);
     cor = resposta[0]["param_corapp"];
-    corFonte = resposta[0]["param_corfonte"];
+    corFonteS = resposta[0]["param_corfonte"];
 
     cor = cor.replaceFirst("#", "");
     cor = "0xFF" + cor;
-    corFonte = corFonte.replaceFirst("#", "");
-    corFonte = "0xFF" + corFonte;
+    corFonteS = corFonteS.replaceFirst("#", "");
+    corFonteS = "0xFF" + corFonteS;
     /* cores das fontes */
     corFundoBackgroundExibir = resposta[0]["cor_fundo_background_exibir"];
     String corFundoBackground2 = "0xFF"+resposta[0]["cor_fundo_background"].replaceFirst("#", "");
@@ -81,12 +81,15 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_senhapadrao", resposta[0]["param_senhapadrao"]);
       box.put("param_propaganda",
           resposta[0]["param_propagandas"]["param_propaganda"]);
+
+          
       paramurlcontratoscm = resposta[0]["param_urlcontratoscm"];
       paramurlcontatowhats = resposta[0]["param_urlcontatowhats"];
       parammsgprecadastro = resposta[0]["param_msgprecadastro"];
       paramsiteprovedor = resposta[0]["param_urlsiteprovedor"];
       imagemFundoExibir = resposta[0]["imagem_fundo_exibir"];
       imagemFundo = resposta[0]["imagem_fundo"];
+      paymentCardcredit = resposta[0]["payment_cardcredit"];
       
       if (resposta[0]["param_logotipomarginright"] != "") {
         paramlogotipomarginright =
@@ -170,11 +173,11 @@ Future<Map> initHive({BuildContext context}) async {
     }
   }
   //cor = "0xFF0047AB";
-  //corFonte = "0xFF000000";
+  //corFonteS = "0xFF000000";
   Map retorno = {
     "box": box,
     "color": alterColor(color: int.parse(cor)),
-    "colorFonte": alterColor(color: int.parse(corFonte))
+    "colorFonte": alterColor(color: int.parse(corFonteS))
   };
   return retorno;
 }

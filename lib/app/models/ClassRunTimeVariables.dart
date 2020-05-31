@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 
 String paramurltestevelocidade;
+String cor;
+String corFonteS;
 Colors corFonte;
 List preCadastros; 
 String paramurlcontratoscm;
@@ -19,3 +21,4 @@ Color corfontebuttonhome;
 Color corfontehome;
 String imagemFundoExibir;
 String imagemFundo;
+String paymentCardcredit;
