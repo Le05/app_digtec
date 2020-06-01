@@ -76,7 +76,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                                   fontSize: 16, color: corfontebuttonhome),
                             ),
                             onPressed: () {
-                              pageController.jumpToPage(1);
+                              pageController.jumpToPage(0);
                             }),
                       ),
                       ButtonTheme(
@@ -88,7 +88,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                                   fontSize: 16, color: corfontebuttonhome),
                             ),
                             onPressed: () {
-                              pageController.jumpToPage(0);
+                              pageController.jumpToPage(1);
                             }),
                       )
                     ],
@@ -100,8 +100,9 @@ class _InvoicesPageState extends State<InvoicesPage> {
                   child: PageView(
                     controller: pageController,
                     children: <Widget>[
-                      InvoicesPaidWidget(),
                       InvoicesNotPaidWidget(),
+                      InvoicesPaidWidget(),
+                      
                       
                     ],
                   ),
