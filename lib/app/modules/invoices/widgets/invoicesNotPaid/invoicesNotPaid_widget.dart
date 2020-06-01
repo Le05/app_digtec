@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
 import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
 
@@ -83,7 +84,9 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                                 margin: EdgeInsets.only(left: 10),
                                 child: Text(
                                   "Vencimento: ${snapshot.data["titlesAberta"][index].vencimento}",
-                                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ),
                               Text(
@@ -99,56 +102,57 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                       ],
                     ),
                     children: <Widget>[
-                       Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              ButtonTheme(
-                                minWidth: MediaQuery.of(context).size.width,
-                                
-                                child: RaisedButton(
-                                    child: Text(
-                                      "Copiar codigo de Barras",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                       Clipboard.setData(ClipboardData(
-                                          text: snapshot
-                                              .data["titlesAberta"][index]
-                                              .linhaDigitavel));
-                                      Scaffold.of(context).showSnackBar(SnackBar(
-                                        content:
-                                            Text("Código copiado com sucesso!!!"),
-                                      ));
-                                    }),
-                              ),
-                              ButtonTheme(
-                                minWidth: MediaQuery.of(context).size.width,
-                                buttonColor: Colors.yellow[800],
-                                child: RaisedButton(
-                                    child: Text(
-                                      "Visualizar ou Imprimir o Boleto",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                       invoicesNotPaidBloc.launchPDF(snapshot
-                                          .data["titlesAberta"][index].link);
-                                    }),
-                              ),
-                              ButtonTheme(
-                                minWidth: MediaQuery.of(context).size.width,
-                                buttonColor: Colors.blue,
-                                child: RaisedButton(
-                                    child: Text(
-                                      "Pagamento com Cartão de Credito",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {}),
-                              ),
-                            ],
-                          ),
-                        )
+                      Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            ButtonTheme(
+                              minWidth: MediaQuery.of(context).size.width,
+                              child: RaisedButton(
+                                  child: Text(
+                                    "Copiar codigo de Barras",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Clipboard.setData(ClipboardData(
+                                        text: snapshot
+                                            .data["titlesAberta"][index]
+                                            .linhaDigitavel));
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      content:
+                                          Text("Código copiado com sucesso!!!"),
+                                    ));
+                                  }),
+                            ),
+                            ButtonTheme(
+                              minWidth: MediaQuery.of(context).size.width,
+                              buttonColor: Colors.yellow[800],
+                              child: RaisedButton(
+                                  child: Text(
+                                    "Visualizar ou Imprimir o Boleto",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    invoicesNotPaidBloc.launchPDF(snapshot
+                                        .data["titlesAberta"][index].link);
+                                  }),
+                            ),
+                            paymentCardcredit == "1"
+                                ? ButtonTheme(
+                                    minWidth: MediaQuery.of(context).size.width,
+                                    buttonColor: Colors.blue,
+                                    child: RaisedButton(
+                                        child: Text(
+                                          "Pagamento com Cartão de Credito",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () {}),
+                                  )
+                                : Container()
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
