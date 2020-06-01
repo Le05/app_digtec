@@ -102,7 +102,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                       children: <Widget>[
                         Container(
                           width: MediaQuery.of(context).size.width / 1.1,
-                          height: MediaQuery.of(context).size.height / 2,
+                          height: MediaQuery.of(context).size.height / 1.9,
                           child: Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius:
@@ -258,7 +258,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                   margin: EdgeInsets.only(
                                     left: MediaQuery.of(context).size.width / 4.5,
                                     right: MediaQuery.of(context).size.width / 4.5,
-                                    top: MediaQuery.of(context).size.height / 70
+                                    top: MediaQuery.of(context).size.height / 60
                                           ),
                                   child: ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width /3,
