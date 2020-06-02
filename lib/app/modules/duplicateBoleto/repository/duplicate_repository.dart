@@ -23,7 +23,7 @@ class DuplicateRepository extends Disposable {
     var box = await getHiveInstance();//initHive();
     dio.options.connectTimeout = 10000;
     dio.options.receiveTimeout = 10000;
-    response = await dio.post(box.get("baseUrl") + "/fatura2via", data: {
+    response = await dio.post(box.get("baseUrl") + "/envia2via", data: {
       "cpfcnpj": box.get("cpfCnpj"),
       "senha": box.get("senha"),
       "contrato": box.get("contrato"),
