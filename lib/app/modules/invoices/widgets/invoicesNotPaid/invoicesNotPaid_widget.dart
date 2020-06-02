@@ -52,50 +52,63 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                 child: Card(
                   elevation: 10,
                   child: ExpansionTile(
-                    title: Column(
+                    title: Stack(
                       children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 10, top: 10),
-                              child: Text(
-                                "Boleto: ${snapshot.data["titlesAberta"][index].id}",
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Container(
-                                margin: EdgeInsets.only(right: 10),
-                                child: Text(
-                                  "R\$${snapshot.data["titlesAberta"][index].valor}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
-                                )),
-                          ],
+                        Container(
+                          margin: EdgeInsets.only(left: 5),
+                          width: MediaQuery.of(context).size.width / 15,
+                          height: MediaQuery.of(context).size.height / 15,
+                          child: Image.asset("images/close.png"),
                         ),
                         Container(
-                          margin: EdgeInsets.only(right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          margin: EdgeInsets.only(left:MediaQuery.of(context).size.width / 11),
+                          child: Column(
                             children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(left: 10, top: 10),
+                                    child: Text(
+                                      "Boleto: ${snapshot.data["titlesAberta"][index].id}",
+                                      style: TextStyle(
+                                          fontSize: 17),
+                                    ),
+                                  ),
+                                  Container(
+                                      margin: EdgeInsets.only(right: 10),
+                                      child: Text(
+                                        "R\$${snapshot.data["titlesAberta"][index].valor}",
+                                        style: TextStyle(
+                                           
+                                            fontSize: 17),
+                                      )),
+                                ],
+                              ),
                               Container(
-                                margin: EdgeInsets.only(left: 10),
-                                child: Text(
-                                  "Vencimento: ${snapshot.data["titlesAberta"][index].vencimento}",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
+                                margin: EdgeInsets.only(right: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Container(
+                                      margin: EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        "Vencimento: ${snapshot.data["titlesAberta"][index].vencimento}",
+                                        style: TextStyle(
+                                           
+                                            fontSize: 17),
+                                      ),
+                                    ),
+                                    Text(
+                                     "Aberto",// "${snapshot.data["titlesAberta"][index].status}",
+                                      style: TextStyle(
+                                         
+                                          color: Colors.blue,
+                                          fontSize: 17),
+                                    )
+                                  ],
                                 ),
                               ),
-                              Text(
-                                "${snapshot.data["titlesAberta"][index].status}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue,
-                                    fontSize: 17),
-                              )
                             ],
                           ),
                         ),
