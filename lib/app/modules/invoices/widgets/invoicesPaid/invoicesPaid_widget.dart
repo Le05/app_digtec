@@ -66,7 +66,7 @@ class InvoicesPaidWidget extends StatelessWidget {
                                   Container(
                                     margin: EdgeInsets.only(left: 10, top: 10),
                                     child: Text(
-                                      "Boleto: ${snapshot.data["titlesAberta"][index].id}",
+                                      "Boleto: ${snapshot.data["titlesPaga"][index].id}",
                                       style: TextStyle(
                                         fontSize: 15,
                                       ),
@@ -102,7 +102,7 @@ class InvoicesPaidWidget extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                 margin: EdgeInsets.only(left: 10),
+                                 margin: EdgeInsets.only(left: 10,bottom: 10),
                                 child: Row(
                                   children: <Widget>[
                                     Text(
