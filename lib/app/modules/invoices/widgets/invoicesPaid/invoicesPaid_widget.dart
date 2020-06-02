@@ -68,15 +68,15 @@ class InvoicesPaidWidget extends StatelessWidget {
                                     child: Text(
                                       "Boleto: ${snapshot.data["titlesAberta"][index].id}",
                                       style: TextStyle(
-                                        fontSize: 17,
+                                        fontSize: 15,
                                       ),
                                     ),
                                   ),
                                   Container(
                                       margin: EdgeInsets.only(right: 10),
                                       child: Text(
-                                        "R\$${snapshot.data["titlesAberta"][index].valor}",
-                                        style: TextStyle(fontSize: 17),
+                                        "R\$ ${snapshot.data["titlesAberta"][index].valor}",
+                                        style: TextStyle(fontSize: 15),
                                       )),
                                 ],
                               ),
@@ -90,13 +90,13 @@ class InvoicesPaidWidget extends StatelessWidget {
                                       margin: EdgeInsets.only(left: 10),
                                       child: Text(
                                         "Vencimento: ${snapshot.data["titlesPaga"][index].vencimento}",
-                                        style: TextStyle(fontSize: 17),
+                                        style: TextStyle(fontSize: 14),
                                       ),
                                     ),
                                     Text(
                                       "${snapshot.data["titlesPaga"][index].status}",
                                       style: TextStyle(
-                                          color: Colors.blue, fontSize: 17),
+                                          color: Colors.blue, fontSize: 16),
                                     )
                                   ],
                                 ),
@@ -107,7 +107,7 @@ class InvoicesPaidWidget extends StatelessWidget {
                                   children: <Widget>[
                                     Text(
                                       "Data Pagamento: ${snapshot.data["titlesPaga"][index].dataPagamento}",
-                                      style: TextStyle(fontSize: 17),
+                                      style: TextStyle(fontSize: 14),
                                     ),
                                   ],
                                 ),
