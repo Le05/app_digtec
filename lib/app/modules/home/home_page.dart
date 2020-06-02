@@ -940,7 +940,7 @@ class _HomePageState extends State<HomePage> {
                                                 Scaffold.of(context)
                                                     .showSnackBar(SnackBar(
                                                         content: Text(
-                                                            "Contrato será baixado, verifique na pasta de Downloads")));
+                                                            "Aguarde! Em breve o contrato será exibido.")));
                                                 await Future.delayed(
                                                     Duration(seconds: 3));
                                                 await homeBloc.openContratoSCM(
