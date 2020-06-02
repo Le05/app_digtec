@@ -263,6 +263,11 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                   child: ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width /3,
                                     height: MediaQuery.of(context).size.height / 17,
+                                    buttonColor: Color(0xFF5CB85C),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      side: BorderSide(color: Color(0xFF28a744))
+                                    ),
                                     child: RaisedButton(
                                         child: Row(
                                           children: <Widget>[

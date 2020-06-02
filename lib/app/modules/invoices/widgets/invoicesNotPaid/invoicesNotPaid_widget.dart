@@ -118,9 +118,14 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                           children: <Widget>[
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
+                              buttonColor: Color(0xFF5CB85C),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(0.0),
+                                side: BorderSide(color: Color(0xFF28a744))
+                              ),
                               child: RaisedButton(
                                   child: Text(
-                                    "Copiar codigo de Barras",
+                                    "Copiar Código de Barras",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
@@ -136,7 +141,11 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                             ),
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
-                              buttonColor: Colors.yellow[800],
+                              buttonColor: Color(0xFF5BC0DE),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(0.0),
+                                side: BorderSide(color: Color(0xFF34B4E5))
+                              ),
                               child: RaisedButton(
                                   child: Text(
                                     "Visualizar ou Imprimir o Boleto",
@@ -150,10 +159,14 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                             paymentCardcredit == "1"
                                 ? ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width,
-                                    buttonColor: Colors.blue,
+                                    buttonColor: Color(0xFFf0ad4e),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      side: BorderSide(color: Color(0xFFffc106))
+                                    ),
                                     child: RaisedButton(
                                         child: Text(
-                                          "Pagamento com Cartão de Credito",
+                                          "Pagamento com Cartão de Crédito",
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         onPressed: () {}),
