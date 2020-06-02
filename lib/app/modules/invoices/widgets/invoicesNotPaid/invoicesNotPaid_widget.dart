@@ -79,7 +79,7 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                                   Container(
                                       margin: EdgeInsets.only(right: 10),
                                       child: Text(
-                                        "R\$${snapshot.data["titlesAberta"][index].valor}",
+                                        "R\$${snapshot.data["titlesAberta"][index].valor.toStringAsFixed(2)}",
                                         style: TextStyle(fontSize: 17),
                                       )),
                                 ],

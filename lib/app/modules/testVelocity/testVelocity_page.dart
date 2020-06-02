@@ -1,3 +1,4 @@
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -22,7 +23,7 @@ class _TestVelocityPageState extends State<TestVelocityPage> {
           height: MediaQuery.of(context).size.height,
           child: WebView(
             javascriptMode: JavascriptMode.unrestricted,
-            initialUrl: "http://testedevelocidade.franet.com.br",
+            initialUrl: paramurltestevelocidade,
           ),
         ));
   }

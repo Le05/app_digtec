@@ -282,7 +282,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                                       .height /
                                                   17,
                                             ),
-                                            Text("Pagar com cartão",style: TextStyle(color: corfontebuttonhome),)
+                                            Text("Pagar com cartão",style: TextStyle(color: Colors.white),)
                                           ],
                                         ),
                                         onPressed: () {}),
