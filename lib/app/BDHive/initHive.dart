@@ -127,7 +127,7 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_ocorrenciatipo", resposta[0]["param_ocorrenciatipo"]);
       box.put("param_motivoos", resposta[0]["param_motivoos"]);
       box.put("param_abreos", resposta[0]["param_abreos"]);
-
+      box.put("param_icones_custom",resposta[0]["param_icones_custom"]);
 
       if (resposta[0]["param_icones_custom"] == "1") {
         box.put("param_ico_segundavia",

@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_segundavia"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -356,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_faturas"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -417,7 +417,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_promessapag"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -498,7 +498,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_suporte"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -559,7 +559,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_testedevelocidade"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -630,7 +630,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_notificacoes"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -697,7 +697,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_dicas"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
@@ -758,7 +758,7 @@ class _HomePageState extends State<HomePage> {
                                               snapshots.data["param_icones_custom"] ==
                                                           "1" &&
                                                       snapshots.data[
-                                                              "param_ico_instagram"] !=
+                                                              "param_ico_facebook"] !=
                                                           ""
                                                   ? Image.network(
                                                       snapshots.data[
