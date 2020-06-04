@@ -1031,7 +1031,7 @@ class _HomePageState extends State<HomePage> {
                                                       snapshots.data[
                                                               "param_ico_siteprovedor"] !=
                                                           ""
-                                                  ? Image.file(
+                                                  ? Image.network(
                                                       snapshots.data[
                                                           "param_ico_siteprovedor"],
                                                       width:
