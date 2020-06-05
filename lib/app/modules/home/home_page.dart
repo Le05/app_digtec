@@ -1074,7 +1074,18 @@ class _HomePageState extends State<HomePage> {
                                                                 snapshots.data[
                                                                         "param_ico_contratoscm"] !=
                                                                     ""
-                                                            ? Image.network(
+                                                            ?CachedNetworkImage(imageUrl: snapshots.data[
+                                                                    "param_ico_contratoscm"],
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    3.1,
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height /
+                                                                    10,) /*Image.network(
                                                                 snapshots.data[
                                                                     "param_ico_contratoscm"],
                                                                 width: MediaQuery.of(
@@ -1087,7 +1098,7 @@ class _HomePageState extends State<HomePage> {
                                                                         .size
                                                                         .height /
                                                                     10,
-                                                              )
+                                                              )*/
                                                             : Image.asset(
                                                                 "images/contrato.png",
                                                                 width: MediaQuery.of(
