@@ -83,6 +83,7 @@ class _SupportPageState extends State<SupportPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
+                           snapshot.data["param_telprincipal"] != "" && snapshot.data["param_telprincipal"] != null ? 
                           InkWell(
                             child: Container(
                               margin: EdgeInsets.only(top: 5),
@@ -114,7 +115,8 @@ class _SupportPageState extends State<SupportPage> {
                                 ));
                               });
                             },
-                          ),
+                          ):Container(),
+                          snapshot.data["param_telsecundario"] != ""  && snapshot.data["param_telsecundario"] != null? 
                           InkWell(
                             child: Container(
                               margin: EdgeInsets.only(top: 5),
@@ -146,7 +148,8 @@ class _SupportPageState extends State<SupportPage> {
                                 ));
                               });
                             },
-                          ),
+                          ):Container(),
+                          snapshot.data["param_telwhats"] != "" && snapshot.data["param_telwhats"] != null ? 
                           InkWell(
                             child: Container(
                               margin: EdgeInsets.only(top: 5),
@@ -177,7 +180,7 @@ class _SupportPageState extends State<SupportPage> {
                                 ));
                               });
                             },
-                          ),
+                          ):Container()
                         ],
                       ),
                     );
