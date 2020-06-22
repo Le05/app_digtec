@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_native_html_view/flutter_native_html_view.dart';
+import 'package:franet/app/modules/tips/widgets/moreTips/moreTips_bloc.dart';
 
 class MoreTipsWidget extends StatelessWidget {
   final tip;
@@ -9,11 +11,16 @@ class MoreTipsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(""),
-      ),
-      body: SingleChildScrollView(
-              child: Column(
+        appBar: AppBar(
+          title: Text(tip["dicas_title"]),
+        ),
+        body: FlutterNativeHtmlView(
+          htmlData: tip["dicas_desc"],
+          onLinkTap: (String url) async {
+            await MoreTipsBloc().abrirUrl(url);
+          },
+        ) /*SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 20),
@@ -26,12 +33,12 @@ class MoreTipsWidget extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 5),
-              child: Html(data: tip["dicas_desc"]),
-            )
+                margin: EdgeInsets.symmetric(horizontal: 5),
+                child: Html(data: tip["dicas_desc"]),
+                )
           ],
         ),
-      ),
-    );
+      ),*/
+        );
   }
 }

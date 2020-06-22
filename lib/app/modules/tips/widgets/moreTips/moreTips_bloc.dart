@@ -1,7 +1,11 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MoreTipsBloc extends BlocBase {
-  //dispose will be called automatically by closing its streams
+  abrirUrl(String url) async {
+    await launch(url);
+  }
+
   @override
   void dispose() {
     super.dispose();
