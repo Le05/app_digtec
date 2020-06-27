@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_native_html_view/flutter_native_html_view.dart';
 import 'package:franet/app/modules/paymentPromise/paymentPromise_bloc.dart';
 
 class PaymentPromisePage extends StatefulWidget {
@@ -135,8 +135,8 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                         ),
                         Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            child: Html(
-                              data: snapshot.data["param_txtpromessapag"],
+                            child: FlutterNativeHtmlView(
+                              htmlData: snapshot.data["param_txtpromessapag"],
                             )),
                         SizedBox(
                           height: MediaQuery.of(context).size.height / 20,
@@ -217,10 +217,10 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                       ),
                       Container(
                           margin: EdgeInsets.only(left: 30, right: 30),
-                          child: Html(
-                            defaultTextStyle: TextStyle(
-                                fontSize: 19, fontWeight: FontWeight.bold),
-                            data: snapshot.data["param_txtpromessapagok"],
+                          child: FlutterNativeHtmlView(
+                           /* defaultTextStyle: TextStyle(
+                                fontSize: 19, fontWeight: FontWeight.bold),*/
+                            htmlData: snapshot.data["param_txtpromessapagok"],
                           )),
                     ],
                   ),

@@ -22,3 +22,4 @@ Color corfontehome;
 String imagemFundoExibir;
 String imagemFundo;
 String paymentCardcredit;
+String paramExibirPreCadastro;

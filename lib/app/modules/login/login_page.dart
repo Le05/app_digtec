@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_native_html_view/flutter_native_html_view.dart';
 import 'package:franet/app/app_module.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/login/dialogs/dialog_cidades.dart';
@@ -312,17 +312,14 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               },
                             ),
+                            paramExibirPreCadastro == "1" ?
                             Container(
                                 margin: EdgeInsets.only(
                                     top: MediaQuery.of(context).size.height /
                                         25),
                                 child: InkWell(
-                                  child: Html(
-                                    data: parammsgprecadastro,
-                                    defaultTextStyle: TextStyle(fontSize: 17),
-                                    customTextAlign: (element) {
-                                      return TextAlign.center;
-                                    },
+                                  child: FlutterNativeHtmlView(
+                                    htmlData: parammsgprecadastro,
                                   ),
                                   onTap: () async {
                                     if (preCadastros.length == 1) {
@@ -349,7 +346,7 @@ class _LoginPageState extends State<LoginPage> {
                                       );
                                     }
                                   },
-                                ))
+                                )):Container()
                           ],
                         ),
                       ),
