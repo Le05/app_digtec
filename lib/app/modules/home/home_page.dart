@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Column(
                                     children: <Widget>[
                                       Image.asset(
-                                        "images/contratoCancelado.png",
+                                        "images/close.png",
                                         width:
                                             MediaQuery.of(context).size.width /
                                                 3,

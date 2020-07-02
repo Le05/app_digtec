@@ -89,7 +89,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                             ),
                             Center(
                               child: Text(
-                                "Não existe segunda via para ser exibida!!",
+                                "Não existe segunda via para ser exibida.",
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),
