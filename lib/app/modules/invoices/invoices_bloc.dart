@@ -15,17 +15,18 @@ class InvoicesBloc extends BlocBase {
     List<Titles> titlesPaga = [];
     List<Titles> titlesAberta = [];
     Map<String, List<Titles>> allTitles = {};
-    for (var title in titles) {
-      if (title.statusid == 1) {
-        title.dataPagamento = withdrawDate(title.dataPagamento);
-        title.vencimento = withdrawDate(title.vencimento);
-        title.vencimentoAtualizado = withdrawDate(title.vencimentoAtualizado);
-        titlesAberta.add(title);
-      } else if (title.statusid == 2) {
-        title.dataPagamento = withdrawDate(title.dataPagamento);
-        title.vencimentoAtualizado = withdrawDate(title.vencimentoAtualizado);
-        title.vencimento = withdrawDate(title.vencimento);
-        titlesPaga.add(title);
+
+    for (var i = titles.length-1; i > 0; i--) {
+      if (titles[i].statusid == 1) {
+        titles[i].dataPagamento = withdrawDate(titles[i].dataPagamento);
+        titles[i].vencimento = withdrawDate(titles[i].vencimento);
+        titles[i].vencimentoAtualizado = withdrawDate(titles[i].vencimentoAtualizado);
+        titlesAberta.add(titles[i]);
+      } else if (titles[i].statusid == 2) {
+        titles[i].dataPagamento = withdrawDate(titles[i].dataPagamento);
+        titles[i].vencimentoAtualizado = withdrawDate(titles[i].vencimentoAtualizado);
+        titles[i].vencimento = withdrawDate(titles[i].vencimento);
+        titlesPaga.add(titles[i]);
       }
     }
     allTitles.addAll({"titlesPaga": titlesPaga, "titlesAberta": titlesAberta});
