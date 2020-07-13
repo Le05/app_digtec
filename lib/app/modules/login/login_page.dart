@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_native_html_view/flutter_native_html_view.dart';
 import 'package:franet/app/app_module.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
@@ -234,6 +235,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   );
                                 }),
+                                
                             StreamBuilder(
                               initialData: false,
                               stream: loginBloc.outputLogin,
@@ -318,8 +320,12 @@ class _LoginPageState extends State<LoginPage> {
                                     top: MediaQuery.of(context).size.height /
                                         25),
                                 child: InkWell(
-                                  child: FlutterNativeHtmlView(
-                                    htmlData: parammsgprecadastro,
+                                  child: Html(
+                                    data: parammsgprecadastro,
+                                    defaultTextStyle: TextStyle(fontSize: 17),
+                                    customTextAlign: (element) {
+                                      return TextAlign.center;
+                                    },
                                   ),
                                   onTap: () async {
                                     if (preCadastros.length == 1) {
