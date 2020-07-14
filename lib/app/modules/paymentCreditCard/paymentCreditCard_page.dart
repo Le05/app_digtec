@@ -111,184 +111,197 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                     ],
                   );
                 }
-                return Column(children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 15),
-                    child: CreditCard(
-                      cardNumber: numeroCartao,
-                      cardExpiry: dataExpiracao,
-                      cardHolderName: "",
-                      cvv: cvv,
-                      bankName: "",
-                      cardType: CardType
-                          .masterCard, // Optional if you want to override Card Type
-                      showBackSide: false,
-                      frontBackground: CardBackgrounds.black,
-                      backBackground: CardBackgrounds.white,
-                      showShadow: true,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      maxLength: 19,
-                      controller: paymentCreditCardBloc.numeroCartaoController,
-                      keyboardType: TextInputType.numberWithOptions(),
-                      onChanged: (text) {
-                        setState(() {
-                          numeroCartao = text;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Numero do cartão",
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
-                      validator: (text) {
-                        if (text.isEmpty) return "Por Favor,insira um numero";
-                        return null;
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      maxLength: 5,
-                      controller: paymentCreditCardBloc.dataExpiracaoController,
-                      keyboardType: TextInputType.numberWithOptions(),
-                      onChanged: (text) {
-                        setState(() {
-                          dataExpiracao = text;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Data Expiração",
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
-                      validator: (text) {
-                        if (text.isEmpty)
-                          return "Por Favor,insira uma Data Expiração";
-                        return null;
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      controller: paymentCreditCardBloc.cvvController,
-                      keyboardType: TextInputType.numberWithOptions(),
-                      onChanged: (text) {
-                        setState(() {
-                          cvv = text;
-                        });
-                      },
-                      decoration: InputDecoration(
-                          hintText: "CVV",
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)))),
-                      validator: (text) {
-                        if (text.isEmpty) return "Por Favor,insira o cvv";
+                return ListView(children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(top: 15),
+                        child: CreditCard(
+                          cardNumber: numeroCartao,
+                          cardExpiry: dataExpiracao,
+                          cardHolderName: "",
+                          cvv: cvv,
+                          bankName: "",
+                          cardType: CardType
+                              .masterCard, // Optional if you want to override Card Type
+                          showBackSide: false,
+                          frontBackground: CardBackgrounds.black,
+                          backBackground: CardBackgrounds.white,
+                          showShadow: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: TextFormField(
+                          maxLength: 19,
+                          controller:
+                              paymentCreditCardBloc.numeroCartaoController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          onChanged: (text) {
+                            setState(() {
+                              numeroCartao = text;
+                            });
+                          },
+                          decoration: InputDecoration(
+                              hintText: "Numero do cartão",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)))),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "Por Favor,insira um numero";
+                            return null;
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: TextFormField(
+                          maxLength: 5,
+                          controller:
+                              paymentCreditCardBloc.dataExpiracaoController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          onChanged: (text) {
+                            setState(() {
+                              dataExpiracao = text;
+                            });
+                          },
+                          decoration: InputDecoration(
+                              hintText: "Data Expiração",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)))),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "Por Favor,insira uma Data Expiração";
+                            return null;
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: TextFormField(
+                          controller: paymentCreditCardBloc.cvvController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          onChanged: (text) {
+                            setState(() {
+                              cvv = text;
+                            });
+                          },
+                          decoration: InputDecoration(
+                              hintText: "CVV",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)))),
+                          validator: (text) {
+                            if (text.isEmpty) return "Por Favor,insira o cvv";
 
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  emails == null
-                      ? Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
-                          child: TextFormField(
-                            controller: paymentCreditCardBloc.emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                hintText: "Digite o email",
-                                border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(50)))),
-                            validator: (text) {
-                              if (text.isEmpty) return "Por Favor,insira um email";
+                            return null;
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      emails == null
+                          ? Container(
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              child: TextFormField(
+                                controller:
+                                    paymentCreditCardBloc.emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: InputDecoration(
+                                    hintText: "Digite o email",
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(50)))),
+                                validator: (text) {
+                                  if (text.isEmpty)
+                                    return "Por Favor,insira um email";
 
-                              return null;
-                            },
-                          ),
-                        )
-                      : Container(),
-                  Container(
-                      margin: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 5),
-                      child: Row(
-                        children: <Widget>[
-                          Checkbox(
-                              value: checkBox,
-                              onChanged: (value) {
-                                setState(() {
-                                  checkBox = value;
-                                });
-                              }),
-                          Text(
-                            "Gravar dados para proximas faturas",
-                            style: TextStyle(fontSize: 16),
-                          )
-                        ],
-                      )),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  StreamBuilder(
-                    initialData: false,
-                    stream: paymentCreditCardBloc.outputCadastro,
-                    builder: (context, snapshot) {
-                      return Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: AnimatedCrossFade(
-                          crossFadeState: snapshot.data
-                              ? CrossFadeState.showSecond
-                              : CrossFadeState.showFirst,
-                          duration: Duration(seconds: 1),
-                          firstChild: ButtonTheme(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            minWidth: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.height / 15,
-                            child: RaisedButton(
-                              color: Theme.of(context).primaryColor,
-                              child: Text(
-                                "Cadastrar e Pagar com Cartão",
-                                style: TextStyle(
-                                    color: corfontebuttonhome == null
-                                        ? Colors.black
-                                        : corfontebuttonhome,
-                                    fontSize: 16),
+                                  return null;
+                                },
                               ),
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  paymentCreditCardBloc.animacaoCadastro(true);
-                                  //paymentCreditCardBloc.cadastrarCartao();
-                                  paymentCreditCardBloc.animacaoCadastro(false);
-                                }
-                              },
-                            ),
-                          ),
-                          secondChild: Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.height / 15,
-                            margin: EdgeInsets.only(top: 0, bottom: 10),
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Theme.of(context).primaryColor,
+                            )
+                          : Container(),
+                      Container(
+                          margin: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width / 5),
+                          child: Row(
+                            children: <Widget>[
+                              Checkbox(
+                                  value: checkBox,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      checkBox = value;
+                                    });
+                                  }),
+                              Text(
+                                "Gravar dados para proximas faturas",
+                                style: TextStyle(fontSize: 16),
+                              )
+                            ],
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      StreamBuilder(
+                        initialData: false,
+                        stream: paymentCreditCardBloc.outputCadastro,
+                        builder: (context, snapshot) {
+                          return Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: AnimatedCrossFade(
+                              crossFadeState: snapshot.data
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                              duration: Duration(seconds: 1),
+                              firstChild: ButtonTheme(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                minWidth: MediaQuery.of(context).size.width / 2,
+                                height: MediaQuery.of(context).size.height / 15,
+                                child: RaisedButton(
+                                  color: Theme.of(context).primaryColor,
+                                  child: Text(
+                                    "Cadastrar e Pagar com Cartão",
+                                    style: TextStyle(
+                                        color: corfontebuttonhome == null
+                                            ? Colors.black
+                                            : corfontebuttonhome,
+                                        fontSize: 16),
+                                  ),
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      paymentCreditCardBloc
+                                          .animacaoCadastro(true);
+                                      //paymentCreditCardBloc.cadastrarCartao();
+                                      paymentCreditCardBloc
+                                          .animacaoCadastro(false);
+                                    }
+                                  },
+                                ),
+                              ),
+                              secondChild: Container(
+                                width: MediaQuery.of(context).size.width / 2,
+                                height: MediaQuery.of(context).size.height / 15,
+                                margin: EdgeInsets.only(top: 0, bottom: 10),
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                      );
-                    },
+                          );
+                        },
+                      )
+                    ],
                   )
                 ]);
               }),
