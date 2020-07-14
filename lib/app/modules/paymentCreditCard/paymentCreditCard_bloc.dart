@@ -9,21 +9,32 @@ class PaymentCreditCardBloc extends BlocBase {
   TextEditingController numeroCartaoController =
        MaskedTextController(mask: '0000 0000 0000 0000');
       TextEditingController dataExpiracaoController =
-       MaskedTextController(mask: '00/00');
+       MaskedTextController(mask: '00/0000');
       TextEditingController cvvController =
        MaskedTextController(mask: '000');
     TextEditingController emailController = TextEditingController();
     TextEditingController nomeCartaoController = TextEditingController();
     
+    bool cartaoOutro;
+
    var repository =
         PaymentCreditCardModule.to.getDependency<PaymentCreditCardRepository>();
 
   Future buscarCartoesSalvos() async {
-    return [];//repository.buscarCartoes();
+    if(cartaoOutro == false){
+      return repository.buscarCartoes();
+    }else{
+      return [];
+    }
+    
   }
 
-  Future cadastrarCartao(int fatura,String numero,String nome,String cvv,String email,bool salvarCartao) async{
-    return repository.cadastrarCartao(fatura, numero, nome, cvv, email, salvarCartao);
+  Future pagarComCartao(int fatura,String numero,String nome,String expira,String cvv,String email,bool salvarCartao) async{
+    return repository.pagarComCartao(fatura, numero, nome,expira, cvv, email, salvarCartao);
+  }
+
+  Future pagarComCartaoSalvo(int fatura,int cartaoId,String email)async{
+    return repository.pagarComCartaoSalvo(fatura, cartaoId,email);
   }
 
     final BehaviorSubject<bool> _cadastrarCartao = BehaviorSubject<bool>();

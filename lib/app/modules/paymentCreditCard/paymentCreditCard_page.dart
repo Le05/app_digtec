@@ -19,9 +19,17 @@ String dataExpiracao;
 String cvv;
 bool checkBox = false;
 String nomeCartao = "nome do cartao";
+bool estadoBotao = false;
+
 final _formKey = GlobalKey<FormState>();
 
 class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
+  @override
+  void initState() {
+    super.initState();
+    paymentCreditCardBloc.cartaoOutro = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,49 +75,121 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                   );
                 }
                 if (snapshot.data.length > 0) {
-                  return ListView(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(top: 15),
-                        child: CreditCard(
-                          cardNumber: snapshot.data[0]["numero_final"],
-                          cardExpiry: "**/**",
-                          cardHolderName: "Card Holder",
-                          cvv: cvv,
-                          //bankName: "Axis Bank",
-                          cardType: CardType
-                              .masterCard, // Optional if you want to override Card Type
-                          showBackSide: false,
-                          frontBackground: CardBackgrounds.black,
-                          backBackground: CardBackgrounds.white,
-                          showShadow: true,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            ButtonTheme(
-                              height: MediaQuery.of(context).size.height / 20,
-                              child: RaisedButton(
-                                  child: Text("Pagar utilizando este cartão",
-                                      style: TextStyle(color: Colors.white)),
-                                  onPressed: () {}),
+                  return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(top: 15),
+                            child: CreditCard(
+                              cardNumber: snapshot.data[0]["numero_final"],
+                              cardExpiry: "**/**",
+                              cardHolderName: "Card Holder",
+                              cvv: cvv,
+                              //bankName: "Axis Bank",
+                              cardType: CardType
+                                  .masterCard, // Optional if you want to override Card Type
+                              showBackSide: false,
+                              frontBackground: CardBackgrounds.black,
+                              backBackground: CardBackgrounds.white,
+                              showShadow: true,
                             ),
-                            ButtonTheme(
-                              height: MediaQuery.of(context).size.height / 20,
-                              child: RaisedButton(
-                                  child: Text("Pagar utilizando outro cartão",
-                                      style: TextStyle(color: Colors.white)),
-                                  onPressed: () {}),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Container(
+                                  child: AnimatedCrossFade(
+                                    crossFadeState: estadoBotao
+                                        ? CrossFadeState.showSecond
+                                        : CrossFadeState.showFirst,
+                                    duration: Duration(seconds: 1),
+                                    firstChild: ButtonTheme(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              20,
+                                      child: RaisedButton(
+                                        color: Theme.of(context).primaryColor,
+                                        child: Text(
+                                          "Pagar utilizando este Cartão",
+                                          style: TextStyle(
+                                            color: corfontebuttonhome == null
+                                                ? Colors.black
+                                                : corfontebuttonhome,
+                                          ),
+                                        ),
+                                        onPressed: () async {
+                                          setState(() {
+                                            estadoBotao = true;
+                                          });
+                                          try {
+                                            await paymentCreditCardBloc
+                                                .pagarComCartaoSalvo(
+                                                    fatura,
+                                                    snapshot.data[index]["id"],
+                                                    emails[0]);
+                                            Scaffold.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text("Fatura paga"),
+                                            ));
+                                          } catch (e) {
+                                            Scaffold.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  "Ocorreu um erro ao pagar"),
+                                            ));
+                                          }
+                                          setState(() {
+                                            estadoBotao = false;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    secondChild: Container(
+                                      width:
+                                          MediaQuery.of(context).size.width / 2,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              15,
+                                      margin:
+                                          EdgeInsets.only(top: 0, bottom: 10),
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                ButtonTheme(
+                                  height:
+                                      MediaQuery.of(context).size.height / 20,
+                                  child: RaisedButton(
+                                      child: Text(
+                                          "Pagar utilizando outro cartão",
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      onPressed: () {
+                                        setState(() {
+                                          paymentCreditCardBloc.cartaoOutro =
+                                              true;
+                                        });
+                                      }),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
+                          ),
+                        ],
+                      );
+                    },
                   );
                 }
                 return ListView(children: <Widget>[
@@ -161,7 +241,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: TextFormField(
-                          maxLength: 5,
+                          //maxLength: 5,
                           controller:
                               paymentCreditCardBloc.dataExpiracaoController,
                           keyboardType: TextInputType.numberWithOptions(),
@@ -181,6 +261,9 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                             return null;
                           },
                         ),
+                      ),
+                      SizedBox(
+                        height: 15,
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
@@ -215,10 +298,10 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                     paymentCreditCardBloc.emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 onChanged: (text) {
-                                    setState(() {
-                                      nomeCartao = text;
-                                    });
-                                  },
+                                  setState(() {
+                                    nomeCartao = text;
+                                  });
+                                },
                                 decoration: InputDecoration(
                                     hintText: "Digite o email",
                                     border: OutlineInputBorder(
@@ -236,8 +319,14 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         child: TextFormField(
-                          controller: paymentCreditCardBloc.nomeCartaoController,
+                          controller:
+                              paymentCreditCardBloc.nomeCartaoController,
                           keyboardType: TextInputType.text,
+                          onChanged: (text) {
+                            setState(() {
+                              nomeCartao = text;
+                            });
+                          },
                           decoration: InputDecoration(
                               hintText: "Digite o nome do cartao",
                               border: OutlineInputBorder(
@@ -291,7 +380,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                 child: RaisedButton(
                                   color: Theme.of(context).primaryColor,
                                   child: Text(
-                                    "Cadastrar e Pagar com Cartão",
+                                    "Pagar com Cartão",
                                     style: TextStyle(
                                         color: corfontebuttonhome == null
                                             ? Colors.black
@@ -302,7 +391,26 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                     if (_formKey.currentState.validate()) {
                                       paymentCreditCardBloc
                                           .animacaoCadastro(true);
-                                      //paymentCreditCardBloc.cadastrarCartao();
+                                      try {
+                                        await paymentCreditCardBloc
+                                            .pagarComCartao(
+                                                fatura,
+                                                numeroCartao,
+                                                nomeCartao,
+                                                dataExpiracao,
+                                                cvv,
+                                                emails[0],
+                                                checkBox);
+                                        Scaffold.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text("Fatura paga"),
+                                        ));
+                                      } catch (e) {
+                                        Scaffold.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text("Ocorreu um erro"),
+                                        ));
+                                      }
                                       paymentCreditCardBloc
                                           .animacaoCadastro(false);
                                     }
