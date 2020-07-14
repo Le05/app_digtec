@@ -18,6 +18,7 @@ String numeroCartao;
 String dataExpiracao;
 String cvv;
 bool checkBox = false;
+String nomeCartao = "nome do cartao";
 final _formKey = GlobalKey<FormState>();
 
 class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
@@ -73,8 +74,8 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                         child: CreditCard(
                           cardNumber: snapshot.data[0]["numero_final"],
                           cardExpiry: "**/**",
-                          //cardHolderName: "Card Holder",
-                          //cvv: "456",
+                          cardHolderName: "Card Holder",
+                          cvv: cvv,
                           //bankName: "Axis Bank",
                           cardType: CardType
                               .masterCard, // Optional if you want to override Card Type
@@ -119,7 +120,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                         child: CreditCard(
                           cardNumber: numeroCartao,
                           cardExpiry: dataExpiracao,
-                          cardHolderName: "",
+                          cardHolderName: nomeCartao,
                           cvv: cvv,
                           bankName: "",
                           cardType: CardType
@@ -213,6 +214,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                 controller:
                                     paymentCreditCardBloc.emailController,
                                 keyboardType: TextInputType.emailAddress,
+                                onChanged: (text) {
+                                    setState(() {
+                                      nomeCartao = text;
+                                    });
+                                  },
                                 decoration: InputDecoration(
                                     hintText: "Digite o email",
                                     border: OutlineInputBorder(
@@ -227,6 +233,24 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                               ),
                             )
                           : Container(),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        child: TextFormField(
+                          controller: paymentCreditCardBloc.nomeCartaoController,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                              hintText: "Digite o nome do cartao",
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50)))),
+                          validator: (text) {
+                            if (text.isEmpty)
+                              return "Por Favor,insira o nome cartao";
+
+                            return null;
+                          },
+                        ),
+                      ),
                       Container(
                           margin: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width / 5),
