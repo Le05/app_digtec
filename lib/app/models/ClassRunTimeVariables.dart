@@ -23,3 +23,5 @@ String imagemFundoExibir;
 String imagemFundo;
 String paymentCardcredit;
 String paramExibirPreCadastro;
+List emails;
+int fatura;

@@ -14,6 +14,7 @@ class ChooseContractsBloc extends BlocBase {
     box.put("status", contracts.status);
     box.put("vencimento", contracts.vencimento);
     box.put("planoInternetValor", contracts.planoInternetValor);
+    emails = contracts.emails;
   }
 
   Future enviarDadosDispositivo(contrato) async {

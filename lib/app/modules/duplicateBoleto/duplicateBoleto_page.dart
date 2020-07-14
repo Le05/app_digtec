@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_bloc.dart';
+import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
 
 class DuplicateBoletoPage extends StatefulWidget {
   final String title;
@@ -21,7 +22,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
           title: Text(widget.title),
         ),
         body: SingleChildScrollView(
-                  child: Stack(
+          child: Stack(
             children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height / 3,
@@ -60,12 +61,13 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                             SizedBox(height: 10),
                             Text(
                               "Parece que você está sem internet!",
-                              style: TextStyle(fontSize: 20, color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             SizedBox(height: 10),
                             Text("Verique sua conexão para acessar o app",
-                                style:
-                                    TextStyle(fontSize: 20, color: Colors.black)),
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black)),
                           ],
                         ),
                       );
@@ -111,8 +113,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                               children: <Widget>[
                                 Container(
                                     margin: EdgeInsets.only(
-                                      top:
-                                          MediaQuery.of(context).size.height / 40,
+                                      top: MediaQuery.of(context).size.height /
+                                          40,
                                     ),
                                     child: Text(
                                       "${snapshot.data["razaosocial"]}",
@@ -122,17 +124,18 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     )),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top:
-                                          MediaQuery.of(context).size.height / 30,
-                                      left:
-                                          MediaQuery.of(context).size.width / 50),
+                                      top: MediaQuery.of(context).size.height /
+                                          30,
+                                      left: MediaQuery.of(context).size.width /
+                                          50),
                                   child: Row(children: <Widget>[
                                     Image.asset(
                                       "images/data.png",
                                       width:
                                           MediaQuery.of(context).size.width / 7,
                                       height:
-                                          MediaQuery.of(context).size.height / 15,
+                                          MediaQuery.of(context).size.height /
+                                              15,
                                     ),
                                     SizedBox(
                                       width: 5,
@@ -152,16 +155,17 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top:
-                                          MediaQuery.of(context).size.height / 50,
-                                      left:
-                                          MediaQuery.of(context).size.width / 50),
+                                      top: MediaQuery.of(context).size.height /
+                                          50,
+                                      left: MediaQuery.of(context).size.width /
+                                          50),
                                   child: Row(
                                     children: <Widget>[
                                       Image.asset(
                                         "images/protocolo.png",
                                         width:
-                                            MediaQuery.of(context).size.width / 7,
+                                            MediaQuery.of(context).size.width /
+                                                7,
                                         height:
                                             MediaQuery.of(context).size.height /
                                                 15,
@@ -185,16 +189,17 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top:
-                                          MediaQuery.of(context).size.height / 50,
-                                      left:
-                                          MediaQuery.of(context).size.width / 50),
+                                      top: MediaQuery.of(context).size.height /
+                                          50,
+                                      left: MediaQuery.of(context).size.width /
+                                          50),
                                   child: Row(
                                     children: <Widget>[
                                       Image.asset(
                                         "images/cpfcnpj.png",
                                         width:
-                                            MediaQuery.of(context).size.width / 7,
+                                            MediaQuery.of(context).size.width /
+                                                7,
                                         height:
                                             MediaQuery.of(context).size.height /
                                                 15,
@@ -218,16 +223,17 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top:
-                                          MediaQuery.of(context).size.height / 50,
-                                      left:
-                                          MediaQuery.of(context).size.width / 50),
+                                      top: MediaQuery.of(context).size.height /
+                                          50,
+                                      left: MediaQuery.of(context).size.width /
+                                          50),
                                   child: Row(
                                     children: <Widget>[
                                       Image.asset(
                                         "images/codigobarra.png",
                                         width:
-                                            MediaQuery.of(context).size.width / 7,
+                                            MediaQuery.of(context).size.width /
+                                                7,
                                         height:
                                             MediaQuery.of(context).size.height /
                                                 15,
@@ -254,40 +260,69 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     ],
                                   ),
                                 ),
-                                paymentCardcredit == "1" ? Container(
-                                  margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width / 4.5,
-                                    right: MediaQuery.of(context).size.width / 4.5,
-                                    top: MediaQuery.of(context).size.height / 60
-                                          ),
-                                  child: ButtonTheme(
-                                    minWidth: MediaQuery.of(context).size.width /3,
-                                    height: MediaQuery.of(context).size.height / 17,
-                                    buttonColor: Color(0xFF5CB85C),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      side: BorderSide(color: Color(0xFF28a744))
-                                    ),
-                                    child: RaisedButton(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Image.asset(
-                                              "images/propagamento.png",
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  13,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  17,
-                                            ),
-                                            Text("Pagar com cartão",style: TextStyle(color: Colors.white),)
-                                          ],
+                                paymentCardcredit == "1"
+                                    ? Container(
+                                        margin: EdgeInsets.only(
+                                            left: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                4.5,
+                                            right: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                4.5,
+                                            top: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                60),
+                                        child: ButtonTheme(
+                                          minWidth: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              17,
+                                          buttonColor: Color(0xFF5CB85C),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              side: BorderSide(
+                                                  color: Color(0xFF28a744))),
+                                          child: RaisedButton(
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Image.asset(
+                                                    "images/propagamento.png",
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            13,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            17,
+                                                  ),
+                                                  Text(
+                                                    "Pagar com cartão",
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  )
+                                                ],
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            PaymentCreditCardModule()));
+                                              }),
                                         ),
-                                        onPressed: () {}),
-                                  ),
-                                ):Container()
+                                      )
+                                    : Container()
                               ],
                             ),
                           ),
@@ -307,7 +342,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                             children: <Widget>[
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.1,
-                                height: MediaQuery.of(context).size.height / 5.8,
+                                height:
+                                    MediaQuery.of(context).size.height / 5.8,
                                 child: InkWell(
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -317,16 +353,19 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Image.asset(
                                           "images/copiar.png",
-                                          width:
-                                              MediaQuery.of(context).size.width /
-                                                  3.4,
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  10,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3.4,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              10,
                                         ),
                                         Container(
                                             margin: EdgeInsets.only(
@@ -348,7 +387,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.1,
-                                height: MediaQuery.of(context).size.height / 5.8,
+                                height:
+                                    MediaQuery.of(context).size.height / 5.8,
                                 child: InkWell(
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -358,16 +398,19 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Image.asset(
                                           "images/visualizar.png",
-                                          width:
-                                              MediaQuery.of(context).size.width /
-                                                  3.4,
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  10,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3.4,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              10,
                                         ),
                                         Container(
                                             margin: EdgeInsets.only(
@@ -398,7 +441,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                             children: <Widget>[
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.1,
-                                height: MediaQuery.of(context).size.height / 5.8,
+                                height:
+                                    MediaQuery.of(context).size.height / 5.8,
                                 child: InkWell(
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -408,16 +452,19 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Image.asset(
                                           "images/enviarEmail.png",
-                                          width:
-                                              MediaQuery.of(context).size.width /
-                                                  3.4,
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  10,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3.4,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              10,
                                         ),
                                         Container(
                                             margin: EdgeInsets.only(
@@ -431,12 +478,14 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     await DuplicateBoletoBloc()
                                         .postFatura2Via("email")
                                         .then((onValue) {
-                                      Scaffold.of(context).showSnackBar(SnackBar(
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
                                         content:
                                             Text("Fatura enviada com sucesso"),
                                       ));
                                     }).catchError((onError) {
-                                      Scaffold.of(context).showSnackBar(SnackBar(
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
                                         content: Text(onError),
                                       ));
                                     });
@@ -445,7 +494,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 3.1,
-                                height: MediaQuery.of(context).size.height / 5.8,
+                                height:
+                                    MediaQuery.of(context).size.height / 5.8,
                                 child: InkWell(
                                   child: Card(
                                     shape: RoundedRectangleBorder(
@@ -455,21 +505,25 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Image.asset(
                                           "images/sms.png",
-                                          width:
-                                              MediaQuery.of(context).size.width /
-                                                  3.4,
-                                          height:
-                                              MediaQuery.of(context).size.height /
-                                                  10,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3.4,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              10,
                                         ),
                                         Container(
                                             margin: EdgeInsets.only(
                                                 left: 5, right: 5),
-                                            child: Text("Receber Fatura via SMS"))
+                                            child:
+                                                Text("Receber Fatura via SMS"))
                                       ],
                                     ),
                                   ),
@@ -477,12 +531,14 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     await DuplicateBoletoBloc()
                                         .postFatura2Via("sms")
                                         .then((onValue) {
-                                      Scaffold.of(context).showSnackBar(SnackBar(
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
                                         content:
                                             Text("Fatura enviada com sucesso"),
                                       ));
                                     }).catchError((onError) {
-                                      Scaffold.of(context).showSnackBar(SnackBar(
+                                      Scaffold.of(context)
+                                          .showSnackBar(SnackBar(
                                         content: Text(onError),
                                       ));
                                     });

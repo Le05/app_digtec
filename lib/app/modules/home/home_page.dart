@@ -7,6 +7,7 @@ import 'package:franet/app/modules/home/widgets/propaganda/propaganda_widget.dar
 import 'package:franet/app/modules/invoices/invoices_module.dart';
 import 'package:franet/app/modules/notifications/notifications_module.dart';
 import 'package:franet/app/modules/paymentPromise/paymentPromise_module.dart';
+import 'package:franet/app/modules/paymentPromise/paymentPromise_page.dart';
 import 'package:franet/app/modules/support/support_module.dart';
 import 'package:franet/app/modules/testVelocity/testVelocity_module.dart';
 import 'package:franet/app/modules/tips/tips_module.dart';
