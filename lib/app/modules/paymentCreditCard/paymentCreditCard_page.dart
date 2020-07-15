@@ -85,7 +85,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                             child: CreditCard(
                               cardNumber: snapshot.data[0]["numero_final"],
                               cardExpiry: "**/**",
-                              cardHolderName: "Card Holder",
+                              cardHolderName: nomeCartao,
                               cvv: cvv,
                               //bankName: "Axis Bank",
                               cardType: CardType
@@ -100,8 +100,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                             height: 20,
                           ),
                           Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            child: Column(
                               children: <Widget>[
                                 Container(
                                   child: AnimatedCrossFade(
@@ -169,20 +168,23 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                     ),
                                   ),
                                 ),
-                                ButtonTheme(
-                                  height:
-                                      MediaQuery.of(context).size.height / 20,
-                                  child: RaisedButton(
-                                      child: Text(
-                                          "Pagar utilizando outro cartão",
-                                          style:
-                                              TextStyle(color: Colors.white)),
-                                      onPressed: () {
-                                        setState(() {
-                                          paymentCreditCardBloc.cartaoOutro =
-                                              true;
-                                        });
-                                      }),
+                                Container(
+                                  margin: EdgeInsets.only(top:15),
+                                  child: ButtonTheme(
+                                    height:
+                                        MediaQuery.of(context).size.height / 20,
+                                    child: RaisedButton(
+                                        child: Text(
+                                            "Pagar utilizando outro cartão",
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                        onPressed: () {
+                                          setState(() {
+                                            paymentCreditCardBloc.cartaoOutro =
+                                                true;
+                                          });
+                                        }),
+                                  ),
                                 ),
                               ],
                             ),
