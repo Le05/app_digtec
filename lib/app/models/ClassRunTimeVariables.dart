@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 String paramurltestevelocidade;
 String cor;
+String corapp2;
 String corFonteS;
 Colors corFonte;
 List preCadastros; 

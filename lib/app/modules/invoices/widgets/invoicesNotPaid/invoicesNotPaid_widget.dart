@@ -8,7 +8,12 @@ import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.da
 InvoicesBloc invoicesBloc = InvoicesBloc();
 InvoicesNotPaidBloc invoicesNotPaidBloc = InvoicesNotPaidBloc();
 
-class InvoicesNotPaidWidget extends StatelessWidget {
+class InvoicesNotPaidWidget extends StatefulWidget {
+  @override
+  _InvoicesNotPaidWidgetState createState() => _InvoicesNotPaidWidgetState();
+}
+
+class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -172,10 +177,13 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                                         onPressed: () {
                                           fatura = snapshot.data["titlesAberta"]
                                               [index].id;
-                                          Navigator.of(context).push(
+                                         var retorno = Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       PaymentCreditCardModule()));
+                                                      setState(() {
+                                                        
+                                                      });
                                         }),
                                   )
                                 : Container()

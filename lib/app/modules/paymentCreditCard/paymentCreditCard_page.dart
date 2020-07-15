@@ -301,7 +301,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                 keyboardType: TextInputType.emailAddress,
                                 onChanged: (text) {
                                   setState(() {
-                                    nomeCartao = text;
+                                    nomeCartao = text.toUpperCase();
                                   });
                                 },
                                 decoration: InputDecoration(
@@ -326,7 +326,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.text,
                           onChanged: (text) {
                             setState(() {
-                              nomeCartao = text;
+                              nomeCartao = text.toUpperCase();
                             });
                           },
                           decoration: InputDecoration(

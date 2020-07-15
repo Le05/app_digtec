@@ -41,10 +41,15 @@ Future<Map> initHive({BuildContext context}) async {
 
     appBloc.initOneSignal(resposta[0]["param_appidonesignal"]);
     cor = resposta[0]["param_corapp"];
+    corapp2 = resposta[0]["param_corapp2"];
     corFonteS = resposta[0]["param_corfonte"];
 
     cor = cor.replaceFirst("#", "");
+    corapp2 = corapp2.replaceFirst("#", "");
+
     cor = "0xFF" + cor;
+    corapp2 = "0xFF"+corapp2;
+    
     corFonteS = corFonteS.replaceFirst("#", "");
     corFonteS = "0xFF" + corFonteS;
     /* cores das fontes */

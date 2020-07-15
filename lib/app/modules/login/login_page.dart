@@ -256,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                                           MediaQuery.of(context).size.height /
                                               15,
                                       child: RaisedButton(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Color(int.parse(corapp2)),
                                         child: Text(
                                           "Entrar",
                                           style: TextStyle(
