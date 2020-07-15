@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
 import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
+import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 InvoicesNotPaidBloc invoicesNotPaidBloc = InvoicesNotPaidBloc();
@@ -120,9 +121,8 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                               minWidth: MediaQuery.of(context).size.width,
                               buttonColor: Color(0xFF5CB85C),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0.0),
-                                side: BorderSide(color: Color(0xFF28a744))
-                              ),
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  side: BorderSide(color: Color(0xFF28a744))),
                               child: RaisedButton(
                                   child: Text(
                                     "Copiar Código de Barras",
@@ -143,9 +143,8 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                               minWidth: MediaQuery.of(context).size.width,
                               buttonColor: Color(0xFF5BC0DE),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0.0),
-                                side: BorderSide(color: Color(0xFF34B4E5))
-                              ),
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  side: BorderSide(color: Color(0xFF34B4E5))),
                               child: RaisedButton(
                                   child: Text(
                                     "Visualizar ou Imprimir o Boleto",
@@ -161,15 +160,23 @@ class InvoicesNotPaidWidget extends StatelessWidget {
                                     minWidth: MediaQuery.of(context).size.width,
                                     buttonColor: Color(0xFFf0ad4e),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      side: BorderSide(color: Color(0xFFffc106))
-                                    ),
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        side: BorderSide(
+                                            color: Color(0xFFffc106))),
                                     child: RaisedButton(
                                         child: Text(
                                           "Pagamento com Cartão de Crédito",
                                           style: TextStyle(color: Colors.white),
                                         ),
-                                        onPressed: () {}),
+                                        onPressed: () {
+                                          fatura = snapshot.data["titlesAberta"]
+                                              [index].id;
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PaymentCreditCardModule()));
+                                        }),
                                   )
                                 : Container()
                           ],

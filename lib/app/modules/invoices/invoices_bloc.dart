@@ -16,7 +16,7 @@ class InvoicesBloc extends BlocBase {
     List<Titles> titlesAberta = [];
     Map<String, List<Titles>> allTitles = {};
 
-    for (var i = titles.length-1; i > 0; i--) {
+    for (var i = titles.length-1; i >= 0; i--) {
       if (titles[i].statusid == 1) {
         titles[i].dataPagamento = withdrawDate(titles[i].dataPagamento);
         titles[i].vencimento = withdrawDate(titles[i].vencimento);

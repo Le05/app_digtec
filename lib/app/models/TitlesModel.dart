@@ -10,6 +10,8 @@ class Titles {
   double valorCorrigido;
   double valor;
   String linhaDigitavel;
+  bool pagarcartaodebito;
+  bool pagarCartao;
 
   Titles(
       this.vencimentoAtualizado,
@@ -22,7 +24,9 @@ class Titles {
       this.statusid,
       this.valorCorrigido,
       this.valor,
-      this.linhaDigitavel);
+      this.linhaDigitavel,
+      this.pagarcartaodebito,
+      this.pagarCartao);
 }
 
 List<Titles> fromJson(json) {
@@ -39,7 +43,9 @@ List<Titles> fromJson(json) {
         u["statusid"],
         u["valorcorrigido"],
         u["valor"],
-        u["linhadigitavel"]);
+        u["linhadigitavel"],
+        u["pagarcartaodebito"],
+        u["pagarcartao"]);
     titles.add(titlesU);
   }
   return titles;
