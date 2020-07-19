@@ -174,10 +174,10 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                           "Pagamento com Cartão de Crédito",
                                           style: TextStyle(color: Colors.white),
                                         ),
-                                        onPressed: () {
+                                        onPressed: () async {
                                           fatura = snapshot.data["titlesAberta"]
                                               [index].id;
-                                         var retorno = Navigator.of(context).push(
+                                         await Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       PaymentCreditCardModule()));

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:device_info/device_info.dart';
+import 'package:dio/dio.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 

@@ -12,7 +12,7 @@ class DuplicateBoletoBloc extends BlocBase {
     await repository.getFatura2Via().then((onValue) {
       onValue["vencimento"] = withdrawDate(onValue["vencimento"]);
       retorno = onValue;
-      fatura = onValue["links"][0]["fatura"];
+      fatura = onValue["fatura"];
     });
     return retorno;
   }

@@ -185,6 +185,7 @@ Future<Map> initHive({BuildContext context}) async {
     "color": alterColor(color: int.parse(cor)),
     "colorFonte": alterColor(color: int.parse(corFonteS))
   };
+
   return retorno;
 }
 
