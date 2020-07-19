@@ -1,5 +1,7 @@
-import 'package:awesome_card/awesome_card.dart';
+import 'package:awesome_card/awesome_card.dart' as awesomCard;
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart'
+    as flutterCreditCard;
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_bloc.dart';
 
@@ -14,10 +16,11 @@ class PaymentCreditCardPage extends StatefulWidget {
 
 PaymentCreditCardBloc paymentCreditCardBloc = PaymentCreditCardBloc();
 
-String numeroCartao;
-String dataExpiracao;
-String cvv;
+String numeroCartao = "0";
+String dataExpiracao = "";
+String cvv = "0";
 bool checkBox = false;
+bool backCvv = false;
 String nomeCartao = "nome do cartao";
 bool estadoBotao = false;
 
@@ -82,17 +85,17 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                         children: <Widget>[
                           Container(
                             margin: EdgeInsets.only(top: 15),
-                            child: CreditCard(
+                            child: awesomCard.CreditCard(
                               cardNumber: snapshot.data[0]["numero_final"],
                               cardExpiry: "**/**",
                               cardHolderName: nomeCartao,
                               cvv: cvv,
                               //bankName: "Axis Bank",
-                              cardType: CardType
+                              cardType: awesomCard.CardType
                                   .masterCard, // Optional if you want to override Card Type
                               showBackSide: false,
-                              frontBackground: CardBackgrounds.black,
-                              backBackground: CardBackgrounds.white,
+                              frontBackground: awesomCard.CardBackgrounds.black,
+                              backBackground: awesomCard.CardBackgrounds.white,
                               showShadow: true,
                             ),
                           ),
@@ -169,7 +172,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top:15),
+                                  margin: EdgeInsets.only(top: 15),
                                   child: ButtonTheme(
                                     height:
                                         MediaQuery.of(context).size.height / 20,
@@ -199,19 +202,31 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                     children: <Widget>[
                       Container(
                         margin: EdgeInsets.only(top: 15),
-                        child: CreditCard(
+                        child: flutterCreditCard.CreditCardWidget(
+                          cardBgColor: Colors.black,
                           cardNumber: numeroCartao,
-                          cardExpiry: dataExpiracao,
+                          expiryDate: dataExpiracao,
                           cardHolderName: nomeCartao,
-                          cvv: cvv,
-                          bankName: "",
-                          cardType: CardType
-                              .masterCard, // Optional if you want to override Card Type
-                          showBackSide: false,
-                          frontBackground: CardBackgrounds.black,
-                          backBackground: CardBackgrounds.white,
-                          showShadow: true,
+                          cvvCode: cvv,
+                          showBackView: backCvv,
+                          height: 175,
+                          textStyle: TextStyle(color: Colors.yellow),
+                          width: MediaQuery.of(context).size.width,
+                          animationDuration: Duration(milliseconds: 1000),
                         ),
+                        // child: CreditCard(
+                        //   cardNumber: numeroCartao,
+                        //   cardExpiry: dataExpiracao,
+                        //   cardHolderName: nomeCartao,
+                        //   cvv: cvv,
+                        //   bankName: "",
+                        //   cardType: CardType
+                        //       .masterCard, // Optional if you want to override Card Type
+                        //   showBackSide: false,
+                        //   frontBackground: CardBackgrounds.black,
+                        //   backBackground: CardBackgrounds.white,
+                        //   showShadow: true,
+                        // ),
                       ),
                       SizedBox(
                         height: 20,
@@ -225,6 +240,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
                             setState(() {
+                              backCvv = false;
                               numeroCartao = text;
                             });
                           },
@@ -249,6 +265,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
                             setState(() {
+                              backCvv = false;
                               dataExpiracao = text;
                             });
                           },
@@ -274,6 +291,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
                             setState(() {
+                              backCvv = true;
                               cvv = text;
                             });
                           },
@@ -326,6 +344,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.text,
                           onChanged: (text) {
                             setState(() {
+                              backCvv = false;
                               nomeCartao = text.toUpperCase();
                             });
                           },
