@@ -16,12 +16,12 @@ class PaymentCreditCardPage extends StatefulWidget {
 
 PaymentCreditCardBloc paymentCreditCardBloc = PaymentCreditCardBloc();
 
-String numeroCartao = "0";
-String dataExpiracao = "";
-String cvv = "0";
+String numeroCartao = "";
+String dataExpiracao = "XX/XXXX";
+String cvv = "";
 bool checkBox = false;
 bool backCvv = false;
-String nomeCartao = "nome do cartao";
+String nomeCartao = "NOME";
 bool estadoBotao = false;
 
 final _formKey = GlobalKey<FormState>();
@@ -203,14 +203,15 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       Container(
                         margin: EdgeInsets.only(top: 15),
                         child: flutterCreditCard.CreditCardWidget(
-                          cardBgColor: Colors.black,
+                          cardBgColor: Colors.indigo[800],
                           cardNumber: numeroCartao,
                           expiryDate: dataExpiracao,
                           cardHolderName: nomeCartao,
                           cvvCode: cvv,
                           showBackView: backCvv,
                           height: 175,
-                          textStyle: TextStyle(color: Colors.yellow),
+                          textStyle: TextStyle(color: Colors.grey[400],
+                          fontWeight: FontWeight.bold),
                           width: MediaQuery.of(context).size.width,
                           animationDuration: Duration(milliseconds: 1000),
                         ),
@@ -251,7 +252,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
                             if (text.isEmpty)
-                              return "Por Favor,insira um numero";
+                              return "Por favor, insira um numero";
                             return null;
                           },
                         ),
@@ -276,7 +277,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
                             if (text.isEmpty)
-                              return "Por Favor,insira uma Data Expiração";
+                              return "Por favor, insira uma Data Expiração";
                             return null;
                           },
                         ),
@@ -301,7 +302,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
-                            if (text.isEmpty) return "Por Favor,insira o cvv";
+                            if (text.isEmpty) return "Por favor,insira o CVV";
 
                             return null;
                           },
@@ -324,7 +325,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                             Radius.circular(50)))),
                                 validator: (text) {
                                   if (text.isEmpty)
-                                    return "Por Favor,insira um email";
+                                    return "Por favor, insira um email";
 
                                   return null;
                                 },
@@ -337,6 +338,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           controller:
                               paymentCreditCardBloc.nomeCartaoController,
                           keyboardType: TextInputType.text,
+                          textCapitalization: TextCapitalization.characters,
                           onChanged: (text) {
                             setState(() {
                               backCvv = false;
@@ -344,13 +346,13 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                             });
                           },
                           decoration: InputDecoration(
-                              hintText: "Digite o nome do cartao",
+                              hintText: "Digite o nome do cartão",
                               border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
                             if (text.isEmpty)
-                              return "Por Favor,insira o nome cartao";
+                              return "Por favor, insira o nome cart!ao";
 
                             return null;
                           },
@@ -369,7 +371,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                     });
                                   }),
                               Text(
-                                "Gravar dados para proximas faturas",
+                                "Salvar Cartão (Pagamentos Futuros)",
                                 style: TextStyle(fontSize: 16),
                               )
                             ],
@@ -419,7 +421,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                                 checkBox);
                                         Scaffold.of(context)
                                             .showSnackBar(SnackBar(
-                                          content: Text("Fatura paga"),
+                                          content: Text("Fatura paga com sucesso!"),
                                         ));
                                       } catch (e) {
                                         Scaffold.of(context)
