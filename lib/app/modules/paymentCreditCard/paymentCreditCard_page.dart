@@ -312,16 +312,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       ),
                       emails == null
                           ? Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              margin: EdgeInsets.only(left: 10,right: 10,bottom: 15),
                               child: TextFormField(
                                 controller:
                                     paymentCreditCardBloc.emailController,
                                 keyboardType: TextInputType.emailAddress,
-                                onChanged: (text) {
-                                  setState(() {
-                                    nomeCartao = text.toUpperCase();
-                                  });
-                                },
                                 decoration: InputDecoration(
                                     hintText: "Digite o email",
                                     border: OutlineInputBorder(
