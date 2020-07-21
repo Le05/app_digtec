@@ -265,7 +265,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                               paymentCreditCardBloc.dataExpiracaoController,
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
-                            if(text.length <= 6)
+                            if(text.length <= 7)
                             setState(() {
                               backCvv = false;
                               dataExpiracao = text;
