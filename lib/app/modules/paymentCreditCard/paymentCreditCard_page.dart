@@ -264,6 +264,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                               paymentCreditCardBloc.dataExpiracaoController,
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
+                            if(text.length <= 6)
                             setState(() {
                               backCvv = false;
                               dataExpiracao = text;
@@ -290,10 +291,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           controller: paymentCreditCardBloc.cvvController,
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
-                            setState(() {
-                              backCvv = true;
-                              cvv = text;
-                            });
+                            if(text.length <= 3)
+                              setState(() {
+                                backCvv = true;
+                                cvv = text;
+                              });
                           },
                           decoration: InputDecoration(
                               hintText: "CVV",
@@ -338,10 +340,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                               paymentCreditCardBloc.nomeCartaoController,
                           keyboardType: TextInputType.text,
                           onChanged: (text) {
-                            setState(() {
-                              backCvv = false;
-                              nomeCartao = text.toUpperCase();
-                            });
+                            
+                              setState(() {
+                                backCvv = false;
+                                nomeCartao = text.toUpperCase();
+                              });
                           },
                           decoration: InputDecoration(
                               hintText: "Digite o nome do cartao",
