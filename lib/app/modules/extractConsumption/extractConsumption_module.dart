@@ -1,3 +1,5 @@
+import 'package:franet/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_bloc.dart';
+import 'package:franet/app/modules/extractConsumption/widgets/Consumption/Consumption_bloc.dart';
 import 'package:franet/app/modules/extractConsumption/repository/extractConsumption_repository.dart';
 import 'package:franet/app/modules/extractConsumption/extractConsumption_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
@@ -7,6 +9,8 @@ import 'package:franet/app/modules/extractConsumption/extractConsumption_page.da
 class ExtractConsumptionModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => ConsumptioImagesBloc()),
+        Bloc((i) => ConsumptionBloc()),
         Bloc((i) => ExtractConsumptionBloc()),
       ];
 
