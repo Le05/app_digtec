@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/extractConsumption/extractConsumption_bloc.dart';
+import 'package:filesize/filesize.dart';
+
 
 class ExtractConsumptionPage extends StatefulWidget {
   final String title;
@@ -92,7 +94,7 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                         itemCount: snapshot.data["list"].length,
                         itemBuilder: (context, index) {
                           return Container(
-                            margin: EdgeInsets.only(left:10,right:10),
+                            margin: EdgeInsets.only(top:10, left:10,right:10),
                             padding: EdgeInsets.all(20),
                             decoration: BoxDecoration(
                               color: Colors.green[200],
@@ -104,19 +106,20 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text("IP: ${snapshot.data["list"][index]["ip"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Download: ${snapshot.data["list"][index]["download"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Total de Tráfego: ${snapshot.data["list"][index]["total"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Conectou: ${snapshot.data["list"][index]["dataini"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Horario: ${snapshot.data["list"][index]["horarioini"]}",style: TextStyle(fontSize: 16),),
+                                    Text("IP: ${snapshot.data["list"][index]["ip"]}",style: TextStyle(fontSize: 14),),
+                                    Text("Download: ${filesize(snapshot.data["list"][index]["download"])}",style: TextStyle(fontSize: 14),),
+                                    Text("Conectou: ${snapshot.data["list"][index]["dataini"]}",style: TextStyle(fontSize: 14),),
+                                    Text("Horario: ${snapshot.data["list"][index]["horarioini"]}",style: TextStyle(fontSize: 14),),
+                                    Text("Total de Tráfego: ${filesize(snapshot.data["list"][index]["total"])}",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text("MAC: ${snapshot.data["list"][index]["mac"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Upload: ${snapshot.data["list"][index]["upload"]}",style: TextStyle(fontSize: 16),),
-                                    Text("Desconectou: ${snapshot.data["list"][index]["datafim"]}",style: TextStyle(fontSize: 16),)
+                                    Text("MAC: ${snapshot.data["list"][index]["mac"]}",style: TextStyle(fontSize: 14),),
+                                    Text("Upload: ${filesize(snapshot.data["list"][index]["upload"])}",style: TextStyle(fontSize: 14),),
+                                    Text("Desconectou: ${snapshot.data["list"][index]["datafim"]}",style: TextStyle(fontSize: 14),),
+                                    Text("Horario: ${snapshot.data["list"][index]["horariofim"]}",style: TextStyle(fontSize: 14),),
                                   ],
                                 ),
                               ],
