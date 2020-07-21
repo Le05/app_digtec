@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:franet/app/modules/extractConsumption/extractConsumption_module.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/propaganda/propaganda_widget.dart';
 import 'package:franet/app/modules/invoices/invoices_module.dart';
@@ -356,11 +357,11 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                             onTap: () {
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (_) =>
-                                              //             DuplicateBoletoModule()));
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (_) =>
+                                                          ExtractConsumptionModule()));
                                             },
                                           ),
                                         ),
