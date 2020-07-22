@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/extractConsumption/extractConsumption_module.dart';
 import 'package:franet/app/modules/extractConsumption/repository/extractConsumption_repository.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ConsumptionBloc extends BlocBase {
@@ -43,11 +44,12 @@ class ConsumptionBloc extends BlocBase {
   }
 
   Future selectDate(context) async {
-    DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: new DateTime.now(),
-        firstDate: new DateTime(2016),
-        lastDate: new DateTime(2030));
+    DateTime picked = await showMonthPicker(
+                context: context,
+                firstDate: DateTime(DateTime.now().year - 1, 5),
+                lastDate: DateTime(DateTime.now().year + 1, 9),
+                initialDate: DateTime.now(),
+              );
     if (picked != null) {
       modificarData(picked.toString());
     }

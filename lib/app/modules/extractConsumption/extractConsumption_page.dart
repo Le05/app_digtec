@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/extractConsumption/extractConsumption_bloc.dart';
+import 'package:franet/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_widget.dart';
 import 'package:franet/app/modules/extractConsumption/widgets/Consumption/Consumption_widget.dart';
 
 
@@ -67,7 +68,8 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                   child: PageView(
                     controller: pageController,
                     children: <Widget>[
-                      ConsumptionWidget()
+                      ConsumptionWidget(),
+                      ConsumptioImagesWidget()
                       
                     ],
                   ),

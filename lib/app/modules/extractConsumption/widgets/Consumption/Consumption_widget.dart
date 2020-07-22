@@ -96,72 +96,97 @@ class ConsumptionWidget extends StatelessWidget {
                         ),
                       );
                     }
-                    return ListView.builder(
-                        itemCount: snapshot.data["list"].length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            margin:
-                                EdgeInsets.only(top: 10, left: 10, right: 10),
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: Colors.green[200],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "IP: ${snapshot.data["list"][index]["ip"]}",
-                                      style: TextStyle(fontSize: 14),
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 1.2,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                              margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width / 2.5),
+                              child: Text("Consumo de Tráfego Total ${filesize(snapshot.data["total"])}")),
+                          Expanded(
+                            child: ListView.builder(
+                                itemCount: snapshot.data["list"].length,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    margin: EdgeInsets.only(
+                                        top: 10, left: 10, right: 10),
+                                    padding: EdgeInsets.all(20),
+                                    decoration: BoxDecoration(
+                                        color: Colors.green[200],
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: <Widget>[
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              "IP: ${snapshot.data["list"][index]["ip"]}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              "Download: ${filesize(snapshot.data["list"][index]["download"])}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              "Conectou: ${snapshot.data["list"][index]["dataini"]}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              "Horario: ${snapshot.data["list"][index]["horarioini"]}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              "Total de Tráfego: ${filesize(snapshot.data["list"][index]["total"])}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              "MAC: ${snapshot.data["list"][index]["mac"]}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              "Upload: ${filesize(snapshot.data["list"][index]["upload"])}",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              snapshot.data["list"][index]
+                                                          ["datafim"] !=
+                                                      null
+                                                  ? "Desconectou: ${snapshot.data["list"][index]["datafim"]}"
+                                                  : "Desconectou: -",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                            Text(
+                                              snapshot.data["list"][index]
+                                                          ["horariofim"] !=
+                                                      null
+                                                  ? "Horario: ${snapshot.data["list"][index]["horariofim"]}"
+                                                  : "Horario: -",
+                                              style: TextStyle(fontSize: 14),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      "Download: ${filesize(snapshot.data["list"][index]["download"])}",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text(
-                                      "Conectou: ${snapshot.data["list"][index]["dataini"]}",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text(
-                                      "Horario: ${snapshot.data["list"][index]["horarioini"]}",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text(
-                                      "Total de Tráfego: ${filesize(snapshot.data["list"][index]["total"])}",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      "MAC: ${snapshot.data["list"][index]["mac"]}",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text(
-                                      "Upload: ${filesize(snapshot.data["list"][index]["upload"])}",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text( snapshot.data["list"][index]["datafim"] != null ? 
-                                      "Desconectou: ${snapshot.data["list"][index]["datafim"]}":"Desconectou: -",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                    Text(snapshot.data["list"][index]["horariofim"] != null ? 
-                                      "Horario: ${snapshot.data["list"][index]["horariofim"]}":"Horario: -",
-                                      style: TextStyle(fontSize: 14),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        });
+                                  );
+                                }),
+                          ),
+                        ],
+                      ),
+                    );
                   }),
             )
           ],
