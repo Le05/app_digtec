@@ -278,7 +278,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
                             if (text.isEmpty)
-                              return "Por favor, insira uma Data Expiração";
+                              return "Por favor, insira uma data expiração";
                             return null;
                           },
                         ),
@@ -304,7 +304,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(50)))),
                           validator: (text) {
-                            if (text.isEmpty) return "Por favor,insira o CVV";
+                            if (text.isEmpty) return "Por favor, insira o CVV";
 
                             return null;
                           },
