@@ -25,7 +25,7 @@ class ConsumptionWidget extends StatelessWidget {
                 decoration: InputDecoration(
                     labelText: "Data de Consumo",
                     hintText: "Digite a data",
-                    labelStyle: TextStyle(fontSize: 20),
+                    labelStyle: TextStyle(fontSize: 16),
                     border: OutlineInputBorder(
                         borderSide: BorderSide(),
                         borderRadius: BorderRadius.all(Radius.circular(50)))),

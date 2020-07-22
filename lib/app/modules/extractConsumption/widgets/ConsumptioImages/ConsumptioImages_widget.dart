@@ -45,19 +45,37 @@ class ConsumptioImagesWidget extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 5,),
-                  Text("Consumo Diário",style: TextStyle(fontSize: 18),),
+                  Container( 
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: EdgeInsets.all(15),
+                    decoration: new BoxDecoration(color:  Colors.green[200],),
+                    child: new Center(
+                    child: new Text("Consumo Diário",style: TextStyle(fontSize: 14),)
+                    )),
                   Container(
                     child: Image.network(
                         "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-day.png"),
                   ),
                   SizedBox(height: 5,),
-                  Text("Consumo Mensal",style: TextStyle(fontSize: 18),),
+                  Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: EdgeInsets.all(15),
+                    decoration: new BoxDecoration(color:  Colors.green[200],),
+                    child: new Center(
+                    child: new Text("Consumo Mensal",style: TextStyle(fontSize: 14),)
+                    )),
                   Container(
                     child: Image.network(
                         "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-month.png"),
                   ),
                   SizedBox(height: 5,),
-                  Text("Consumo Anual",style: TextStyle(fontSize: 18),),
+                  Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    padding: EdgeInsets.all(15),
+                    decoration: new BoxDecoration(color:  Colors.green[200],),
+                    child: new Center(
+                    child: new Text("Consumo Anual",style: TextStyle(fontSize: 14),)
+                    )),
                   Container(
                     child: Image.network(
                         "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-year.png"),
