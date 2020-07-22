@@ -13,32 +13,40 @@ class ConsumptionWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: Stack(
           children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width / 2,
-              margin: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                  top: MediaQuery.of(context).size.height / 40),
-              child: TextFormField(
-                controller: consumptionBloc.dataConsumoController,
-                keyboardType: TextInputType.datetime,
-                decoration: InputDecoration(
-                    labelText: "Data de Consumo",
-                    hintText: "Digite a data",
-                    labelStyle: TextStyle(fontSize: 16),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(),
-                        borderRadius: BorderRadius.all(Radius.circular(50)))),
-                validator: (text) {
-                  if (text.isEmpty) {
-                    return "Por Favor, Insira uma Data!!";
-                  }
-                  return null;
-                },
-                onTap: () async {
-                  await consumptionBloc.selectDate(context);
-                },
+            InkWell(
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
+                margin: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    top: MediaQuery.of(context).size.height / 40),
+                child: IgnorePointer(
+                  child: TextFormField(
+                    controller: consumptionBloc.dataConsumoController,
+                    keyboardType: TextInputType.datetime,
+                    decoration: InputDecoration(
+                        labelText: "Data de Consumo",
+                        hintText: "Digite a data",
+                        labelStyle: TextStyle(fontSize: 16),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(50)))),
+                    validator: (text) {
+                      if (text.isEmpty) {
+                        return "Por Favor, Insira uma Data!!";
+                      }
+                      return null;
+                    },
+                    onTap: () async {
+                      await consumptionBloc.selectDate(context);
+                    },
+                  ),
+                ),
               ),
+              onTap: () async {
+                await consumptionBloc.selectDate(context);
+              },
             ),
             Container(
               margin: EdgeInsets.only(
@@ -103,8 +111,10 @@ class ConsumptionWidget extends StatelessWidget {
                         children: <Widget>[
                           Container(
                               margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width / 2.5),
-                              child: Text("Consumo de Tráfego Total ${filesize(snapshot.data["total"])}")),
+                                  left:
+                                      MediaQuery.of(context).size.width / 2.5),
+                              child: Text(
+                                  "Consumo de Tráfego Total ${filesize(snapshot.data["total"])}")),
                           Expanded(
                             child: ListView.builder(
                                 itemCount: snapshot.data["list"].length,
