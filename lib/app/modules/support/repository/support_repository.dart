@@ -21,7 +21,7 @@ class SupportRepository extends Disposable {
         paramOcorrenciatipo == null ||
         paramMotivos == "" ||
         paramOcorrenciatipo == "") {
-     response = await dio.post(baseUrl + "/chamado", data: {
+      response = await dio.post(baseUrl + "/chamado", data: {
         "cpfcnpj": cpfCnpj,
         "senha": senha,
         "contrato": contrato,
@@ -35,48 +35,8 @@ class SupportRepository extends Disposable {
         "contrato": contrato,
         "contato": contato,
         "conteudo": conteudo,
-        "ocorrenciatipo":paramOcorrenciatipo,
-        "motivoos":paramMotivos
-      });
-    }
-    return response.data;
-  }
-
-  Future openCall0(
-      String baseUrl,
-      int contato,
-      int contrato,
-      String conteudo,
-      String cpfCnpj,
-      String senha,
-      String paramOcorrenciatipo,
-      String paramMotivos) async {
-    Response response;
-    dio.clear();
-    dio.options.connectTimeout = 10000;
-    dio.options.receiveTimeout = 10000;
-    if (paramMotivos == null ||
-        paramOcorrenciatipo == null ||
-        paramMotivos == "" ||
-        paramOcorrenciatipo == "") {
-     response = await dio.post(baseUrl + "/chamado", data: {
-        "cpfcnpj": cpfCnpj,
-        "senha": senha,
-        "contrato": contrato,
-        "contato": contato,
-        "conteudo": conteudo,
-        "sem_os":1
-      });
-    } else {
-      response = await dio.post(baseUrl + "/chamado", data: {
-        "cpfcnpj": cpfCnpj,
-        "senha": senha,
-        "contrato": contrato,
-        "contato": contato,
-        "conteudo": conteudo,
-        "ocorrenciatipo":paramOcorrenciatipo,
-        "motivoos":paramMotivos,
-        "sem_os":1
+        "param_ocorrenciatipo":paramOcorrenciatipo,
+        "param_motivoos":paramMotivos
       });
     }
     return response.data;

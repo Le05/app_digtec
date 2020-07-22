@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_html_view/flutter_native_html_view.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:franet/app/modules/support/support_bloc.dart';
 
 class SupportPage extends StatefulWidget {
@@ -53,7 +53,7 @@ class _SupportPageState extends State<SupportPage> {
                               margin: EdgeInsets.only(left: 10),
                               width: MediaQuery.of(context).size.width / 1.5,
                               height: MediaQuery.of(context).size.height / 3,
-                              child: FlutterNativeHtmlView(htmlData: snapshot.data));
+                              child: Html(data: snapshot.data));
                         })
                   ],
                 ),

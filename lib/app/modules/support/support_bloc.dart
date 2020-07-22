@@ -8,64 +8,36 @@ import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SupportBloc extends BlocBase {
-  TextEditingController contatoController =
-      new MaskedTextController(mask: '(00)00000-0000');
+  TextEditingController contatoController = new MaskedTextController(mask: '(00)00000-0000');
   TextEditingController conteudoController = TextEditingController();
-  var repository = SupportModule.to.getDependency<SupportRepository>();
-  Map retorno;
+
   Future openCall() async {
     var box = await getHiveInstance();
-    if (box.get("param_abreos") == "0") {
-      // aqui ele passa um no sem_os
-      await repository
-          .openCall0(
-              box.get("baseUrl"),
-              int.parse(removeCaractersPhone(contatoController.text)),
-              box.get("contrato"),
-              conteudoController.text,
-              box.get("cpfCnpj"),
-              box.get("senha"),
-              box.get("param_ocorrenciatipo"),
-              box.get("param_motivoos"))
-          .then((onValue) {
-        if (onValue["status"] == 0) {
-          retorno = {"status": 0, "msg": "Chamado aberto com sucesso"};
-          //this.noti.showInfo('Chamado aberto com sucesso.', 5000);
-        } else if (onValue["status"] == 3) {
-          //"Já existe chamado aberto para o tipo selecionado"
-          retorno = {"status": 3, "msg": onValue["msg"]};
-          //this.noti.showInfo(chamado.msg, 5000);
-        }
-      }).catchError((onError) {
-        retorno = {"status": 1, "msg": "Ocorreu um erro ao abrir o chamado"};
-      });
-      return retorno;
-    } else {
-      await repository
-          .openCall(
-              box.get("baseUrl"),
-              int.parse(removeCaractersPhone(contatoController.text)),
-              box.get("contrato"),
-              conteudoController.text,
-              box.get("cpfCnpj"),
-              box.get("senha"),
-              box.get("param_ocorrenciatipo"),
-              box.get("param_motivoos"))
-          .then((onValue) {
-        if (onValue["status"] == 0) {
-          retorno = {"status": 0, "msg": "Chamado aberto com sucesso"};
-          //this.noti.showInfo('Chamado aberto com sucesso.', 5000);
-        } else if (onValue["status"] == 3) {
-          //"Já existe chamado aberto para o tipo selecionado"
-          retorno = {"status": 3, "msg": onValue["msg"]};
-          //this.noti.showInfo(chamado.msg, 5000);
-        }
-      }).catchError((onError) {
-        retorno = {"status": 1, "msg": "Ocorreu um erro ao abrir o chamado"};
-      });
-      return retorno;
-    }
-    
+    var repository = SupportModule.to.getDependency<SupportRepository>();
+    Map retorno;
+    await repository
+        .openCall(
+            box.get("baseUrl"),
+            int.parse(removeCaractersPhone(contatoController.text)),
+            box.get("contrato"),
+            conteudoController.text,
+            box.get("cpfCnpj"),
+            box.get("senha"),
+            box.get("param_ocorrenciatipo"),
+            box.get("param_motivoos"))
+        .then((onValue) {
+      if (onValue["status"] == 0) {
+        retorno = {"status": 0, "msg": "Chamado aberto com sucesso"};
+        //this.noti.showInfo('Chamado aberto com sucesso.', 5000);
+      } else if (onValue["status"] == 3) {
+        //"Já existe chamado aberto para o tipo selecionado"
+        retorno = {"status": 3, "msg": onValue["msg"]};
+        //this.noti.showInfo(chamado.msg, 5000);
+      }
+    }).catchError((onError) {
+      retorno = {"status": 1, "msg": "Ocorreu um erro ao abrir o chamado"};
+    });
+    return retorno;
   }
 
   final BehaviorSubject<bool> _animacaoButton = BehaviorSubject<bool>();

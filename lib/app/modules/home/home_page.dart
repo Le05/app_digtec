@@ -303,12 +303,12 @@ class _HomePageState extends State<HomePage> {
                                                   snapshots.data["param_icones_custom"] ==
                                                               "1" &&
                                                           snapshots.data[
-                                                                  "param_ico_segundavia"] !=
+                                                                  "param_ico_faturas"] !=
                                                               ""
                                                       ? CachedNetworkImage(
                                                           imageUrl: snapshots
                                                                   .data[
-                                                              "param_ico_segundavia"],
+                                                              "param_ico_faturas"],
                                                           width: MediaQuery.of(
                                                                       context)
                                                                   .size
@@ -335,7 +335,7 @@ class _HomePageState extends State<HomePage> {
                                                               10,
                                                         )*/
                                                       : Image.asset(
-                                                          "images/codigobarra.png",
+                                                          "images/fatura.png",
                                                           width: MediaQuery.of(
                                                                       context)
                                                                   .size
@@ -352,7 +352,7 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                   Container(
                                                       child:
-                                                          Text("Segunda via")),
+                                                          Text("Faturas")),
                                                 ],
                                               ),
                                             ),
@@ -361,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (_) =>
-                                                          ExtractConsumptionModule()));
+                                                          InvoicesModule()));
                                             },
                                           ),
                                         ),
@@ -384,12 +384,12 @@ class _HomePageState extends State<HomePage> {
                                                   snapshots.data["param_icones_custom"] ==
                                                               "1" &&
                                                           snapshots.data[
-                                                                  "param_ico_faturas"] !=
+                                                                  "param_ico_graficoconsumo"] !=
                                                               ""
                                                       ? CachedNetworkImage(
                                                           imageUrl: snapshots
                                                                   .data[
-                                                              "param_ico_faturas"],
+                                                              "param_ico_graficoconsumo"],
                                                           width: MediaQuery.of(
                                                                       context)
                                                                   .size
@@ -416,7 +416,7 @@ class _HomePageState extends State<HomePage> {
                                                               10,
                                                         )*/
                                                       : Image.asset(
-                                                          "images/fatura.png",
+                                                          "images/consumo.png",
                                                           width: MediaQuery.of(
                                                                       context)
                                                                   .size
@@ -429,9 +429,20 @@ class _HomePageState extends State<HomePage> {
                                                               10,
                                                         ),
                                                   SizedBox(
-                                                    height: 10,
+                                                    height: 5,
                                                   ),
-                                                  Text("Faturas"),
+                                                  Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              5,
+                                                      child: Column(
+                                                        children: <Widget>[
+                                                          Text("Consumo de"),
+                                                          Text("Internet")
+                                                        ],
+                                                      )),
                                                 ],
                                               ),
                                             ),
@@ -440,7 +451,7 @@ class _HomePageState extends State<HomePage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          InvoicesModule()));
+                                                          ExtractConsumptionModule()));
                                             },
                                           ),
                                         ),
