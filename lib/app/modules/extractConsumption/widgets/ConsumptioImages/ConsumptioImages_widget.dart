@@ -42,7 +42,7 @@ class ConsumptioImagesWidget extends StatelessWidget {
             }
 
             return Container(
-              child: Column(
+              child: ListView(
                 children: <Widget>[
                   SizedBox(height: 5,),
                   Container( 
