@@ -58,7 +58,7 @@ class ConsumptioImagesWidget extends StatelessWidget {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 270,
+                    height: 200,
                     child: Image.network(
                         "${consumptioImagesBloc.url}/media/img/rrdimg/${snapshot.data["login"]}-day.png"),
                   ),
@@ -74,7 +74,7 @@ class ConsumptioImagesWidget extends StatelessWidget {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 270,
+                    height: 200,
                     child: Image.network(
                         "${consumptioImagesBloc.url}/media/img/rrdimg/${snapshot.data["login"]}-month.png"),
                   ),
@@ -90,55 +90,15 @@ class ConsumptioImagesWidget extends StatelessWidget {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 270,
+                    height: 200,
                     child: Image.network(
-                        "${consumptioImagesBloc.url}/media/img/rrdimg/${snapshot.data["login"]}-year.png"),
+                        "${consumptioImagesBloc.url}/media/img/rrdimg/${snapshot.data["login"]}-year.png",
+                        fit: BoxFit.contain,),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
                   )
-                  // Container(
-                  //     margin: EdgeInsets.only(top: 10, bottom: 10),
-                  //     height: 30,
-                  //      decoration: BoxDecoration(
-                  //       color: Colors.green[200]
-                  //     ),
-                  //     child: Center(
-                  //         child: Text(
-                  //       "Consumo Diário",
-                  //       style: TextStyle(fontSize: 14),
-                  //     ))),
-                  // Container(
-                  //   child: Image.network(
-                  //       "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-day.png"),
-                  // ),
-                  // Container(
-                  //     margin: EdgeInsets.only(top: 10, bottom: 10),
-                  //     height: 30,
-                  //      decoration: BoxDecoration(
-                  //       color: Colors.green[200]
-                  //     ),
-                  //     child: Center(
-                  //         child: Text(
-                  //       "Consumo Mensal",
-                  //       style: TextStyle(fontSize: 14),
-                  //     ))),
-                  // Container(
-                  //   child: Image.network(
-                  //       "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-month.png"),
-                  // ),
-                  // Container(
-                  //     height: 30,
-                  //     margin: EdgeInsets.only(top: 10, bottom: 10),
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.green[200]
-                  //     ),
-                  //     child: Center(
-                  //         child: Text(
-                  //       "Consumo Anual",
-                  //       style: TextStyle(fontSize: 14),
-                  //     ))),
-                  // Container(
-                  //   child: Image.network(
-                  //       "https://sgp.franet.com.br/media/img/rrdimg/${snapshot.data["login"]}-year.png"),
-                  // ),
                 ],
               ),
             );
