@@ -439,7 +439,8 @@ class _HomePageState extends State<HomePage> {
                                                               5,
                                                       child: Column(
                                                         children: <Widget>[
-                                                          Text("Consumo de"),
+                                                          Text("Consumo"),
+                                                          Text("de"),
                                                           Text("Internet")
                                                         ],
                                                       )),

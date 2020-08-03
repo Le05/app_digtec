@@ -137,25 +137,25 @@ class ConsumptionWidget extends StatelessWidget {
                                           children: <Widget>[
                                             Text(
                                               "IP: ${snapshot.data["list"][index]["ip"]}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               "Download: ${filesize(snapshot.data["list"][index]["download"])}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               "Conectou: ${snapshot.data["list"][index]["dataini"]}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               "Horario: ${snapshot.data["list"][index]["horarioini"]}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               "Total de Tráfego: ${filesize(snapshot.data["list"][index]["total"])}",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 14),
+                                                  fontSize: 13),
                                             ),
                                           ],
                                         ),
@@ -165,11 +165,11 @@ class ConsumptionWidget extends StatelessWidget {
                                           children: <Widget>[
                                             Text(
                                               "MAC: ${snapshot.data["list"][index]["mac"]}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               "Upload: ${filesize(snapshot.data["list"][index]["upload"])}",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               snapshot.data["list"][index]
@@ -177,7 +177,7 @@ class ConsumptionWidget extends StatelessWidget {
                                                       null
                                                   ? "Desconectou: ${snapshot.data["list"][index]["datafim"]}"
                                                   : "Desconectou: -",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                             Text(
                                               snapshot.data["list"][index]
@@ -185,7 +185,7 @@ class ConsumptionWidget extends StatelessWidget {
                                                       null
                                                   ? "Horario: ${snapshot.data["list"][index]["horariofim"]}"
                                                   : "Horario: -",
-                                              style: TextStyle(fontSize: 14),
+                                              style: TextStyle(fontSize: 13),
                                             ),
                                           ],
                                         ),
