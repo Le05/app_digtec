@@ -29,6 +29,7 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
           body: Container(
             child: ListView(
               children: <Widget>[
+                paramExibirGraficoConsumo == "1" ?
                 Container(
                  // width: MediaQuery.of(context).size.width,
                 //  height: MediaQuery.of(context).size.height,
@@ -61,7 +62,7 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                       )
                     ],
                   ),
-                ),
+                ):Container(),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,

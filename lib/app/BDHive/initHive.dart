@@ -96,6 +96,7 @@ Future<Map> initHive({BuildContext context}) async {
       imagemFundo = resposta[0]["imagem_fundo"];
       paymentCardcredit = resposta[0]["payment_cardcredit"];
       paramExibirPreCadastro = resposta[0]["param_exibir_pre_cadastro"];
+      paramExibirGraficoConsumo = resposta[0]["param_exibir_grafico_consumo"];
       
       if (resposta[0]["param_logotipomarginright"] != "") {
         paramlogotipomarginright =

@@ -313,7 +313,7 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               },
                             ),
-                            paramExibirPreCadastro == "1" ?
+                            paramExibirGraficoConsumo == "1" ?
                             Container(
                                 margin: EdgeInsets.only(
                                     top: MediaQuery.of(context).size.height /
