@@ -12,6 +12,8 @@ class Titles {
   String linhaDigitavel;
   bool pagarcartaodebito;
   bool pagarCartao;
+  String codigoPix;
+  bool gerarPix;
 
   Titles(
       this.vencimentoAtualizado,
@@ -26,7 +28,9 @@ class Titles {
       this.valor,
       this.linhaDigitavel,
       this.pagarcartaodebito,
-      this.pagarCartao);
+      this.pagarCartao,
+      this.codigoPix,
+      this.gerarPix);
 }
 
 List<Titles> fromJson(json) {
@@ -45,7 +49,9 @@ List<Titles> fromJson(json) {
         u["valor"],
         u["linhadigitavel"],
         u["pagarcartaodebito"],
-        u["pagarcartao"]);
+        u["pagarcartao"],
+        u["codigopix"],
+        u["gerapix"]);
     titles.add(titlesU);
   }
   return titles;

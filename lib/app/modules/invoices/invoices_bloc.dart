@@ -5,8 +5,8 @@ import 'package:franet/app/modules/invoices/invoices_module.dart';
 import 'package:franet/app/modules/invoices/repository/invoices_repository.dart';
 
 class InvoicesBloc extends BlocBase {
+  var repository = InvoicesModule.to.getDependency<InvoicesRepository>();
   Future getInvoices() async {
-    var repository = InvoicesModule.to.getDependency<InvoicesRepository>();
     var box = await getHiveInstance();//await initHive();
 
     var response = await repository.getInvoicesRepository(box.get("cpfCnpj"),

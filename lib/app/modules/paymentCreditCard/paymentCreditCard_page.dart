@@ -214,19 +214,6 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           width: MediaQuery.of(context).size.width,
                           animationDuration: Duration(milliseconds: 1000),
                         ),
-                        // child: CreditCard(
-                        //   cardNumber: numeroCartao,
-                        //   cardExpiry: dataExpiracao,
-                        //   cardHolderName: nomeCartao,
-                        //   cvv: cvv,
-                        //   bankName: "",
-                        //   cardType: CardType
-                        //       .masterCard, // Optional if you want to override Card Type
-                        //   showBackSide: false,
-                        //   frontBackground: CardBackgrounds.black,
-                        //   backBackground: CardBackgrounds.white,
-                        //   showShadow: true,
-                        // ),
                       ),
                       SizedBox(
                         height: 20,

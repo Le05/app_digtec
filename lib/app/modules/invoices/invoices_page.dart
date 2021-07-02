@@ -20,50 +20,12 @@ class _InvoicesPageState extends State<InvoicesPage> {
       length: 2,
       child: Scaffold(
           appBar: AppBar(
-            /* bottom: TabBar(
-            tabs: <Widget>[
-             Tab(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      "images/devendo.png",
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "Não pagas",
-                      style: TextStyle(fontSize: 17),
-                    ),
-                  ],
-                ),
-              ),
-              Tab(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset("images/pago.png"),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "Pagas",
-                      style: TextStyle(fontSize: 17),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),*/
             title: Text(widget.title),
           ),
           body: Container(
             child: ListView(
               children: <Widget>[
                 Container(
-                 // width: MediaQuery.of(context).size.width,
-                //  height: MediaQuery.of(context).size.height,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -101,9 +63,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                     controller: pageController,
                     children: <Widget>[
                       InvoicesNotPaidWidget(),
-                      InvoicesPaidWidget(),
-                      
-                      
+                      InvoicesPaidWidget(),  
                     ],
                   ),
                 )

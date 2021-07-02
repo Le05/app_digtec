@@ -4,6 +4,7 @@ import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
 import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
 import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
+import 'package:franet/app/modules/paymentCreditCardExternal/payment_credit_card_external_module.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 InvoicesNotPaidBloc invoicesNotPaidBloc = InvoicesNotPaidBloc();
@@ -144,6 +145,60 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     ));
                                   }),
                             ),
+                            snapshot.data["titlesAberta"][index].gerarPix
+                                ? ButtonTheme(
+                                    minWidth: MediaQuery.of(context).size.width,
+                                    buttonColor: Color(0xFF5c5cb8),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        side: BorderSide(
+                                            color: Color(0xFF28a744))),
+                                    child: RaisedButton(
+                                        child: Text(
+                                          "Copiar Código Pix",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () async {
+                                          if (snapshot
+                                                      .data["titlesAberta"]
+                                                          [index]
+                                                      .codigoPix ==
+                                                  null ||
+                                              snapshot
+                                                      .data["titlesAberta"]
+                                                          [index]
+                                                      .codigoPix ==
+                                                  "") {
+                                            await invoicesNotPaidBloc
+                                                .gerarCodigoPix(snapshot
+                                                    .data["titlesAberta"][index]
+                                                    .id)
+                                                .then((value) {
+                                              Clipboard.setData(ClipboardData(
+                                                  text: value["codigopix"]));
+                                              Scaffold.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "Código copiado com sucesso!!!"),
+                                              ));
+                                            });
+                                          } else {
+                                            Clipboard.setData(ClipboardData(
+                                                text: snapshot
+                                                    .data["titlesAberta"][index]
+                                                    .codigoPix));
+                                            Scaffold.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  "Código copiado com sucesso!!!"),
+                                            ));
+                                          }
+
+                                          // snapshot.data["titlesAberta"][index].codigoPix
+                                        }),
+                                  )
+                                : Container(),
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
                               buttonColor: Color(0xFF5BC0DE),
@@ -175,15 +230,26 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         onPressed: () async {
-                                          fatura = snapshot.data["titlesAberta"]
-                                              [index].id;
-                                         await Navigator.of(context).push(
+                                          fatura = snapshot
+                                              .data["titlesAberta"][index].id;
+                                          await invoicesNotPaidBloc
+                                              .buscarGateway(fatura)
+                                              .then((value) async {
+                                            if (value["status"] == 1) {
+                                              // link externo
+                                              await Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PaymentCreditCardExternalModule(value["link"])));
+                                            } else {
+                                              await Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       PaymentCreditCardModule()));
-                                                      setState(() {
-                                                        
-                                                      });
+                                            }
+                                          });
+
+                                          setState(() {});
                                         }),
                                   )
                                 : Container()

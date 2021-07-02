@@ -53,8 +53,7 @@ class PaymentCreditCardRepository extends Disposable {
   Future pagarComCartaoSalvo(int fatura, int cartaoId, String email) async {
     Response response;
     var url = box.get("baseUrl");
-    response =
-        await dio.post(url + '/pagamento/cartao/$fatura', data: {
+    response = await dio.post(url + '/pagamento/cartao/$fatura', data: {
       "cpfcnpj": box.get("cpfCnpj"),
       "senha": box.get("senha"),
       "contrato": box.get("contrato"),
