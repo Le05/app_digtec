@@ -145,6 +145,8 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     ));
                                   }),
                             ),
+                            (snapshot.data["titlesAberta"][index].codigoPix != null && 
+                            snapshot.data["titlesAberta"][index].codigoPix != "") ||
                             snapshot.data["titlesAberta"][index].gerarPix
                                 ? ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width,
