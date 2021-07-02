@@ -26,8 +26,8 @@ class InvoicesNotPaidBloc extends BlocBase {
   }
 
   Future buscarGateway(int id) async {
-    print(repository.buscarGatewayPagamento(
-        id, box.get("cpfCnpj"), box.get("senha"), box.get("contrato")));
+    return await repository.buscarGatewayPagamento(
+        id, box.get("cpfCnpj"), box.get("senha"), box.get("contrato")).then((value) => value.data);
   }
 
   @override

@@ -19,7 +19,7 @@ class InvoicesRepository extends Disposable {
       String baseUrl) async {
     return await dio.post(baseUrl + 'pagamento/pix/$id',data: {
       "cpfcnpj": cpfcnpj, "senha": senha, "contrato": contrato
-    }).then((value) => value);
+    }).then((value) => value.data);
   }
 
     Future buscarGatewayPagamento(
