@@ -11,32 +11,44 @@ class SupportRepository extends Disposable {
       String conteudo,
       String cpfCnpj,
       String senha,
+      String paramAbreos,
       String paramOcorrenciatipo,
       String paramMotivos) async {
     Response response;
     dio.clear();
     dio.options.connectTimeout = 10000;
     dio.options.receiveTimeout = 10000;
-    if (paramMotivos == null ||
-        paramOcorrenciatipo == null ||
-        paramMotivos == "" ||
-        paramOcorrenciatipo == "") {
-      response = await dio.post(baseUrl + "/chamado", data: {
+        if ( paramAbreos == "0" ) 
+        {
+          response = await dio.post(baseUrl + "/chamado", data: {
         "cpfcnpj": cpfCnpj,
         "senha": senha,
         "contrato": contrato,
         "contato": contato,
-        "conteudo": conteudo
+        "conteudo": conteudo,
+        "ocorrenciatipo": paramOcorrenciatipo,
+        "sem_os": 1
+       });
+        } else if (paramMotivos == null ||
+        paramOcorrenciatipo == null ||
+        paramMotivos == "" ||
+        paramOcorrenciatipo == "") {
+          response = await dio.post(baseUrl + "/chamado", data: {
+        "cpfcnpj": cpfCnpj,
+        "senha": senha,
+        "contrato": contrato,
+        "contato": contato,
+        "conteudo": conteudo,
       });
-    } else {
+    } else if ( paramAbreos == "1" ) {
       response = await dio.post(baseUrl + "/chamado", data: {
         "cpfcnpj": cpfCnpj,
         "senha": senha,
         "contrato": contrato,
         "contato": contato,
         "conteudo": conteudo,
-        "param_ocorrenciatipo":paramOcorrenciatipo,
-        "param_motivoos":paramMotivos
+        "ocorrenciatipo":paramOcorrenciatipo,
+        "motivoos":paramMotivos
       });
     }
     return response.data;

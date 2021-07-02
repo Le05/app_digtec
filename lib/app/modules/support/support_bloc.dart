@@ -16,13 +16,14 @@ class SupportBloc extends BlocBase {
     var repository = SupportModule.to.getDependency<SupportRepository>();
     Map retorno;
     await repository
-        .openCall(
+                .openCall(
             box.get("baseUrl"),
             int.parse(removeCaractersPhone(contatoController.text)),
             box.get("contrato"),
             conteudoController.text,
             box.get("cpfCnpj"),
             box.get("senha"),
+            box.get("param_abreos"),
             box.get("param_ocorrenciatipo"),
             box.get("param_motivoos"))
         .then((onValue) {

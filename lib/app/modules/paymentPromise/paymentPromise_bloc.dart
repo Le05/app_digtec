@@ -8,7 +8,7 @@ class PaymentPromiseBloc extends BlocBase {
   Future<Map> verifyContractsStatus() async {
     Map<String, dynamic> retorno = {};
     var box = await getHiveInstance();//await initHive();
-    if (box.get("status") == " Suspenso") {
+    if (box.get("status") == " Suspenso" || box.get("status") == " Ativo V. Reduzida") {
       retorno.addAll({
         "statusSupenso": true,
         "razaosocial": box.get("razaoSocial"),
