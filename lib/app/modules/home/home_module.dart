@@ -1,3 +1,7 @@
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_bloc.dart';
+import 'package:franet/app/modules/home/widgets/homeDefault/widgets/card/card_bloc.dart';
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/home_custom_first_bloc.dart';
+import 'package:franet/app/modules/home/widgets/homeDefault/home_default_bloc.dart';
 import 'package:franet/app/modules/home/widgets/propaganda/propaganda_bloc.dart';
 import 'package:franet/app/modules/home/repository/home_repository.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
@@ -8,6 +12,10 @@ import 'package:franet/app/modules/home/home_page.dart';
 class HomeModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => CardAcessoRapidoBloc()),
+        Bloc((i) => CardBloc()),
+        Bloc((i) => HomeCustomFirstBloc()),
+        Bloc((i) => HomeDefaultBloc()),
         Bloc((i) => PropagandaBloc()),
         Bloc((i) => HomeBloc()),
       ];

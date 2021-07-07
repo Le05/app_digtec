@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:device_info/device_info.dart';
@@ -6,6 +7,9 @@ import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class AppBloc extends BlocBase {
   Future getAndroidOrIOS() async {
+    if (base64.encode(utf8.encode(key + token)) != cripto)
+          token = cripto;
+
     List deviceID = [];
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
@@ -26,18 +30,16 @@ class AppBloc extends BlocBase {
     return deviceID;
   }
 
-  Future<void> initOneSignal(String key) async {
-    OneSignal.shared.init(key, iOSSettings: {
-      OSiOSSettings.autoPrompt: true,
-      OSiOSSettings.inAppLaunchUrl: true
-    });
-    OneSignal.shared
-        .setInFocusDisplayType(OSNotificationDisplayType.notification);
+  Future<void> initOneSignal(String keyOneSignal) async {
+    OneSignal.shared.setAppId(keyOneSignal);
+    // OneSignal.shared.init(keyOneSignal, iOSSettings: {
+    //   OSiOSSettings.autoPrompt: true,
+    //   OSiOSSettings.inAppLaunchUrl: true
+    // });
     var deviceID = await getAndroidOrIOS();
     OneSignal.shared.setExternalUserId(deviceID[0]);
-    var status = await OneSignal.shared.getPermissionSubscriptionState();
-
-    playerId = status.subscriptionStatus.userId;
+    var status = await OneSignal.shared.getDeviceState();
+    playerId = status.userId;
   }
 
   @override

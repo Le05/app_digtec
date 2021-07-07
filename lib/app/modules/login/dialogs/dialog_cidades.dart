@@ -76,7 +76,7 @@ Future<void> mensagemChooseCidadeProvedor(
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  FlatButton(
+                  TextButton(
                     child: Text('Voltar'),
                     onPressed: () {
                       Navigator.of(context).pop();

@@ -1,5 +1,10 @@
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
+String key = "franet";
+String token = "7K74P-LBSB3-XYJXA-G6MQS";
 
 String paramurltestevelocidade;
 String cor;
@@ -25,5 +30,11 @@ String imagemFundo;
 String paymentCardcredit;
 String paramExibirPreCadastro;
 String paramExibirGraficoConsumo;
+String paramIconesCustom;
+int paramTemplate;
+int imagemFundoExibir2;
+String imageFundo2;
 List emails;
 int fatura;
+File logoTipo;
+const String cripto = "ZnJhbmV0N0s3NFAtTEJTQjMtWFlKWEEtRzZNUVM=";

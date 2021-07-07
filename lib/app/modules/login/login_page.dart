@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                                   margin: EdgeInsets.only(
                                       left: paramlogotipomarginleft,
                                       right: paramlogotipomarginright),
-                                  child: Image.file(snapshot.data.file));
+                                  child: Image.file(snapshot.data));
                             })),
                     Form(
                       key: _formKey,
@@ -234,7 +234,6 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   );
                                 }),
-                                
                             StreamBuilder(
                               initialData: false,
                               stream: loginBloc.outputLogin,
@@ -255,16 +254,7 @@ class _LoginPageState extends State<LoginPage> {
                                       height:
                                           MediaQuery.of(context).size.height /
                                               15,
-                                      child: RaisedButton(
-                                        color: Color(int.parse(corapp2)),
-                                        child: Text(
-                                          "Entrar",
-                                          style: TextStyle(
-                                              color: corfontebuttonhome == null
-                                                  ? Colors.black
-                                                  : corfontebuttonhome,
-                                              fontSize: 16),
-                                        ),
+                                      child: ElevatedButton(
                                         onPressed: () async {
                                           if (_formKey.currentState
                                               .validate()) {
@@ -273,13 +263,13 @@ class _LoginPageState extends State<LoginPage> {
                                                 .loginUser(context)
                                                 .then((onValue) {
                                               if (onValue == 3) {
-                                                Scaffold.of(context)
+                                                ScaffoldMessenger.of(context)
                                                     .showSnackBar(SnackBar(
                                                   content: Text(
                                                       "Não foi encontrado nenhum contrato referente a este CPF/CNPJ !!"),
                                                 ));
                                               } else if (onValue == 1) {
-                                                Scaffold.of(context)
+                                                ScaffoldMessenger.of(context)
                                                     .showSnackBar(SnackBar(
                                                   content: Text(
                                                       "Ocorreu um erro ao logar, verique as credenciais e internet!!"),
@@ -287,9 +277,28 @@ class _LoginPageState extends State<LoginPage> {
                                               }
                                             });
                                             loginBloc.animacaoLogin(false);
-                                            // Navigator.push(context, MaterialPageRoute(builder: (context) => HomeModule()));
                                           }
                                         },
+                                        child: Text(
+                                          "Entrar",
+                                          style: TextStyle(
+                                              color: corfontebuttonhome == null
+                                                  ? Colors.black
+                                                  : corfontebuttonhome,
+                                              fontSize: 16),
+                                        ),
+                                        style: ButtonStyle(
+                                            minimumSize:
+                                                MaterialStateProperty.all<Size>(
+                                                    Size(
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.07))),
                                       ),
                                     ),
                                     secondChild: Container(
@@ -313,45 +322,48 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                               },
                             ),
-                            paramExibirGraficoConsumo == "1" ?
-                            Container(
-                                margin: EdgeInsets.only(
-                                    top: MediaQuery.of(context).size.height /
-                                        25),
-                                child: InkWell(
-                                  child: Html(
-                                    data: parammsgprecadastro,
-                                    defaultTextStyle: TextStyle(fontSize: 17),
-                                    customTextAlign: (element) {
-                                      return TextAlign.center;
-                                    },
-                                  ),
-                                  onTap: () async {
-                                    if (preCadastros.length == 1) {
-                                      await mensagemChooseTipoPessoa(
-                                          context,
-                                          [
-                                            {
-                                              "url": preCadastros[0]
-                                                  ["app_precadastropj"],
-                                              "tipo": "Pessoa Juridica"
-                                            },
-                                            {
-                                              "url": preCadastros[0]
-                                                  ["app_precadastropf"],
-                                              "tipo": "Pessoa Fisica"
-                                            }
-                                          ],
-                                          "Escolha o seu tipo");
-                                    } else {
-                                      await mensagemChooseCidadeProvedor(
-                                        context,
-                                        preCadastros,
-                                        "Escolha a sua localização",
-                                      );
-                                    }
-                                  },
-                                )):Container()
+                            paramExibirGraficoConsumo == "1"
+                                ? Container(
+                                    margin: EdgeInsets.only(
+                                        top:
+                                            MediaQuery.of(context).size.height /
+                                                25),
+                                    child: InkWell(
+                                      child: Html(
+                                        data: parammsgprecadastro,
+                                        defaultTextStyle:
+                                            TextStyle(fontSize: 17),
+                                        customTextAlign: (element) {
+                                          return TextAlign.center;
+                                        },
+                                      ),
+                                      onTap: () async {
+                                        if (preCadastros.length == 1) {
+                                          await mensagemChooseTipoPessoa(
+                                              context,
+                                              [
+                                                {
+                                                  "url": preCadastros[0]
+                                                      ["app_precadastropj"],
+                                                  "tipo": "Pessoa Juridica"
+                                                },
+                                                {
+                                                  "url": preCadastros[0]
+                                                      ["app_precadastropf"],
+                                                  "tipo": "Pessoa Fisica"
+                                                }
+                                              ],
+                                              "Escolha o seu tipo");
+                                        } else {
+                                          await mensagemChooseCidadeProvedor(
+                                            context,
+                                            preCadastros,
+                                            "Escolha a sua localização",
+                                          );
+                                        }
+                                      },
+                                    ))
+                                : Container()
                           ],
                         ),
                       ),

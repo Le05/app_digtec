@@ -31,7 +31,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                     children: <Widget>[
                       ButtonTheme(
                         minWidth: MediaQuery.of(context).size.width / 3,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text(
                               "Não Pagas",
                               style: TextStyle(
@@ -43,7 +43,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                       ),
                       ButtonTheme(
                         minWidth: MediaQuery.of(context).size.width / 3,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text(
                               "Pagas",
                               style: TextStyle(

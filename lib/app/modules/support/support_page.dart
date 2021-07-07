@@ -109,7 +109,7 @@ class _SupportPageState extends State<SupportPage> {
                                   .openDiskPhone(
                                       snapshot.data["param_telprincipal"])
                                   .catchError((onError) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(
                                       "Ocorreu um erro ao abrir o app de telefone"),
                                 ));
@@ -142,7 +142,7 @@ class _SupportPageState extends State<SupportPage> {
                                   .openDiskPhone(
                                       snapshot.data["param_telsecundario"])
                                   .catchError((onError) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(
                                       "Ocorreu um erro ao abrir o app de telefone"),
                                 ));
@@ -174,7 +174,7 @@ class _SupportPageState extends State<SupportPage> {
                               supportBloc
                                   .openWhatsApp(snapshot.data["param_telwhats"])
                                   .catchError((onError) {
-                                Scaffold.of(context).showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(
                                       "Ocorreu um erro ao abrir o WhatsApp"),
                                 ));
@@ -255,7 +255,7 @@ class _SupportPageState extends State<SupportPage> {
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
-                          child: RaisedButton(
+                          child: ElevatedButton(
                               child: Text(
                                 "Solicitar Suporte",
                                 style: TextStyle(
@@ -266,19 +266,19 @@ class _SupportPageState extends State<SupportPage> {
                                 if (_formKey.currentState.validate()) {
                                   await supportBloc.openCall().then((onValue) {
                                     if (onValue["status"] == 0) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(onValue["msg"]),
                                       ));
                                     }
                                     if (onValue["status"] == 3) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(onValue["msg"]),
                                       ));
                                     }
                                     if (onValue["status"] == 1) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(onValue["msg"]),
                                       ));

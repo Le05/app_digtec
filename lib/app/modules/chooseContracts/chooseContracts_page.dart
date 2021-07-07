@@ -28,15 +28,6 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
           height: MediaQuery.of(context).size.height,
           child: Stack(
             children: <Widget>[
-              /*Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30)),
-                    color: Colors.green),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2.5,
-              ),*/
               Container(
                   //margin: EdgeInsets.only(
                   // top: 5),

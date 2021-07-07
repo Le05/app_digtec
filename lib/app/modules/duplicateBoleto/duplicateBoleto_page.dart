@@ -290,7 +290,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                                   BorderRadius.circular(0.0),
                                               side: BorderSide(
                                                   color: Color(0xFF28a744))),
-                                          child: RaisedButton(
+                                          child: ElevatedButton(
                                               child: Row(
                                                 children: <Widget>[
                                                   Image.asset(
@@ -378,7 +378,7 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                   onTap: () {
                                     Clipboard.setData(ClipboardData(
                                         text: snapshot.data["linhadigitavel"]));
-                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       content:
                                           Text("Código copiado com sucesso!!!"),
                                     ));
@@ -478,13 +478,13 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     await DuplicateBoletoBloc()
                                         .postFatura2Via("email")
                                         .then((onValue) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content:
                                             Text("Fatura enviada com sucesso"),
                                       ));
                                     }).catchError((onError) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(onError),
                                       ));
@@ -531,13 +531,13 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                     await DuplicateBoletoBloc()
                                         .postFatura2Via("sms")
                                         .then((onValue) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content:
                                             Text("Fatura enviada com sucesso"),
                                       ));
                                     }).catchError((onError) {
-                                      Scaffold.of(context)
+                                      ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(onError),
                                       ));

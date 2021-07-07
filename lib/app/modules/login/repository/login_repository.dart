@@ -20,8 +20,6 @@ class LoginRepository extends Disposable {
       List<Contracts> contracts;
       Box box = await getHiveInstance(); //initHive();
       String baseUrl = "https://www.appdoprovedor.com.br/_api/verificaws.php";
-      String key = box.get("key");
-      String token = box.get("token");
       String deviceID = box.get("deviceID");
       String plataforma = box.get("plataforma");
       dio.clear();

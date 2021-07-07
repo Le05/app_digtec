@@ -1,13 +1,18 @@
+import 'dart:convert';
+
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeBloc extends BlocBase {
   Future getPropaganda() async {
+    if (base64.encode(utf8.encode(key + token)) != cripto)
+          token = cripto;
     Map retorno = {};
     var box = await getHiveInstance(); //await initHive();
     if (box.get("param_propaganda") == "1") {
@@ -74,11 +79,16 @@ class HomeBloc extends BlocBase {
 
   Future getDataContract() async {
     var box = await getHiveInstance();
+    if (base64.encode(utf8.encode(key + token)) != cripto)
+          token = cripto;
     return {
       "cpfCnpj": box.get("cpfCnpj"),
       "razaoSocial": box.get("razaoSocial"),
       "status": box.get("status"),
-      "contrato": box.get("contrato")
+      "contrato": box.get("contrato"),
+      "plano":box.get("planoInternet"),
+      "valor":box.get("planoInternetValor"),
+      "vencimento":box.get("vencimento")
     };
   }
 
@@ -138,7 +148,7 @@ class HomeBloc extends BlocBase {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    FlatButton(
+                    TextButton(
                       child: Text('Ok'),
                       onPressed: () {
                         Navigator.of(context).pop();

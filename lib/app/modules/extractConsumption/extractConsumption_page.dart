@@ -38,7 +38,7 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                     children: <Widget>[
                       ButtonTheme(
                         minWidth: MediaQuery.of(context).size.width / 3,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text(
                               "Consumo",
                               style: TextStyle(
@@ -50,7 +50,7 @@ class _ExtractConsumptionPageState extends State<ExtractConsumptionPage> {
                       ),
                       ButtonTheme(
                         minWidth: MediaQuery.of(context).size.width / 3,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                             child: Text(
                               "Gráficos",
                               style: TextStyle(

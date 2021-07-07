@@ -18,8 +18,6 @@ class ChooseContractsBloc extends BlocBase {
   }
 
   Future enviarDadosDispositivo(contrato) async {
-    String key = box.get("key");
-    String token = box.get("token");
     String deviceID = box.get("deviceID");
     String plataforma = box.get("plataforma");
     await dio.post("https://www.appdoprovedor.com.br/_api/write_dispositivo.php", data: {

@@ -160,7 +160,7 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                                           Radius.circular(30))),
                                   height:
                                       MediaQuery.of(context).size.height / 17,
-                                  child: RaisedButton(
+                                  child: ElevatedButton(
                                       child: Text(
                                         "Realizar Promessa de Pagamento",
                                         style: TextStyle(
@@ -175,7 +175,7 @@ class _PaymentPromisePageState extends State<PaymentPromisePage> {
                                                 snapshot.data["contrato"],
                                                 snapshot.data["baseUrl"])
                                             .then((onValue) {
-                                          Scaffold.of(context)
+                                          ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Text("$onValue"),
                                           ));

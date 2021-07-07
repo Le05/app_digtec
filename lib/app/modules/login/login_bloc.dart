@@ -10,6 +10,7 @@ import 'package:franet/app/modules/login/login_module.dart';
 import 'package:franet/app/modules/login/repository/login_repository.dart';
 import 'package:hive/hive.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class LoginBloc extends BlocBase {
 TextEditingController cpfCnpjController = TextEditingController();
@@ -102,11 +103,12 @@ TextEditingController cpfCnpjController = TextEditingController();
     box = await getHiveInstance();
     var file =
         await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
-    if (file == null) {
+    logoTipo = file.file;
+    if (logoTipo == null) {
       await DefaultCacheManager().downloadFile(box.get("param_logotipo"));
       return await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
     } else {
-      return file;
+      return logoTipo;
     }
   }
 

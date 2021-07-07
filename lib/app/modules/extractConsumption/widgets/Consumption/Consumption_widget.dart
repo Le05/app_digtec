@@ -31,7 +31,7 @@ class ConsumptionWidget extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(50)))),
+                                BorderRadius.all(Radius.circular(5)))),
                     validator: (text) {
                       if (text.isEmpty) {
                         return "Por Favor, Insira uma Data!!";
@@ -55,9 +55,13 @@ class ConsumptionWidget extends StatelessWidget {
               child: ButtonTheme(
                 minWidth: MediaQuery.of(context).size.width / 3,
                 height: MediaQuery.of(context).size.height / 15,
-                child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(10.0)))),
                     child: Text(
                       "Consultar",
                       style: TextStyle(color: Colors.white, fontSize: 16),

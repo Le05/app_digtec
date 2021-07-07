@@ -37,19 +37,25 @@ class PropagandaWidget extends StatelessWidget {
                           child: Center(
                             child: Text(
                               snapshot.data["param_propagandatitulo"],
-                              style:
-                                  TextStyle(fontSize: 20, color: Theme.of(context).textTheme.headline3.color),
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .headline3
+                                      .color),
                             ),
                           ),
                         )
                       : Container(),
                   CarouselSlider.builder(
-                    viewportFraction: 1.0,
-                    autoPlayInterval: Duration(seconds: 10),
-                    autoPlay: true,
+                    options: CarouselOptions(
+                      viewportFraction: 1.0,
+                      autoPlayInterval: Duration(seconds: 10),
+                      autoPlay: true,
+                      height: MediaQuery.of(context).size.height / 3,
+                    ),
                     itemCount: snapshot.data["propaganda"].length,
-                    height: MediaQuery.of(context).size.height / 3,
-                    itemBuilder: (BuildContext context, int index) {
+                    itemBuilder: (BuildContext context, int index,int page) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.only(left: 5, right: 5),

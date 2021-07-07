@@ -129,7 +129,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(0.0),
                                   side: BorderSide(color: Color(0xFF28a744))),
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                   child: Text(
                                     "Copiar Código de Barras",
                                     style: TextStyle(color: Colors.white),
@@ -139,7 +139,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                         text: snapshot
                                             .data["titlesAberta"][index]
                                             .linhaDigitavel));
-                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       content:
                                           Text("Código copiado com sucesso!!!"),
                                     ));
@@ -156,7 +156,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                             BorderRadius.circular(0.0),
                                         side: BorderSide(
                                             color: Color(0xFF28a744))),
-                                    child: RaisedButton(
+                                    child: ElevatedButton(
                                         child: Text(
                                           "Copiar Código Pix",
                                           style: TextStyle(color: Colors.white),
@@ -179,7 +179,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                                 .then((value) {
                                               Clipboard.setData(ClipboardData(
                                                   text: value["codigopix"]));
-                                              Scaffold.of(context)
+                                              ScaffoldMessenger.of(context)
                                                   .showSnackBar(SnackBar(
                                                 content: Text(
                                                     "Código copiado com sucesso!!!"),
@@ -190,7 +190,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                                 text: snapshot
                                                     .data["titlesAberta"][index]
                                                     .codigoPix));
-                                            Scaffold.of(context)
+                                            ScaffoldMessenger.of(context)
                                                 .showSnackBar(SnackBar(
                                               content: Text(
                                                   "Código copiado com sucesso!!!"),
@@ -207,7 +207,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(0.0),
                                   side: BorderSide(color: Color(0xFF34B4E5))),
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                   child: Text(
                                     "Visualizar ou Imprimir o Boleto",
                                     style: TextStyle(color: Colors.white),
@@ -226,7 +226,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                             BorderRadius.circular(0.0),
                                         side: BorderSide(
                                             color: Color(0xFFffc106))),
-                                    child: RaisedButton(
+                                    child: ElevatedButton(
                                         child: Text(
                                           "Pagamento com Cartão de Crédito",
                                           style: TextStyle(color: Colors.white),

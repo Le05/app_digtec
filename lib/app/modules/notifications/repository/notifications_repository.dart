@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class NotificationsRepository extends Disposable {
   Dio dio = Dio();
@@ -12,8 +13,8 @@ class NotificationsRepository extends Disposable {
     response = await dio.post(
         "https://www.appdoprovedor.com.br/_api/read_pushnotification.php",
         data: {
-          "key": "franet",
-          "token": "7K74P-LBSB3-XYJXA-G6MQS",
+          "key": key,
+          "token": token,
           "contrato":contrato
         });
     return response.data;

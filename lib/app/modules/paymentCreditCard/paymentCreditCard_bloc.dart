@@ -1,7 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
 import 'package:franet/app/modules/paymentCreditCard/repository/paymentCreditCard_repository.dart';
 import 'package:rxdart/rxdart.dart';

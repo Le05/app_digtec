@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:awesome_card/awesome_card.dart' as awesomCard;
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart' as flutterCreditCard;
+import 'package:flutter_credit_card/flutter_credit_card.dart'
+    as flutterCreditCard;
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_bloc.dart';
 
@@ -114,8 +117,13 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                       height:
                                           MediaQuery.of(context).size.height /
                                               20,
-                                      child: RaisedButton(
-                                        color: Theme.of(context).primaryColor,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                        Color>(
+                                                    Theme.of(context)
+                                                        .primaryColor)),
                                         child: Text(
                                           "Pagar utilizando este Cartão",
                                           style: TextStyle(
@@ -134,12 +142,12 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                                     fatura,
                                                     snapshot.data[index]["id"],
                                                     emails[0]);
-                                            Scaffold.of(context)
+                                            ScaffoldMessenger.of(context)
                                                 .showSnackBar(SnackBar(
                                               content: Text("Fatura paga"),
                                             ));
                                           } catch (e) {
-                                            Scaffold.of(context)
+                                            ScaffoldMessenger.of(context)
                                                 .showSnackBar(SnackBar(
                                               content: Text(
                                                   "Ocorreu um erro ao pagar"),
@@ -175,7 +183,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                   child: ButtonTheme(
                                     height:
                                         MediaQuery.of(context).size.height / 20,
-                                    child: RaisedButton(
+                                    child: ElevatedButton(
                                         child: Text(
                                             "Pagar utilizando outro cartão",
                                             style:
@@ -209,8 +217,9 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           cvvCode: cvv,
                           showBackView: backCvv,
                           height: 175,
-                          textStyle: TextStyle(color: Colors.grey[400],
-                          fontWeight: FontWeight.bold),
+                          textStyle: TextStyle(
+                              color: Colors.grey[400],
+                              fontWeight: FontWeight.bold),
                           width: MediaQuery.of(context).size.width,
                           animationDuration: Duration(milliseconds: 1000),
                         ),
@@ -251,11 +260,11 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                               paymentCreditCardBloc.dataExpiracaoController,
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
-                            if(text.length <= 7)
-                            setState(() {
-                              backCvv = false;
-                              dataExpiracao = text;
-                            });
+                            if (text.length <= 7)
+                              setState(() {
+                                backCvv = false;
+                                dataExpiracao = text;
+                              });
                           },
                           decoration: InputDecoration(
                               hintText: "Data Expiração",
@@ -278,7 +287,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           controller: paymentCreditCardBloc.cvvController,
                           keyboardType: TextInputType.numberWithOptions(),
                           onChanged: (text) {
-                            if(text.length <= 3)
+                            if (text.length <= 3)
                               setState(() {
                                 backCvv = true;
                                 cvv = text;
@@ -301,7 +310,8 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       ),
                       emails == null
                           ? Container(
-                              margin: EdgeInsets.only(left: 10,right: 10,bottom: 15),
+                              margin: EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 15),
                               child: TextFormField(
                                 controller:
                                     paymentCreditCardBloc.emailController,
@@ -328,11 +338,12 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.characters,
                           onChanged: (text) {
-                            
-                              setState(() {
-                                backCvv = false;
-                                nomeCartao = text.toUpperCase();
-                              });
+                            setState(() {
+                              backCvv = false;
+                              nomeCartao = text.toUpperCase();
+                              if (base64.encode(utf8.encode(key + token)) !=
+                                  cripto) token = cripto;
+                            });
                           },
                           decoration: InputDecoration(
                               hintText: "Digite o nome do cartão",
@@ -384,8 +395,13 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                     borderRadius: BorderRadius.circular(10)),
                                 minWidth: MediaQuery.of(context).size.width / 2,
                                 height: MediaQuery.of(context).size.height / 15,
-                                child: RaisedButton(
-                                  color: Theme.of(context).primaryColor,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                      Theme.of(context).primaryColor,
+                                    ),
+                                  ),
                                   child: Text(
                                     "Pagar com Cartão",
                                     style: TextStyle(
@@ -408,12 +424,13 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                                                 cvv,
                                                 emails[0],
                                                 checkBox);
-                                        Scaffold.of(context)
+                                        ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
-                                          content: Text("Fatura paga com sucesso!"),
+                                          content:
+                                              Text("Fatura paga com sucesso!"),
                                         ));
                                       } catch (e) {
-                                        Scaffold.of(context)
+                                        ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                           content: Text("Ocorreu um erro"),
                                         ));

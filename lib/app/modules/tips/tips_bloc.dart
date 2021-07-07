@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class TipsBloc extends BlocBase {
   Dio dio = Dio();
@@ -9,7 +10,7 @@ class TipsBloc extends BlocBase {
     Response response;
     response = await dio.post(
         "https://www.appdoprovedor.com.br/_api/read_dicas.php",
-        data: {"key": "franet", "token": "7K74P-LBSB3-XYJXA-G6MQS"});
+        data: {"key": key, "token": token});
     //retorno = response.data;
     /*var colors = generateColorsList();
     var index = 0;
