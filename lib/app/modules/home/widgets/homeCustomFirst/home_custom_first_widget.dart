@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_widget.dart';
@@ -16,12 +17,12 @@ class HomeCustomFirstWidget extends StatelessWidget {
             imagemFundoExibir2 == 1
                 ? Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.6,
+                    height: MediaQuery.of(context).size.height * 0.61,
                     child: Image.network(
                       imageFundo2,
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.6,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                     // color: Colors.red,
                   )
@@ -73,9 +74,9 @@ class HomeCustomFirstWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: 5, top: 15),
+                                    margin: EdgeInsets.only(left: 10, top: 15),
                                     child: Text(
-                                      "Olá ${snapshot.data["razaoSocial"]}",
+                                      "Olá",
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
@@ -92,7 +93,25 @@ class HomeCustomFirstWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: 5, top: 15),
+                                    margin: EdgeInsets.only(left: 10, top: 5),
+                                    child: Text(
+                                        "${snapshot.data["razaoSocial"]}",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            shadows: [
+                                              Shadow(
+                                                  color: Colors.grey,
+                                                  blurRadius: 2)
+                                            ])),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(left: 10, top: 5),
                                     child: Text(
                                       "Como podemos ajudar?",
                                       style: TextStyle(
@@ -101,22 +120,140 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(left: 5, top: 15),
-                                    child: Text(
-                                      "Acesso rápido",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                              Container(
+                                margin: EdgeInsets.only(left: 10, top: 15),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Plano atual",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 15,
+                                              color: Colors.white),
+                                        )
+                                      ],
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "${snapshot.data["plano"]}",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Valor: R\$ ${snapshot.data["valor"]}",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Vencimento: Todo dia ${snapshot.data["vencimento"]}",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 5, right: 5),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(top: 10),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.13,
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Status do serviço",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                "${snapshot.data["status"]}",
+                                                style: TextStyle(
+                                                    fontSize: 19,
+                                                    color: Colors.white),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 50,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Nº do contrato",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                "${snapshot.data["contrato"]}",
+                                                style: TextStyle(
+                                                    fontSize: 19,
+                                                    color: Colors.white),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    EdgeInsets.only(left: 5, right: 5, top: 20),
                                 // color: Colors.green,
                                 width: MediaQuery.of(context).size.width,
                                 height:
@@ -187,237 +324,114 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              SizedBox(height: 10,),
                               Container(
-                                margin: EdgeInsets.only(top: 20),
-                                width: MediaQuery.of(context).size.width,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.55 -
-                                        40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20)),
-                                  color: Colors.white,
-                                ),
-                                child: Column(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Container(
-                                      margin: EdgeInsets.only(top: 10),
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.13,
-                                      decoration: BoxDecoration(
-                                          color: Theme.of(context).primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "Status do serviço",
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text(
-                                                "${snapshot.data["status"]}",
-                                                style: TextStyle(
-                                                    fontSize: 19,
-                                                    color: Colors.white),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "Nº do contrato",
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text(
-                                                "${snapshot.data["contrato"]}",
-                                                style: TextStyle(
-                                                    fontSize: 19,
-                                                    color: Colors.white),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(left: 10, top: 15),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Plano atual",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 15),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "${snapshot.data["plano"]}",
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Valor: R\$ ${snapshot.data["valor"]}",
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Vencimento: Todo dia ${snapshot.data["vencimento"]}",
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(left: 10, top: 15),
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                  width: 35,
-                                                  height: 35,
-                                                  decoration: BoxDecoration(
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  50))),
-                                                  child: Icon(
-                                                    Icons.phone,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(top:5),
-                                                  child: Text("Telefone"),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            
-                                             margin: EdgeInsets.only(left:10),
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                  width: 35,
-                                                  height: 35,
-                                                  decoration: BoxDecoration(
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  50))),
-                                                  child: Icon(
-                                                    Icons.phone,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(top:5),
-                                                  child: Text("WhatsApp"),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            
-                                             margin: EdgeInsets.only(left:10),
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                  width: 35,
-                                                  height: 35,
-                                                  decoration: BoxDecoration(
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  50))),
-                                                  child: Icon(
-                                                    Icons.phone,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(top:5),
-                                                  child: Text("Facebook"),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  Size(
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.09,
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.09)),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.orange),
+                                          shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                        ),
+                                        onPressed: () {},
+                                        child: Icon(Icons.phone)),
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  Size(
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.09,
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.09)),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.orange),
+                                          shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                        ),
+                                        onPressed: () {},
+                                        child: Icon(FontAwesomeIcons.whatsapp)),
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  Size(
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.09,
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.09)),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.orange),
+                                          shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                        ),
+                                        onPressed: () {},
+                                        child: Icon(FontAwesomeIcons.facebook)),
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                          minimumSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  Size(
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.09,
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.09)),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.orange),
+                                          shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                        ),
+                                        onPressed: () {},
+                                        child: Icon(FontAwesomeIcons.instagram))
                                   ],
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         );
