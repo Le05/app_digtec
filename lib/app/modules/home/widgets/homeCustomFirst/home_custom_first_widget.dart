@@ -205,7 +205,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "Status do serviço",
+                                                "Status do Serviço",
                                                 style: TextStyle(
                                                     color: Colors.white),
                                               ),
@@ -215,7 +215,8 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                               Text(
                                                 "${snapshot.data["status"]}",
                                                 style: TextStyle(
-                                                    fontSize: 19,
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
                                                     color: Colors.white),
                                               )
                                             ],
@@ -230,7 +231,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                "Nº do contrato",
+                                                "Nº do Contrato",
                                                 style: TextStyle(
                                                     color: Colors.white),
                                               ),
@@ -240,7 +241,8 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                               Text(
                                                 "${snapshot.data["contrato"]}",
                                                 style: TextStyle(
-                                                    fontSize: 19,
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
                                                     color: Colors.white),
                                               )
                                             ],
@@ -278,7 +280,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/suporte.png",
+                                      urlIcone: "images/suportenew.png",
                                       label: "Suporte",
                                     ),
                                     CardAcessoRapidoWidget(
@@ -288,7 +290,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/notificacao.png",
+                                      urlIcone: "images/notification.png",
                                       label: "Notificações",
                                     ),
                                     CardAcessoRapidoWidget(
@@ -324,111 +326,63 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 10,),
+                              SizedBox(height: 50),
                               Container(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  Size(
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.09,
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.09)),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.orange),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0))),
-                                        ),
-                                        onPressed: () {},
-                                        child: Icon(Icons.phone)),
+                                      onPressed: () {},
+                                      child: Icon(Icons.phone),
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange,
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12),
+                                        
+                                      ),
+                                      
+                                    ),
                                     ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  Size(
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.09,
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.09)),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.orange),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0))),
-                                        ),
-                                        onPressed: () {},
-                                        child: Icon(FontAwesomeIcons.whatsapp)),
+                                      onPressed: () {},
+                                      child: Icon(FontAwesomeIcons.whatsapp),
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange,
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12),
+                                      ),
+                                    ),
                                     ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  Size(
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.09,
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.09)),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.orange),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0))),
-                                        ),
-                                        onPressed: () {},
-                                        child: Icon(FontAwesomeIcons.facebook)),
+                                      onPressed: () {},
+                                      child: Icon(FontAwesomeIcons.facebook),
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange,
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12),
+                                      ),
+                                    ),
+                                  ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(FontAwesomeIcons.instagram),
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange,
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12),
+                                      ),
+                                    ),
                                     ElevatedButton(
-                                        style: ButtonStyle(
-                                          minimumSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  Size(
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.09,
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.09)),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.orange),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0))),
-                                        ),
-                                        onPressed: () {},
-                                        child: Icon(FontAwesomeIcons.instagram))
+                                      onPressed: () {},
+                                      child: Icon(FontAwesomeIcons.home),
+                                      
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.orange,
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(12),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )
