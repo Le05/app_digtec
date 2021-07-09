@@ -31,8 +31,12 @@ class CardAcessoRapidoWidget extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 10,
                   ),
             Container(
-              margin: EdgeInsets.only(top:5,left: 5,right: 5),
-              child: Text(label),
+              margin: EdgeInsets.only(top: 5, left: 5, right: 5),
+              child: Row(
+                children: [
+                  Expanded(child: Text(label)),
+                ],
+              ),
             ),
           ],
         ),
