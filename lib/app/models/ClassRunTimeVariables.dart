@@ -39,4 +39,6 @@ String imageFundo2;
 List emails;
 int fatura;
 File logoTipo;
+String paramInstagram;
+String paramFacebook;
 const String cripto = "ZnJhbmV0N0s3NFAtTEJTQjMtWFlKWEEtRzZNUVM=";

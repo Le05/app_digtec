@@ -315,26 +315,26 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                       urlIcone: "images/dicas.png",
                                       label: "Dicas",
                                     ),
-                                    CardAcessoRapidoWidget(
-                                      iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/facebook.png",
-                                      label: "Facebook",
-                                    ),
-                                    CardAcessoRapidoWidget(
-                                      iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/instagram.png",
-                                      label: "Instagram",
-                                    ),
+                                    // CardAcessoRapidoWidget(
+                                    //   iconeCustom: paramIconesCustom,
+                                    //   urlIcone: "images/facebook.png",
+                                    //   label: "Facebook",
+                                    // ),
+                                    // CardAcessoRapidoWidget(
+                                    //   iconeCustom: paramIconesCustom,
+                                    //   urlIcone: "images/instagram.png",
+                                    //   label: "Instagram",
+                                    // ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/contrato.png",
                                       label: "Contrato",
                                     ),
-                                    CardAcessoRapidoWidget(
-                                      iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/whatsapp.png",
-                                      label: "WhatsApp",
-                                    ),
+                                    // CardAcessoRapidoWidget(
+                                    //   iconeCustom: paramIconesCustom,
+                                    //   urlIcone: "images/whatsapp.png",
+                                    //   label: "WhatsApp",
+                                    // ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/site.png",
@@ -357,14 +357,17 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.whatsapp,
                                       exibe: paramIconesUse['contatowhats'],
+                                      urlLauncher: paramurlcontatowhats,
                                     ),
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.facebook,
                                       exibe: paramIconesUse['facebook'],
+                                      urlLauncher: paramFacebook,
                                     ),
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.instagram,
                                       exibe: paramIconesUse['instagram'],
+                                      urlLauncher: paramInstagram,
                                     ),
                                   ],
                                 ),
