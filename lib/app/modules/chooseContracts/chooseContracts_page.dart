@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_bloc.dart';
 import 'package:franet/app/modules/home/home_module.dart';
+import 'package:franet/app/modules/login/login_module.dart';
 
 class ChooseContractsPage extends StatefulWidget {
   final String title;
@@ -22,6 +23,14 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => LoginModule()));
+                },
+                icon: Icon(Icons.exit_to_app))
+          ],
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
@@ -43,8 +52,12 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
                                 child: Text(
                                     "Contrato: ${widget.contracts[index].contrato} ${widget.contracts[index].razaoSocial}"),
                                 onTap: () async {
-                                 await ChooseContractsBloc().saveContractsChoose( widget.contracts[index]);
-                                 await ChooseContractsBloc().enviarDadosDispositivo(widget.contracts[index]);
+                                  await ChooseContractsBloc()
+                                      .saveContractsChoose(
+                                          widget.contracts[index]);
+                                  await ChooseContractsBloc()
+                                      .enviarDadosDispositivo(
+                                          widget.contracts[index]);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

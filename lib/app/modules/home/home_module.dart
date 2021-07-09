@@ -1,3 +1,4 @@
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/IconsAcessRapid/icons_acess_rapid_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeDefault/widgets/card/card_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/home_custom_first_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:franet/app/modules/home/home_page.dart';
 class HomeModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => IconsAcessRapidBloc()),
         Bloc((i) => CardAcessoRapidoBloc()),
         Bloc((i) => CardBloc()),
         Bloc((i) => HomeCustomFirstBloc()),

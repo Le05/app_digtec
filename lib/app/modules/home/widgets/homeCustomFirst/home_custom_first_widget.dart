@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:franet/app/models/ContractsModel.dart';
+import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_widget.dart';
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/IconsAcessRapid/icons_acess_rapid_widget.dart';
+import 'package:franet/app/modules/login/login_module.dart';
+import 'package:intl/intl.dart';
 
 HomeBloc homeBloc = HomeBloc();
+var currencyFormatter = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
 class HomeCustomFirstWidget extends StatelessWidget {
   @override
@@ -39,13 +45,24 @@ class HomeCustomFirstWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.file(
-                          logoTipo,
+                        Image.network(
+                          paramImageLogo,
                           width: MediaQuery.of(context).size.width * 0.4,
                           height: MediaQuery.of(context).size.height * 0.1,
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (contracts.length > 1) {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ChooseContractsModule(contracts)));
+                              } else {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginModule()));
+                              }
+                            },
                             icon: Icon(
                               Icons.exit_to_app,
                               color: Colors.white,
@@ -155,7 +172,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          "Valor: R\$ ${snapshot.data["valor"]}",
+                                          "Valor: ${currencyFormatter.format(snapshot.data["valor"])}",
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
@@ -326,62 +343,28 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 50),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.03),
                               Container(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Icon(Icons.phone),
-                                      
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.orange,
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12),
-                                        
-                                      ),
-                                      
+                                    IconsAcessRapidWidget(
+                                      icone: Icons.phone,
+                                      exibe: paramIconesUse['telefones'],
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Icon(FontAwesomeIcons.whatsapp),
-                                      
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.orange,
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12),
-                                      ),
+                                    IconsAcessRapidWidget(
+                                      icone: FontAwesomeIcons.whatsapp,
+                                      exibe: paramIconesUse['contatowhats'],
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Icon(FontAwesomeIcons.facebook),
-                                      
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.orange,
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12),
-                                      ),
+                                    IconsAcessRapidWidget(
+                                      icone: FontAwesomeIcons.facebook,
+                                      exibe: paramIconesUse['facebook'],
                                     ),
-                                  ElevatedButton(
-                                      onPressed: () {},
-                                      child: Icon(FontAwesomeIcons.instagram),
-                                      
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.orange,
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12),
-                                      ),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Icon(FontAwesomeIcons.home),
-                                      
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.orange,
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(12),
-                                      ),
+                                    IconsAcessRapidWidget(
+                                      icone: FontAwesomeIcons.instagram,
+                                      exibe: paramIconesUse['instagram'],
                                     ),
                                   ],
                                 ),

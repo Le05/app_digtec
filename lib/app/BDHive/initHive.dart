@@ -104,6 +104,9 @@ Future<Map> initHive({BuildContext context}) async {
       paramExibirGraficoConsumo = resposta["param_exibir_grafico_consumo"];
       paramTemplate = int.parse(resposta["param_template"]);
       paramIconesCustom = resposta["param_icones_custom"];
+      paramImageLogo = resposta["param_logotipo_dash"];
+      paramIconesUse = resposta['param_icones_use'];
+      
       imagemFundoExibir2 =
           int.parse(resposta["imagem_fundo_exibir_dois"].toString());
       imageFundo2 = resposta["imagem_fundo_dois"];

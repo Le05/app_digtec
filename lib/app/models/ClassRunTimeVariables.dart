@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 String key = "franet";
 String token = "7K74P-LBSB3-XYJXA-G6MQS";
 
+Map paramIconesUse;
 String paramurltestevelocidade;
 String cor;
 String corapp2;
@@ -31,6 +32,7 @@ String paymentCardcredit;
 String paramExibirPreCadastro;
 String paramExibirGraficoConsumo;
 String paramIconesCustom;
+String paramImageLogo;
 int paramTemplate;
 int imagemFundoExibir2;
 String imageFundo2;
