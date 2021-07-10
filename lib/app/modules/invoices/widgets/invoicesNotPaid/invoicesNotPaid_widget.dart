@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
 import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
@@ -212,9 +213,11 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     "Visualizar ou Imprimir o Boleto",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  onPressed: () {
-                                    invoicesNotPaidBloc.launchPDF(snapshot
+                                  onPressed: () async {
+                                    await FunctinsGlobals().abrirPDF(snapshot
                                         .data["titlesAberta"][index].link);
+                                    // invoicesNotPaidBloc.launchPDF(snapshot
+                                    //     .data["titlesAberta"][index].link);
                                   }),
                             ),
                             paymentCardcredit == "1"

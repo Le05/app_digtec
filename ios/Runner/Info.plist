@@ -17,6 +17,8 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Abrir PDF salvo no celular para compartilhar o mesmo</string>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>

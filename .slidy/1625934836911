@@ -1,0 +1,5 @@
+lib/app/modules/viewerPDF/viewer_p_d_f_module.dart
+lib/app/modules/viewerPDF/viewer_p_d_f_page.dart
+test/app/modules/viewerPDF/viewer_p_d_f_page_test.dart
+lib/app/modules/viewerPDF/viewer_p_d_f_bloc.dart
+test/app/modules/viewerPDF/viewer_p_d_f_bloc_test.dart

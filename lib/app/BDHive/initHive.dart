@@ -108,7 +108,6 @@ Future<Map> initHive({BuildContext context}) async {
       paramIconesUse = resposta['param_icones_use'];
       paramInstagram = resposta["param_instagram"];
       paramFacebook = resposta["param_facebook"];
-      
       imagemFundoExibir2 =
           int.parse(resposta["imagem_fundo_exibir_dois"].toString());
       imageFundo2 = resposta["imagem_fundo_dois"];

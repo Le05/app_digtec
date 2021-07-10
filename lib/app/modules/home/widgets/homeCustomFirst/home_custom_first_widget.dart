@@ -3,13 +3,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
+import 'package:franet/app/modules/extractConsumption/extractConsumption_module.dart';
 import 'package:franet/app/modules/home/home_bloc.dart';
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/home_custom_first_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_widget.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/IconsAcessRapid/icons_acess_rapid_widget.dart';
+import 'package:franet/app/modules/invoices/invoices_module.dart';
 import 'package:franet/app/modules/login/login_module.dart';
+import 'package:franet/app/modules/notifications/notifications_module.dart';
+import 'package:franet/app/modules/paymentPromise/paymentPromise_module.dart';
+import 'package:franet/app/modules/support/support_module.dart';
+import 'package:franet/app/modules/testVelocity/testVelocity_module.dart';
+import 'package:franet/app/modules/tips/tips_module.dart';
+import 'package:franet/app/modules/viewerPDF/viewerPDF_module.dart';
 import 'package:intl/intl.dart';
 
 HomeBloc homeBloc = HomeBloc();
+HomeCustomFirstBloc homeCustomFirstBloc = HomeCustomFirstBloc();
 var currencyFormatter = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
 class HomeCustomFirstWidget extends StatelessWidget {
@@ -284,61 +294,64 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/fatura.png",
                                       label: "Fatura",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, InvoicesModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/consumo.png",
                                       label: "Consumo de banda",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, ExtractConsumptionModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/propagamento.png",
                                       label: "Promessa de pagamento",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, PaymentPromiseModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/suportenew.png",
                                       label: "Suporte",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, SupportModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/velocidade.png",
                                       label: "Teste de velocidade",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, TestVelocityModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/notification.png",
                                       label: "Notificações",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, NotificationsModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/dicas.png",
                                       label: "Dicas",
+                                      funcao: homeCustomFirstBloc.abrirNovaTela(
+                                          context, TipsModule()),
                                     ),
-                                    // CardAcessoRapidoWidget(
-                                    //   iconeCustom: paramIconesCustom,
-                                    //   urlIcone: "images/facebook.png",
-                                    //   label: "Facebook",
-                                    // ),
-                                    // CardAcessoRapidoWidget(
-                                    //   iconeCustom: paramIconesCustom,
-                                    //   urlIcone: "images/instagram.png",
-                                    //   label: "Instagram",
-                                    // ),
                                     CardAcessoRapidoWidget(
-                                      iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/contrato.png",
-                                      label: "Contrato",
-                                    ),
-                                    // CardAcessoRapidoWidget(
-                                    //   iconeCustom: paramIconesCustom,
-                                    //   urlIcone: "images/whatsapp.png",
-                                    //   label: "WhatsApp",
-                                    // ),
+                                        iconeCustom: paramIconesCustom,
+                                        urlIcone: "images/contrato.png",
+                                        label: "Contrato",
+                                        funcao:
+                                            homeCustomFirstBloc.abrirNovaTela(
+                                                context, ViewerPDFModule())),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/site.png",
                                       label: "Nosso site",
+                                      funcao: homeCustomFirstBloc
+                                          .abrirUrl(paramsiteprovedor),
                                     ),
                                   ],
                                 ),
@@ -368,6 +381,11 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                       icone: FontAwesomeIcons.instagram,
                                       exibe: paramIconesUse['instagram'],
                                       urlLauncher: paramInstagram,
+                                    ),
+                                    IconsAcessRapidWidget(
+                                      icone: Icons.home,
+                                      exibe: paramIconesUse['siteprovedor'],
+                                      urlLauncher: paramsiteprovedor,
                                     ),
                                   ],
                                 ),
