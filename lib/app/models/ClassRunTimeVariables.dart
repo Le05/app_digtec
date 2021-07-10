@@ -15,6 +15,7 @@ Colors corFonte;
 List preCadastros; 
 String paramurlcontratoscm;
 String paramurlcontatowhats;
+String paramTelefonePrincipal;
 String paramsiteprovedor;
 String parammsgprecadastro;
 double paramlogotipomarginright;

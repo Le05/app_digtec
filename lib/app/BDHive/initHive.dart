@@ -112,6 +112,8 @@ Future<Map> initHive({BuildContext context}) async {
           int.parse(resposta["imagem_fundo_exibir_dois"].toString());
       imageFundo2 = resposta["imagem_fundo_dois"];
 
+      paramTelefonePrincipal = resposta["param_telefones"]["param_telprincipal"];
+
       if (resposta["param_logotipomarginright"] != "") {
         paramlogotipomarginright =
             double.parse(resposta["param_logotipomarginright"]);

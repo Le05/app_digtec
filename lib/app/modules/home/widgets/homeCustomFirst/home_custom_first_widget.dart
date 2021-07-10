@@ -366,6 +366,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     IconsAcessRapidWidget(
                                       icone: Icons.phone,
                                       exibe: paramIconesUse['telefones'],
+                                      urlLauncher: paramTelefonePrincipal,
                                     ),
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.whatsapp,
