@@ -83,104 +83,126 @@ class _SupportPageState extends State<SupportPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                           snapshot.data["param_telprincipal"] != "" && snapshot.data["param_telprincipal"] != null ? 
-                          InkWell(
-                            child: Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Row(
-                                children: <Widget>[
-                                  Image.asset(
-                                    "images/telefone.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 10,
-                                    height:
-                                        MediaQuery.of(context).size.height / 20,
+                          snapshot.data["param_telprincipal"] != "" &&
+                                  snapshot.data["param_telprincipal"] != null
+                              ? InkWell(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Image.asset(
+                                          "images/telefone.png",
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              10,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              20,
+                                        ),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          snapshot.data["param_telprincipal"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    snapshot.data["param_telprincipal"],
-                                    style: TextStyle(fontSize: 18),
+                                  onTap: () async {
+                                    await supportBloc
+                                        .openDiskPhone(
+                                            snapshot.data["param_telprincipal"])
+                                        .catchError((onError) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                            "Ocorreu um erro ao abrir o app de telefone"),
+                                      ));
+                                    });
+                                  },
+                                )
+                              : Container(),
+                          snapshot.data["param_telsecundario"] != "" &&
+                                  snapshot.data["param_telsecundario"] != null
+                              ? InkWell(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Image.asset(
+                                          "images/telefone.png",
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              10,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              20,
+                                        ),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          snapshot.data["param_telsecundario"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
-                            ),
-                            onTap: () async {
-                              await supportBloc
-                                  .openDiskPhone(
-                                      snapshot.data["param_telprincipal"])
-                                  .catchError((onError) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(
-                                      "Ocorreu um erro ao abrir o app de telefone"),
-                                ));
-                              });
-                            },
-                          ):Container(),
-                          snapshot.data["param_telsecundario"] != ""  && snapshot.data["param_telsecundario"] != null? 
-                          InkWell(
-                            child: Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Row(
-                                children: <Widget>[
-                                  Image.asset(
-                                    "images/telefone.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 10,
-                                    height:
-                                        MediaQuery.of(context).size.height / 20,
+                                  onTap: () async {
+                                    await supportBloc
+                                        .openDiskPhone(snapshot
+                                            .data["param_telsecundario"])
+                                        .catchError((onError) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                            "Ocorreu um erro ao abrir o app de telefone"),
+                                      ));
+                                    });
+                                  },
+                                )
+                              : Container(),
+                          snapshot.data["param_telwhats"] != "" &&
+                                  snapshot.data["param_telwhats"] != null
+                              ? InkWell(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 5),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Image.asset(
+                                          "images/whatsapp.png",
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              10,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              20,
+                                        ),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          snapshot.data["param_telwhats"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    snapshot.data["param_telsecundario"],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            onTap: () async {
-                              await supportBloc
-                                  .openDiskPhone(
-                                      snapshot.data["param_telsecundario"])
-                                  .catchError((onError) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(
-                                      "Ocorreu um erro ao abrir o app de telefone"),
-                                ));
-                              });
-                            },
-                          ):Container(),
-                          snapshot.data["param_telwhats"] != "" && snapshot.data["param_telwhats"] != null ? 
-                          InkWell(
-                            child: Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Row(
-                                children: <Widget>[
-                                  Image.asset(
-                                    "images/whatsapp.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 10,
-                                    height:
-                                        MediaQuery.of(context).size.height / 20,
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    snapshot.data["param_telwhats"],
-                                    style: TextStyle(fontSize: 18),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            onTap: () {
-                              supportBloc
-                                  .openWhatsApp(snapshot.data["param_telwhats"])
-                                  .catchError((onError) {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(
-                                      "Ocorreu um erro ao abrir o WhatsApp"),
-                                ));
-                              });
-                            },
-                          ):Container()
+                                  onTap: () {
+                                    supportBloc
+                                        .openWhatsApp(
+                                            snapshot.data["param_telwhats"])
+                                        .catchError((onError) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                            "Ocorreu um erro ao abrir o WhatsApp"),
+                                      ));
+                                    });
+                                  },
+                                )
+                              : Container()
                         ],
                       ),
                     );
@@ -192,51 +214,68 @@ class _SupportPageState extends State<SupportPage> {
                   ),
                   child: Form(
                       key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 5),
-                            child: TextFormField(
-                              maxLength: 14,
-                              controller: supportBloc.contatoController,
-                              keyboardType: TextInputType.numberWithOptions(),
-                              decoration: InputDecoration(
-                                  hintText: "Telefone para Contato",
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(50)))),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "Por Favor,insira um contato";
-                                else if (text.length < 9)
-                                  return "Por Favor,insira um contato válido!!";
-                                // else if (text.length < 11)
-                                // return "Por Favor,insira um CPF/CNPJ válido!!";
-                                return null;
-                              },
-                            ),
+                      child: Column(children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          child: TextFormField(
+                            maxLength: 14,
+                            controller: supportBloc.contatoController,
+                            keyboardType: TextInputType.numberWithOptions(),
+                            decoration: InputDecoration(
+                                hintText: "Telefone para Contato",
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)))),
+                            validator: (text) {
+                              if (text.isEmpty)
+                                return "Por Favor,insira um contato";
+                              else if (text.length < 9)
+                                return "Por Favor,insira um contato válido!!";
+                              // else if (text.length < 11)
+                              // return "Por Favor,insira um CPF/CNPJ válido!!";
+                              return null;
+                            },
                           ),
-                          SizedBox(height: 10),
-                          Container(
-                            margin: EdgeInsets.symmetric(horizontal: 5),
-                            child: TextFormField(
-                              maxLines: 5,
-                              controller: supportBloc.conteudoController,
-                              keyboardType: TextInputType.multiline,
-                              decoration: InputDecoration(
-                                  hintText: "Motivos",
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(30)))),
-                              validator: (text) {
-                                if (text.isEmpty)
-                                  return "Por Favor,insira um motivo!";
-                                return null;
-                              },
-                            ),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          child: TextFormField(
+                            maxLines: 5,
+                            controller: supportBloc.conteudoController,
+                            keyboardType: TextInputType.multiline,
+                            decoration: InputDecoration(
+                                hintText: "Motivos",
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)))),
+                            validator: (text) {
+                              if (text.isEmpty)
+                                return "Por Favor,insira um motivo!";
+                              return null;
+                            },
                           ),
-                        ],
-                      )),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5),
+                          child: StreamBuilder(builder: (context, snapshot) {
+                            return DropdownButton(
+                              isExpanded: true,
+                              hint: Text("Escolha a ocorrencia"),
+                              value: null, items: [
+                              DropdownMenuItem(
+                                child: Text("First Item"),
+                                value: 1,
+                              ),
+                              DropdownMenuItem(
+                                child: Text("Second Item"),
+                                value: 2,
+                              )
+                            ]);
+                          }),
+                        )
+                      ])),
                 ),
                 StreamBuilder(
                   initialData: false,

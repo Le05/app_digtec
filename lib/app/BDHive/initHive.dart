@@ -14,6 +14,7 @@ AppBloc appBloc = AppBloc();
 Dio dio = Dio();
 Response response;
 Future<Map> initHive({BuildContext context}) async {
+  cripto = "ZnJhbmV0N0s3NFAtTEJTQjMtWFlKWEEtRzZNUVM=";
   //String cor;
   //String corFonte;
   // tenta abrir, caso de erro, ele inicializa e tenta abrir denovo
@@ -111,6 +112,8 @@ Future<Map> initHive({BuildContext context}) async {
       imagemFundoExibir2 =
           int.parse(resposta["imagem_fundo_exibir_dois"].toString());
       imageFundo2 = resposta["imagem_fundo_dois"];
+      paramUseTypeOcorrence = int.parse(resposta["param_usetypeocorrence"].toString());
+      paramTypeOcorrence = resposta["param_typeocorrence"];
 
       paramTelefonePrincipal = resposta["param_telefones"]["param_telprincipal"];
 
