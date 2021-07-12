@@ -1,4 +1,6 @@
 PODS:
+  - advance_pdf_viewer (1.0.5):
+    - Flutter
   - device_info (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -7,43 +9,42 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - OneSignal (2.12.5)
-  - onesignal_flutter (2.3.2):
+  - onesignal_flutter (3.0.0):
     - Flutter
-    - OneSignal (= 2.12.5)
+    - OneSignalXCFramework (= 3.4.4)
+  - OneSignalXCFramework (3.4.4)
   - path_provider (0.0.1):
     - Flutter
-  - sqflite (0.0.1):
+  - share_extend (0.0.1):
     - Flutter
-    - FMDB (~> 2.7.2)
+  - sqflite (0.0.2):
+    - Flutter
+    - FMDB (>= 2.7.5)
   - url_launcher (0.0.1):
-    - Flutter
-  - url_launcher_macos (0.0.1):
-    - Flutter
-  - url_launcher_web (0.0.1):
     - Flutter
   - webview_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - advance_pdf_viewer (from `.symlinks/plugins/advance_pdf_viewer/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_html_view (from `.symlinks/plugins/flutter_native_html_view/ios`)
-  - OneSignal (< 3.0, >= 2.9.3)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - share_extend (from `.symlinks/plugins/share_extend/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
-  - url_launcher_macos (from `.symlinks/plugins/url_launcher_macos/ios`)
-  - url_launcher_web (from `.symlinks/plugins/url_launcher_web/ios`)
   - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 SPEC REPOS:
   trunk:
     - FMDB
-    - OneSignal
+    - OneSignalXCFramework
 
 EXTERNAL SOURCES:
+  advance_pdf_viewer:
+    :path: ".symlinks/plugins/advance_pdf_viewer/ios"
   device_info:
     :path: ".symlinks/plugins/device_info/ios"
   Flutter:
@@ -54,31 +55,29 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/onesignal_flutter/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  share_extend:
+    :path: ".symlinks/plugins/share_extend/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
-  url_launcher_macos:
-    :path: ".symlinks/plugins/url_launcher_macos/ios"
-  url_launcher_web:
-    :path: ".symlinks/plugins/url_launcher_web/ios"
   webview_flutter:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
-  device_info: cbf09d2ec12aa7110e0b09fabe54b5bd6c8efe74
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  advance_pdf_viewer: 5c832f382b4ca84fe735f893b7e91aa830c27d7b
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_native_html_view: 1ebd0fb2bd5530d27a79ab05ac5bbcbbf72e95ae
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  OneSignal: 1de998c42bb06ed630bb38dd1bc933a667437dbb
-  onesignal_flutter: c9ffea9cebe0fc0cb9ffad9c53f6773f0003be44
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
-  url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313
-  url_launcher_web: e5527357f037c87560776e36436bf2b0288b965c
+  onesignal_flutter: 6a582e3051074be6d9d129002a93a3bfd04a5b88
+  OneSignalXCFramework: eaf286b7438aa1f030f03e5fa9f1c79ede5d8f04
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  share_extend: b6748dc53695587891126a89533b862b92548c7b
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
-PODFILE CHECKSUM: 79d2ae7f5a934c13fbf3ccc09449d8feb0092b70
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1
