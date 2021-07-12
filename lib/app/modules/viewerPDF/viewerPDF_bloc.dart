@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
 import 'package:share_extend/share_extend.dart';

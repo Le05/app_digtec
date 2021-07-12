@@ -1,4 +1,4 @@
-List<Contracts> contracts;
+List<Contracts> contracts = [];
 
 class Contracts {
   String status;
