@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/invoices/invoices_bloc.dart';
 import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
 import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
 import 'package:franet/app/modules/paymentCreditCardExternal/payment_credit_card_external_module.dart';
+import 'package:franet/app/modules/viewerPDF/viewerPDF_module.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 InvoicesNotPaidBloc invoicesNotPaidBloc = InvoicesNotPaidBloc();
@@ -254,10 +256,17 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () async {
-                                    await FunctinsGlobals().abrirPDF(snapshot
-                                        .data["titlesAberta"][index].link);
-                                    // invoicesNotPaidBloc.launchPDF(snapshot
-                                    //     .data["titlesAberta"][index].link);
+                                    String url = snapshot
+                                        .data["titlesAberta"][index].link;
+                                    String ip = box.get("baseUrl");
+                                    ip = ip.trim();
+                                    List<String> splitada = ip.split("/");
+                                    url =
+                                        "${splitada[0]}//${splitada[2]}" + url;
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ViewerPDFModule(url)));
                                   }),
                             ),
                             paymentCardcredit == "1"

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:franet/app/modules/viewerPDF/viewerPDF_page.dart';
 
 class ViewerPDFModule extends ModuleWidget {
+  final String url;
+
+  ViewerPDFModule(this.url);
   @override
   List<Bloc> get blocs => [
         Bloc((i) => ViewerPDFBloc()),
@@ -13,7 +16,7 @@ class ViewerPDFModule extends ModuleWidget {
   List<Dependency> get dependencies => [];
 
   @override
-  Widget get view => ViewerPDFPage();
+  Widget get view => ViewerPDFPage(url: this.url);
 
   static Inject get to => Inject<ViewerPDFModule>.of();
 }

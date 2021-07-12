@@ -1,15 +1,18 @@
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:franet/app/modules/viewerPDF/viewerPDF_bloc.dart';
 
 class ViewerPDFPage extends StatefulWidget {
   final String title;
-  const ViewerPDFPage({Key key, this.title = "Visualizar PDF"}) : super(key: key);
+  final String url;
+  const ViewerPDFPage({Key key, this.title = "Visualizar PDF",this.url}) : super(key: key);
 
   @override
   _ViewerPDFPageState createState() => _ViewerPDFPageState();
 }
+
+ViewerPDFBloc viewerPDFBloc = ViewerPDFBloc();
 
 class _ViewerPDFPageState extends State<ViewerPDFPage> {
   @override
@@ -18,13 +21,17 @@ class _ViewerPDFPageState extends State<ViewerPDFPage> {
         appBar: AppBar(
           title: Text(widget.title),
           actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.share))
+            IconButton(onPressed: (){
+              viewerPDFBloc.compartilharPDF();
+            }, icon: Icon(Icons.share))
           ],
         ),
         body: FutureBuilder(
-            future: FunctinsGlobals().abrirPDF(paramurlcontratoscm),
+            future: FunctinsGlobals().abrirPDF(this.widget.url),
             builder: (context, snapshot) {
-              if (snapshot.hasError) {}
+              if (snapshot.hasError) {
+                return Center(child: Text("Ocorreu um erro ao abrir o pdf"),);
+              }
 
               if (!snapshot.hasData) {
                 return Center(

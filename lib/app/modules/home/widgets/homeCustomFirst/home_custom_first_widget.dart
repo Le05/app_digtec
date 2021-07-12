@@ -351,14 +351,7 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                         label: "Contrato",
                                         funcao: () =>
                                             homeCustomFirstBloc.abrirNovaTela(
-                                                context, ViewerPDFModule())),
-                                    CardAcessoRapidoWidget(
-                                      iconeCustom: paramIconesCustom,
-                                      urlIcone: "images/site.png",
-                                      label: "Nosso site",
-                                      funcao: () => homeCustomFirstBloc
-                                          .abrirUrl(paramsiteprovedor),
-                                    ),
+                                                context, ViewerPDFModule(paramurlcontratoscm))),
                                   ],
                                 ),
                               ),
