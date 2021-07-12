@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
@@ -120,9 +121,9 @@ class HomeCustomFirstWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
+                                    width: MediaQuery.of(context).size.width * 0.5,
                                     margin: EdgeInsets.only(left: 10, top: 5),
-                                    child: Text(
-                                        "${snapshot.data["razaoSocial"]}",
+                                    child: Text("${FunctinsGlobals().getPrimeiroUltimoNome(snapshot.data["razaoSocial"])}",
                                         style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
@@ -239,12 +240,14 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              Text(
-                                                "${snapshot.data["status"]}",
+                                              Text(snapshot.data["status"],
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
+                                                    color: 
+                                                FunctinsGlobals().retornaCorStatusServico(snapshot.data["status"])
+                                                    // Colors.white
+                                                    ),
                                               )
                                             ],
                                           ),
