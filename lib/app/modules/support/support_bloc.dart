@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/support/repository/support_repository.dart';
 import 'package:franet/app/modules/support/support_module.dart';
 import 'package:rxdart/rxdart.dart';
@@ -10,11 +11,23 @@ import 'package:url_launcher/url_launcher.dart';
 class SupportBloc extends BlocBase {
   TextEditingController contatoController = new MaskedTextController(mask: '(00)00000-0000');
   TextEditingController conteudoController = TextEditingController();
+  int itemSelecionado;
 
   Future openCall() async {
     var box = await getHiveInstance();
     var repository = SupportModule.to.getDependency<SupportRepository>();
     Map retorno;
+
+    String paramAbreos = box.get("param_abreos");
+    String ocorrenciaTipo = box.get("param_ocorrenciatipo");
+    String paramMotivos = box.get("param_motivoos");
+
+    if(paramUseTypeOcorrence == 1){
+      paramAbreos = paramTypeOcorrence[itemSelecionado-1]["param_abreos"];
+      ocorrenciaTipo = paramTypeOcorrence[itemSelecionado-1]["param_idtipoocorrencia"];
+      paramMotivos = paramTypeOcorrence[itemSelecionado-1]["param_abreos"];
+    }
+
     await repository
                 .openCall(
             box.get("baseUrl"),
@@ -23,9 +36,9 @@ class SupportBloc extends BlocBase {
             conteudoController.text,
             box.get("cpfCnpj"),
             box.get("senha"),
-            box.get("param_abreos"),
-            box.get("param_ocorrenciatipo"),
-            box.get("param_motivoos"))
+            paramAbreos,
+            ocorrenciaTipo,
+            paramMotivos)
         .then((onValue) {
       if (onValue["status"] == 0) {
         retorno = {"status": 0, "msg": "Chamado aberto com sucesso"};
@@ -82,9 +95,19 @@ class SupportBloc extends BlocBase {
     return telefone;
   }
 
+  final BehaviorSubject<int> _dropbutton = BehaviorSubject<int>();
+  Sink<int> get inputDropButton => _dropbutton.sink;
+  Stream get outputDropButton => _dropbutton.stream;
+
+  dropButtonSelected(int selectedItem) {
+    itemSelecionado = selectedItem;
+    inputDropButton.add(selectedItem);
+  }
+
   @override
   void dispose() {
     _animacaoButton.close();
+    _dropbutton.close();
     super.dispose();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:franet/app/modules/support/support_bloc.dart';
 
 class SupportPage extends StatefulWidget {
@@ -215,6 +216,47 @@ class _SupportPageState extends State<SupportPage> {
                   child: Form(
                       key: _formKey,
                       child: Column(children: <Widget>[
+                        paramUseTypeOcorrence == 1
+                            ? SizedBox(height: 10)
+                            : Container(),
+                        paramUseTypeOcorrence == 1
+                            ? Container(
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                child: StreamBuilder(
+                                    stream: supportBloc.outputDropButton,
+                                    initialData: null,
+                                    builder: (context, snapshot) {
+                                      return DropdownButtonFormField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10))),
+                                        isExpanded: true,
+                                        hint: Text("Escolha a ocorrencia"),
+                                        value: snapshot.data,
+                                        items: paramTypeOcorrence
+                                            .map((typeOcorrence) {
+                                          return DropdownMenuItem<int>(
+                                            value: int.parse(typeOcorrence[
+                                                "param_idtipoocorrencia"]),
+                                            child: Text(typeOcorrence[
+                                                "param_desctipoocorrencia"]),
+                                          );
+                                        }).toList(),
+                                        onChanged: (item) {
+                                          supportBloc.dropButtonSelected(item);
+                                        },
+                                        // validator: (text) {
+                                        //   if (text.isEmpty)
+                                        //     return "Por Favor,selecione um motivo";
+
+                                        //   return null;
+                                        // },
+                                      );
+                                    }),
+                              )
+                            : Container(),
+                        SizedBox(height: 10),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 5),
                           child: TextFormField(
@@ -256,25 +298,6 @@ class _SupportPageState extends State<SupportPage> {
                             },
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 5),
-                          child: StreamBuilder(builder: (context, snapshot) {
-                            return DropdownButton(
-                              isExpanded: true,
-                              hint: Text("Escolha a ocorrencia"),
-                              value: null, items: [
-                              DropdownMenuItem(
-                                child: Text("First Item"),
-                                value: 1,
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Second Item"),
-                                value: 2,
-                              )
-                            ]);
-                          }),
-                        )
                       ])),
                 ),
                 StreamBuilder(
@@ -295,6 +318,13 @@ class _SupportPageState extends State<SupportPage> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                           child: ElevatedButton(
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all<Size>(
+                                    Size(
+                                        MediaQuery.of(context).size.width,
+                                        MediaQuery.of(context).size.height *
+                                            0.07)),
+                              ),
                               child: Text(
                                 "Solicitar Suporte",
                                 style: TextStyle(

@@ -126,11 +126,22 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                           children: <Widget>[
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
-                              buttonColor: Color(0xFF5CB85C),
+                              // buttonColor: Color(0xFF5CB85C),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(0.0),
                                   side: BorderSide(color: Color(0xFF28a744))),
                               child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Color(0xFF5CB85C)),
+                                      minimumSize:
+                                          MaterialStateProperty.all<Size>(Size(
+                                              MediaQuery.of(context).size.width,
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.06))),
                                   child: Text(
                                     "Copiar Código de Barras",
                                     style: TextStyle(color: Colors.white),
@@ -140,24 +151,43 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                         text: snapshot
                                             .data["titlesAberta"][index]
                                             .linhaDigitavel));
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
                                       content:
                                           Text("Código copiado com sucesso!!!"),
                                     ));
                                   }),
                             ),
-                            (snapshot.data["titlesAberta"][index].codigoPix != null && 
-                            snapshot.data["titlesAberta"][index].codigoPix != "") ||
-                            snapshot.data["titlesAberta"][index].gerarPix
+                            (snapshot.data["titlesAberta"][index].codigoPix !=
+                                            null &&
+                                        snapshot.data["titlesAberta"][index]
+                                                .codigoPix !=
+                                            "") ||
+                                    snapshot
+                                        .data["titlesAberta"][index].gerarPix
                                 ? ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width,
-                                    buttonColor: Color(0xFF5c5cb8),
+                                    // buttonColor: Color(0xFF5c5cb8),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         side: BorderSide(
                                             color: Color(0xFF28a744))),
                                     child: ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Color(0xFF5c5cb8)),
+                                            minimumSize:
+                                                MaterialStateProperty.all<Size>(
+                                                    Size(
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.06))),
                                         child: Text(
                                           "Copiar Código Pix",
                                           style: TextStyle(color: Colors.white),
@@ -204,11 +234,21 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                 : Container(),
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
-                              buttonColor: Color(0xFF5BC0DE),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(0.0),
                                   side: BorderSide(color: Color(0xFF34B4E5))),
                               child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Color(0xFF5BC0DE)),
+                                      minimumSize:
+                                          MaterialStateProperty.all<Size>(Size(
+                                              MediaQuery.of(context).size.width,
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.06))),
                                   child: Text(
                                     "Visualizar ou Imprimir o Boleto",
                                     style: TextStyle(color: Colors.white),
@@ -223,13 +263,27 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                             paymentCardcredit == "1"
                                 ? ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width,
-                                    buttonColor: Color(0xFFf0ad4e),
+                                    // buttonColor: Color(0xFFf0ad4e),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         side: BorderSide(
                                             color: Color(0xFFffc106))),
                                     child: ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Color(0xFFf0ad4e)),
+                                            minimumSize:
+                                                MaterialStateProperty.all<Size>(
+                                                    Size(
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.06))),
                                         child: Text(
                                           "Pagamento com Cartão de Crédito",
                                           style: TextStyle(color: Colors.white),
@@ -245,12 +299,13 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                               await Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          PaymentCreditCardExternalModule(value["link"])));
+                                                          PaymentCreditCardExternalModule(
+                                                              value["link"])));
                                             } else {
                                               await Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PaymentCreditCardModule()));
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PaymentCreditCardModule()));
                                             }
                                           });
 
