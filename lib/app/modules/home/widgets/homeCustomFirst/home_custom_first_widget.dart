@@ -8,6 +8,7 @@ import 'package:franet/app/modules/extractConsumption/extractConsumption_module.
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/home_custom_first_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/CardAcessoRapido/card_acesso_rapido_widget.dart';
+import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/ChoosePhones/choose_phone_widget.dart';
 import 'package:franet/app/modules/home/widgets/homeCustomFirst/widgets/IconsAcessRapid/icons_acess_rapid_widget.dart';
 import 'package:franet/app/modules/invoices/invoices_module.dart';
 import 'package:franet/app/modules/login/login_module.dart';
@@ -370,11 +371,18 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    IconsAcessRapidWidget(
-                                      icone: Icons.phone,
-                                      exibe: paramIconesUse['telefones'],
-                                      urlLauncher: paramTelefonePrincipal,
-                                    ),
+                                    paramIconesUse['telefones'] == 1 ?
+                                    ElevatedButton(
+                                        onPressed: () async {
+                                          exibirDialogo(context);
+                                        },
+                                        child: Icon(Icons.phone),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.orange,
+                                          shape: CircleBorder(),
+                                          padding: EdgeInsets.all(12),
+                                        ),
+                                      ):Container(),
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.whatsapp,
                                       exibe: paramIconesUse['contatowhats'],

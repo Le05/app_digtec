@@ -45,3 +45,4 @@ String paramFacebook;
 int paramUseTypeOcorrence;
 List paramTypeOcorrence;
 String cripto;
+List telefones = [];

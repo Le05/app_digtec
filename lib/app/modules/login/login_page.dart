@@ -100,7 +100,6 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
                                 return Container(
-                                  child: CircularProgressIndicator(),
                                 );
                               }
                               return Container(
