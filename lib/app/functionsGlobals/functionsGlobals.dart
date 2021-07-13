@@ -32,10 +32,12 @@ class FunctinsGlobals {
       case "ATIVO":
         return Colors.green[800];
         break;
-      case "Ativo V. Reduzida":
+      case "AtivoV.Reduzida":
         return Colors.yellow;
-      case "CANCELADO":
+      case "SUSPENSO":
         return Colors.red;
+        case "INATIVO":
+        return Colors.black;
       default:
         return Colors.green[800];
     }
