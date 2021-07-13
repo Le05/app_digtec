@@ -30,14 +30,14 @@ class FunctinsGlobals {
   retornaCorStatusServico(String status) {
     switch (status.trim().toUpperCase()) {
       case "ATIVO":
-        return Colors.white;
+        return Colors.green[800];
         break;
-      case "SUSPENSO":
+      case "Ativo V. Reduzida":
         return Colors.yellow;
       case "CANCELADO":
         return Colors.red;
       default:
-        return Colors.white;
+        return Colors.green[800];
     }
   }
 }

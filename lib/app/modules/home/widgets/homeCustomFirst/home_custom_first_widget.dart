@@ -121,9 +121,11 @@ class HomeCustomFirstWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width * 0.5,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
                                     margin: EdgeInsets.only(left: 10, top: 5),
-                                    child: Text("${FunctinsGlobals().getPrimeiroUltimoNome(snapshot.data["razaoSocial"])}",
+                                    child: Text(
+                                        "${FunctinsGlobals().getPrimeiroUltimoNome(snapshot.data["razaoSocial"])}",
                                         style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
@@ -219,7 +221,9 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                           MediaQuery.of(context).size.height *
                                               0.13,
                                       decoration: BoxDecoration(
-                                          color: Theme.of(context).primaryColor,
+                                          color: FunctinsGlobals()
+                                              .retornaCorStatusServico(
+                                                  snapshot.data["status"]),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: Row(
@@ -240,14 +244,12 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              Text(snapshot.data["status"],
+                                              Text(
+                                                snapshot.data["status"],
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
-                                                    color: 
-                                                FunctinsGlobals().retornaCorStatusServico(snapshot.data["status"])
-                                                    // Colors.white
-                                                    ),
+                                                    color: Colors.white),
                                               )
                                             ],
                                           ),
@@ -314,8 +316,9 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                       iconeCustom: paramIconesCustom,
                                       urlIcone: "images/propagamento.png",
                                       label: "Promessa de pagamento",
-                                      funcao: () => homeCustomFirstBloc.abrirNovaTela(
-                                          context, PaymentPromiseModule()),
+                                      funcao: () =>
+                                          homeCustomFirstBloc.abrirNovaTela(
+                                              context, PaymentPromiseModule()),
                                     ),
                                     CardAcessoRapidoWidget(
                                       iconeCustom: paramIconesCustom,
@@ -354,7 +357,9 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                         label: "Contrato",
                                         funcao: () =>
                                             homeCustomFirstBloc.abrirNovaTela(
-                                                context, ViewerPDFModule(paramurlcontratoscm))),
+                                                context,
+                                                ViewerPDFModule(
+                                                    paramurlcontratoscm))),
                                   ],
                                 ),
                               ),
