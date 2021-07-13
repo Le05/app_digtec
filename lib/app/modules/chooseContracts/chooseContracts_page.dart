@@ -3,6 +3,7 @@ import 'package:franet/app/models/ContractsModel.dart';
 import 'package:franet/app/modules/chooseContracts/chooseContracts_bloc.dart';
 import 'package:franet/app/modules/home/home_module.dart';
 import 'package:franet/app/modules/login/login_module.dart';
+import 'package:intl/intl.dart';
 
 class ChooseContractsPage extends StatefulWidget {
   final String title;
@@ -16,6 +17,7 @@ class ChooseContractsPage extends StatefulWidget {
 }
 
 ChooseContractsBloc chooseContractsBloc = ChooseContractsBloc();
+var currencyFormatter = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
 class _ChooseContractsPageState extends State<ChooseContractsPage> {
   @override
@@ -58,7 +60,7 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
                                   await ChooseContractsBloc()
                                       .enviarDadosDispositivo(
                                           widget.contracts[index]);
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => HomeModule()));
@@ -77,7 +79,7 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
                                     Text(
                                         "Plano de Internet: ${widget.contracts[index].planoInternet}"),
                                     Text(
-                                        "Valor do Plano: ${widget.contracts[index].planoInternetValor}"),
+                                        "Valor do Plano: ${currencyFormatter.format(widget.contracts[index].planoInternetValor)}"),
                                     Text(
                                         "Vencimento: ${widget.contracts[index].vencimento}")
                                   ],
