@@ -16,6 +16,9 @@ void exibirDialogo(BuildContext context) {
               child: ListView.builder(
                   itemCount: telefones.length,
                   itemBuilder: (context, item) {
+                    if(telefones[item] == "")
+                      return Container();
+                      
                     return InkWell(
                       child: Container(
                         margin: EdgeInsets.only(bottom:20),
