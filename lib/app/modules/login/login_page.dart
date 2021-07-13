@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                                   builder: (context, snapshot) {
                                     if (!snapshot.hasData) {
                                       return Container(
-                                        child: CircularProgressIndicator(),
+                                        // child: CircularProgressIndicator(),
                                       );
                                     }
                                     if (snapshot.hasError) {
@@ -158,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                                   if (!snapshot.hasData) {
                                     return Container(
                                       margin: EdgeInsets.only(top: 20),
-                                      child: CircularProgressIndicator(),
+                                      // child: CircularProgressIndicator(),
                                     );
                                   }
                                   if (snapshot.hasError) {
@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                                   if (!snapshot.hasData) {
                                     return Container(
                                       margin: EdgeInsets.only(top: 20),
-                                      child: CircularProgressIndicator(),
+                                      // child: CircularProgressIndicator(),
                                     );
                                   }
                                   if (snapshot.hasError) {
@@ -309,12 +309,12 @@ class _LoginPageState extends State<LoginPage> {
                                       margin:
                                           EdgeInsets.only(top: 0, bottom: 10),
                                       child: Center(
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            Theme.of(context).primaryColor,
-                                          ),
-                                        ),
+                                        // child: CircularProgressIndicator(
+                                        //   valueColor:
+                                        //       AlwaysStoppedAnimation<Color>(
+                                        //     Theme.of(context).primaryColor,
+                                        //   ),
+                                        // ),
                                       ),
                                     ),
                                   ),
