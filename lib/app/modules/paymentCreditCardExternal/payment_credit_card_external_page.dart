@@ -5,7 +5,7 @@ class PaymentCreditCardExternalPage extends StatefulWidget {
   final String title;
   final String url;
   const PaymentCreditCardExternalPage(
-      {Key key, this.title = "PaymentCreditCardExternal",this.url})
+      {Key key, this.title = "Cartão de Crédito",this.url})
       : super(key: key);
 
   @override
