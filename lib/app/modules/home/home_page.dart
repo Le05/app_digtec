@@ -18,6 +18,6 @@ bool exibiuMsgContrato = false;
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return  paramTemplate != 1 ? HomeDefaultWidget() : HomeCustomFirstWidget();
+    return  paramTemplate != 1 ? HomeCustomFirstWidget() : HomeDefaultWidget();
   }
 }
