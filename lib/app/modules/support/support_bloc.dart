@@ -25,7 +25,7 @@ class SupportBloc extends BlocBase {
     if(paramUseTypeOcorrence == 1){
       paramAbreos = paramTypeOcorrence[itemSelecionado-1]["param_abreos"];
       ocorrenciaTipo = paramTypeOcorrence[itemSelecionado-1]["param_idtipoocorrencia"];
-      paramMotivos = paramTypeOcorrence[itemSelecionado-1]["param_abreos"];
+      paramMotivos = paramTypeOcorrence[itemSelecionado-1]["param_motivoos"];
     }
 
     await repository
