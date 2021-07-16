@@ -159,6 +159,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     ));
                                   }),
                             ),
+                            SizedBox(height:5),
                             (snapshot.data["titlesAberta"][index].codigoPix !=
                                             null &&
                                         snapshot.data["titlesAberta"][index]
@@ -233,6 +234,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                         }),
                                   )
                                 : Container(),
+                                SizedBox(height:5),
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
                               shape: RoundedRectangleBorder(
@@ -268,6 +270,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                                 ViewerPDFModule(url)));
                                   }),
                             ),
+                            SizedBox(height:5),
                             paymentCardcredit == "1"
                                 ? ButtonTheme(
                                     minWidth: MediaQuery.of(context).size.width,
@@ -320,7 +323,8 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                           setState(() {});
                                         }),
                                   )
-                                : Container()
+                                : Container(),
+                                SizedBox(height:5),
                           ],
                         ),
                       )

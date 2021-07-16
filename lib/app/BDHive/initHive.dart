@@ -112,10 +112,22 @@ Future<Map> initHive({BuildContext context}) async {
       imagemFundoExibir2 =
           int.parse(resposta["imagem_fundo_exibir_dois"].toString());
       imageFundo2 = resposta["imagem_fundo_dois"];
-      paramUseTypeOcorrence = int.parse(resposta["param_usetypeocorrence"].toString());
+      paramUseTypeOcorrence =
+          int.parse(resposta["param_usetypeocorrence"].toString());
       paramTypeOcorrence = resposta["param_typeocorrence"];
 
-      paramTelefonePrincipal = resposta["param_telefones"]["param_telprincipal"];
+      telefones = [];
+      telefones.add(resposta["param_telefones"]["param_telprincipal"]);
+      telefones.add(resposta["param_telefones"]["param_telsecundario"]);
+      telefones.add(resposta["param_telefones"]["param_telwhats"]);
+      telefones.add(resposta["param_telefones"]["param_telwhats1"]);
+      telefones.add(resposta["param_telefones"]["param_telwhats2"]);
+
+      for (var i = 0; i < telefones.length; i++) {
+        if (telefones[i] == null || telefones[i] == "") {
+          telefones.remove(telefones[i]);
+        }
+      }
 
       if (resposta["param_logotipomarginright"] != "") {
         paramlogotipomarginright =
@@ -153,8 +165,7 @@ Future<Map> initHive({BuildContext context}) async {
       box.put("param_abreos", resposta["param_abreos"]);
       box.put("param_icones_custom", resposta["param_icones_custom"]);
 
-      if (base64.encode(utf8.encode(key + token)) != cripto)
-          token = cripto;
+      if (base64.encode(utf8.encode(key + token)) != cripto) token = cripto;
 
       if (resposta["param_icones_custom"] == "1") {
         box.put("param_ico_segundavia",

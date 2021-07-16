@@ -48,7 +48,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
 dev_dependencies:
-  mockito: ^4.1.1
+  flutter_native_splash: ^1.2.0
+  mockito: ^5.0.10
   flutter_test:
     sdk: flutter
 
@@ -98,3 +99,11 @@ flutter_icons:
   android: "launcher_icon" 
   ios: true
   image_path: "images/icone.png"
+
+flutter_native_splash:
+  web: false
+  background_image: "images/splash.png"
+  android_gravity: fill
+  ios_content_mode: scaleAspectFill
+  android12: true
+  fullscreen: true

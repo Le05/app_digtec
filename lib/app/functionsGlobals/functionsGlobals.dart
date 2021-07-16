@@ -28,7 +28,6 @@ class FunctinsGlobals {
   }
 
   retornaCorStatusServico(String status) {
-    print(status.trim().toUpperCase());
     switch (status.trim().toUpperCase()) {
       case "ATIVO":
         return Colors.green[800];
@@ -44,5 +43,13 @@ class FunctinsGlobals {
       default:
         return Colors.green[800];
     }
+  }
+
+  limparTelefonesMascara(String telefone){
+    telefone = telefone.replaceAll("(", "");
+    telefone = telefone.replaceAll(")", "");
+    telefone = telefone.replaceAll(" ", "");
+    telefone = telefone.replaceAll("-", "");
+    return telefone;
   }
 }
