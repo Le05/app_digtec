@@ -171,13 +171,15 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.57,
+                                            child: Text(
                                           "${snapshot.data["plano"]}",
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white),
-                                        )
+                                        ))
                                       ],
                                     ),
                                     SizedBox(
@@ -371,18 +373,19 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    paramIconesUse['telefones'] == 1 ?
-                                    ElevatedButton(
-                                        onPressed: () async {
-                                          exibirDialogo(context);
-                                        },
-                                        child: Icon(Icons.phone),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.orange,
-                                          shape: CircleBorder(),
-                                          padding: EdgeInsets.all(12),
-                                        ),
-                                      ):Container(),
+                                    paramIconesUse['telefones'] == 1
+                                        ? ElevatedButton(
+                                            onPressed: () async {
+                                              exibirDialogo(context);
+                                            },
+                                            child: Icon(Icons.phone),
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Colors.orange,
+                                              shape: CircleBorder(),
+                                              padding: EdgeInsets.all(12),
+                                            ),
+                                          )
+                                        : Container(),
                                     IconsAcessRapidWidget(
                                       icone: FontAwesomeIcons.whatsapp,
                                       exibe: paramIconesUse['contatowhats'],

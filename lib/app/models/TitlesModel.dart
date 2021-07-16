@@ -36,6 +36,9 @@ class Titles {
 List<Titles> fromJson(json) {
   List<Titles> titles = [];
   for (var u in json) {
+    if(u["gerapix"] == null){
+      u["gerapix"] = false;
+    }
     Titles titlesU = Titles(
         u["vencimento_atualizado"],
         u["status"],
