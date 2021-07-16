@@ -9,7 +9,8 @@ import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SupportBloc extends BlocBase {
-  TextEditingController contatoController = new MaskedTextController(mask: '(00)00000-0000');
+  TextEditingController contatoController =
+      new MaskedTextController(mask: '(00)00000-0000');
   TextEditingController conteudoController = TextEditingController();
   int itemSelecionado;
 
@@ -22,14 +23,19 @@ class SupportBloc extends BlocBase {
     String ocorrenciaTipo = box.get("param_ocorrenciatipo");
     String paramMotivos = box.get("param_motivoos");
 
-    if(paramUseTypeOcorrence == 1){
-      paramAbreos = paramTypeOcorrence[itemSelecionado-1]["param_abreos"];
-      ocorrenciaTipo = paramTypeOcorrence[itemSelecionado-1]["param_idtipoocorrencia"];
-      paramMotivos = paramTypeOcorrence[itemSelecionado-1]["param_motivoos"];
+    if (paramUseTypeOcorrence == 1) {
+      for (var ocorrencia in paramTypeOcorrence) {
+        if (itemSelecionado ==
+            int.parse(ocorrencia["param_idtipoocorrencia"])) {
+          paramAbreos = ocorrencia["param_abreos"];
+          ocorrenciaTipo = ocorrencia["param_idtipoocorrencia"];
+          paramMotivos = ocorrencia["param_motivoos"];
+        }
+      }
     }
 
     await repository
-                .openCall(
+        .openCall(
             box.get("baseUrl"),
             int.parse(removeCaractersPhone(contatoController.text)),
             box.get("contrato"),
