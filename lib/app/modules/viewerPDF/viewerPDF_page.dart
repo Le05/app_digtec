@@ -37,6 +37,7 @@ class _ViewerPDFPageState extends State<ViewerPDFPage> {
                 return WebView(
                   javascriptMode: JavascriptMode.unrestricted,
                   initialUrl: this.widget.url,
+                  
                 );
               }
 

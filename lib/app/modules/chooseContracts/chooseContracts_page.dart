@@ -78,7 +78,8 @@ class _ChooseContractsPageState extends State<ChooseContractsPage> {
                                         "Status: ${widget.contracts[index].status}"),
                                     Text(
                                         "Plano de Internet: ${widget.contracts[index].planoInternet}"),
-                                    Text(
+                                        
+                                    Text(widget.contracts[index].planoInternetValor == 0 || widget.contracts[index].planoInternetValor == null ? "" :
                                         "Valor do Plano: ${currencyFormatter.format(widget.contracts[index].planoInternetValor)}"),
                                     Text(
                                         "Vencimento: ${widget.contracts[index].vencimento}")
