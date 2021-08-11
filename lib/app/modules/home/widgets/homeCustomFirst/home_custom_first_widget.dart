@@ -187,7 +187,8 @@ class HomeCustomFirstWidget extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
+                                        
+                                        Text(snapshot.data["valor"] == 0 || snapshot.data["valor"] == null ? "" :
                                           "Valor: ${currencyFormatter.format(snapshot.data["valor"])}",
                                           style: TextStyle(
                                               fontSize: 18,
