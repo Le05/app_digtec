@@ -16,6 +16,7 @@ class ViewerPDFPage extends StatefulWidget {
 
 ViewerPDFBloc viewerPDFBloc = ViewerPDFBloc();
 
+
 class _ViewerPDFPageState extends State<ViewerPDFPage> {
   @override
   Widget build(BuildContext context) {
