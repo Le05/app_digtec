@@ -8,8 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DuplicateBoletoBloc extends BlocBase {
   Future getDados2Via() async {
-    if (base64.encode(utf8.encode(key + token)) != cripto)
-          token = cripto;
+    if (base64.encode(utf8.encode(key + token)) != cripto) token = cripto;
     var repository =
         DuplicateBoletoModule.to.getDependency<DuplicateRepository>();
     var retorno;
@@ -25,7 +24,7 @@ class DuplicateBoletoBloc extends BlocBase {
     var repository =
         DuplicateBoletoModule.to.getDependency<DuplicateRepository>();
     var retorno;
-    await repository.postFatura2Via(tipo).then((onValue){
+    await repository.postFatura2Via(tipo).then((onValue) {
       retorno = onValue;
     });
     return retorno;
@@ -39,7 +38,7 @@ class DuplicateBoletoBloc extends BlocBase {
     }
   }
 
-withdrawDate(String date) {
+  withdrawDate(String date) {
     // retira os traços das datas
     if (date != null) {
       var dateProvisorio = date.split("-");
@@ -50,6 +49,7 @@ withdrawDate(String date) {
       return date;
     }
   }
+
   @override
   void dispose() {
     super.dispose();

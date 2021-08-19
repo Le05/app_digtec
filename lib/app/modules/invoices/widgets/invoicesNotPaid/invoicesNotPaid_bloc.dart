@@ -5,29 +5,18 @@ import 'package:franet/app/modules/invoices/repository/invoices_repository.dart'
 
 class InvoicesNotPaidBloc extends BlocBase {
   var repository = InvoicesModule.to.getDependency<InvoicesRepository>();
-  // launchPDF(String url) async {
-  //   var box = await getHiveInstance(); //initHive();
-  //   String ip = box.get("baseUrl");
-  //   ip = ip.trim();
-  //   List<String> splitada = ip.split("/");
-  //   url = "${splitada[0]}//${splitada[2]}" + url;
-  //   if (await canLaunch(url)) {
-  //     await launch(url);
-  //   } else {
-  //     return 0;
-  //   }
-  // }
-
 
   Future gerarCodigoPix(int id) async {
     var box = await getHiveInstance();
     return await repository.generateCodigoPix(id, box.get("cpfCnpj"),
-        box.get("senha"), box.get("contrato"), box.get("baseUrl"));
+        box.get("senha"), box.get("contrato"), box.get("baseUrl")).then((value) => value.data);
   }
 
   Future buscarGateway(int id) async {
-    return await repository.buscarGatewayPagamento(
-        id, box.get("cpfCnpj"), box.get("senha"), box.get("contrato")).then((value) => value.data);
+    return await repository
+        .buscarGatewayPagamento(
+            id, box.get("cpfCnpj"), box.get("senha"), box.get("contrato"))
+        .then((value) => value.data);
   }
 
   @override

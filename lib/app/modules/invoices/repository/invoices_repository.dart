@@ -17,7 +17,7 @@ class InvoicesRepository extends Disposable {
 
   Future generateCodigoPix(int id, String cpfcnpj, String senha, int contrato,
       String baseUrl) async {
-    return await dio.post(baseUrl + 'pagamento/pix/$id',data: {
+    return await dio.post(baseUrl + '/pagamento/pix/$id',data: {
       "cpfcnpj": cpfcnpj, "senha": senha, "contrato": contrato
     }).then((value) => value.data);
   }
