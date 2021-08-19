@@ -9,6 +9,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - OneSignal (3.4.1)
   - onesignal_flutter (3.0.0):
     - Flutter
     - OneSignalXCFramework (= 3.4.4)
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_html_view (from `.symlinks/plugins/flutter_native_html_view/ios`)
+  - OneSignal (< 4.0, >= 3.0.0)
   - onesignal_flutter (from `.symlinks/plugins/onesignal_flutter/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - share_extend (from `.symlinks/plugins/share_extend/ios`)
@@ -40,6 +42,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FMDB
+    - OneSignal
     - OneSignalXCFramework
 
 EXTERNAL SOURCES:
@@ -70,6 +73,7 @@ SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_native_html_view: 1ebd0fb2bd5530d27a79ab05ac5bbcbbf72e95ae
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  OneSignal: 546f5d10df7277dd271a1c4cde80646167d55cc3
   onesignal_flutter: 6a582e3051074be6d9d129002a93a3bfd04a5b88
   OneSignalXCFramework: eaf286b7438aa1f030f03e5fa9f1c79ede5d8f04
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
@@ -78,6 +82,6 @@ SPEC CHECKSUMS:
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: 22c20f78b80a3854e09f62274f55661bf22ab914
 
 COCOAPODS: 1.10.1

@@ -309,12 +309,12 @@ class _LoginPageState extends State<LoginPage> {
                                       margin:
                                           EdgeInsets.only(top: 0, bottom: 10),
                                       child: Center(
-                                        // child: CircularProgressIndicator(
-                                        //   valueColor:
-                                        //       AlwaysStoppedAnimation<Color>(
-                                        //     Theme.of(context).primaryColor,
-                                        //   ),
-                                        // ),
+                                         child: CircularProgressIndicator(
+                                           valueColor:
+                                               AlwaysStoppedAnimation<Color>(
+                                             Theme.of(context).primaryColor,
+                                           ),
+                                         ),
                                       ),
                                     ),
                                   ),
