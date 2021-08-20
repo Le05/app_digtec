@@ -9,7 +9,7 @@ class InvoicesNotPaidBloc extends BlocBase {
   Future gerarCodigoPix(int id) async {
     var box = await getHiveInstance();
     return await repository.generateCodigoPix(id, box.get("cpfCnpj"),
-        box.get("senha"), box.get("contrato"), box.get("baseUrl")).then((value) => value.data);
+        box.get("senha"), box.get("contrato"), box.get("baseUrl"));
   }
 
   Future buscarGateway(int id) async {
