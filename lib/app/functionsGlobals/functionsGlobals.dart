@@ -19,7 +19,12 @@ class FunctinsGlobals {
         tempDir.path + "/arquivos/${DateTime.now().microsecondsSinceEpoch}.pdf";
     await dio.download(url, tempPath);
     path = tempPath;
-    return await PDFDocument.fromFile(File(tempPath));
+    PDFDocument doc = await PDFDocument.fromFile(File(tempPath));
+    doc.preloadPages();
+    if(doc.count == 0){
+       return throw DioErrorType.other;
+    }
+    return doc;
   }
 
   getPrimeiroUltimoNome(String nome) {
