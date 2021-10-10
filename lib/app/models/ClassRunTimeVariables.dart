@@ -46,3 +46,6 @@ int paramUseTypeOcorrence;
 List paramTypeOcorrence;
 String cripto;
 List telefones = [];
+int paramUseindique;
+String paramUseindiqueimg;
+String paramUseindiqueurl;

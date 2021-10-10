@@ -210,6 +210,7 @@ class _PaymentCreditCardPageState extends State<PaymentCreditCardPage> {
                       Container(
                         margin: EdgeInsets.only(top: 15),
                         child: flutterCreditCard.CreditCardWidget(
+                          onCreditCardWidgetChange: (value){},
                           cardBgColor: Colors.indigo[800],
                           cardNumber: numeroCartao,
                           expiryDate: dataExpiracao,

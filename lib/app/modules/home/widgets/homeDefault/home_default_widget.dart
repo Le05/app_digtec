@@ -5,6 +5,7 @@ import 'package:franet/app/modules/extractConsumption/extractConsumption_module.
 import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:franet/app/modules/home/widgets/homeDefault/widgets/card/card_widget.dart';
 import 'package:franet/app/modules/home/widgets/propaganda/propaganda_widget.dart';
+import 'package:franet/app/modules/home/widgets/recommendation/recommendation_page.dart';
 import 'package:franet/app/modules/invoices/invoices_module.dart';
 import 'package:franet/app/modules/login/login_module.dart';
 import 'package:franet/app/modules/notifications/notifications_module.dart';
@@ -50,6 +51,8 @@ class HomeDefaultWidget extends StatelessWidget {
                               : Container(),
                       Column(
                         children: [
+                          paramUseindiqueurl == 1 ?
+                          RecommendationPage() : Container(),
                           Container(
                               margin: EdgeInsets.only(
                                   top: MediaQuery.of(context).size.height / 40,
@@ -221,6 +224,7 @@ class HomeDefaultWidget extends StatelessWidget {
                                           ));
                                     }),
                               )),
+                          
                           FutureBuilder(
                             future: homeBloc.validateContrato(),
                             builder: (context, snapshots) {

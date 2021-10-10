@@ -257,6 +257,8 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () async {
+                                    print(snapshot
+                                        .data["titlesAberta"][index].link);
                                     String url = snapshot
                                         .data["titlesAberta"][index].link;
                                     String ip = box.get("baseUrl");

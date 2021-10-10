@@ -9,6 +9,7 @@ import 'package:franet/app/modules/home/home_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/modules/home/home_page.dart';
+import 'package:franet/app/modules/home/widgets/recommendation/recommendation_bloc.dart';
 
 class HomeModule extends ModuleWidget {
   @override
@@ -20,6 +21,7 @@ class HomeModule extends ModuleWidget {
         Bloc((i) => HomeDefaultBloc()),
         Bloc((i) => PropagandaBloc()),
         Bloc((i) => HomeBloc()),
+        Bloc((i) => RecommendationBloc()),
       ];
 
   @override

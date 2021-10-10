@@ -116,6 +116,10 @@ Future<Map> initHive({BuildContext context}) async {
           int.parse(resposta["param_usetypeocorrence"].toString());
       paramTypeOcorrence = resposta["param_typeocorrence"];
 
+      paramUseindique = int.parse(resposta["param_useindique"]);
+      paramUseindiqueimg = resposta["param_useindiqueimg"];
+      paramUseindiqueurl = resposta["param_useindiqueurl"];
+
       telefones = [];
       telefones.add(resposta["param_telefones"]["param_telprincipal"]);
       telefones.add(resposta["param_telefones"]["param_telsecundario"]);
