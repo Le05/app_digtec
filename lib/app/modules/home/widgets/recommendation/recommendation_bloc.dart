@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class RecommendationBloc extends BlocBase {
   Future openLink(String url) async {
     Box box = await getHiveInstance();
-    url += "usp=pp_url&entry.484538181=${box.get('contrato')}";
+    url += "${box.get('contrato')}";
     await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
   }
   @override

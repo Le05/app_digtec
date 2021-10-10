@@ -51,7 +51,7 @@ class HomeDefaultWidget extends StatelessWidget {
                               : Container(),
                       Column(
                         children: [
-                          paramUseindiqueurl == 1 ?
+                          paramUseindique == 1 ?
                           RecommendationPage() : Container(),
                           Container(
                               margin: EdgeInsets.only(
