@@ -378,7 +378,8 @@ class _DuplicateBoletoPageState extends State<DuplicateBoletoPage> {
                                   onTap: () {
                                     Clipboard.setData(ClipboardData(
                                         text: snapshot.data["linhadigitavel"]));
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
                                       content:
                                           Text("Código copiado com sucesso!!!"),
                                     ));

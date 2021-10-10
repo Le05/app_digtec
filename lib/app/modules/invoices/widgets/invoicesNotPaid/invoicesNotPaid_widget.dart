@@ -210,8 +210,9 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
                                                     .data["titlesAberta"][index]
                                                     .id)
                                                 .then((value) {
+                                                  print(value);
                                               Clipboard.setData(ClipboardData(
-                                                  text: value["codigopix"]));
+                                                  text: value["pix"]));
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(SnackBar(
                                                 content: Text(

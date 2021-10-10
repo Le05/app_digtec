@@ -7,7 +7,7 @@ import 'package:franet/app/modules/invoices/repository/invoices_repository.dart'
 class InvoicesBloc extends BlocBase {
   var repository = InvoicesModule.to.getDependency<InvoicesRepository>();
   Future getInvoices() async {
-    var box = await getHiveInstance();//await initHive();
+    var box = await getHiveInstance(); //await initHive();
 
     var response = await repository.getInvoicesRepository(box.get("cpfCnpj"),
         box.get("senha"), box.get("contrato"), box.get("baseUrl"));
@@ -15,7 +15,7 @@ class InvoicesBloc extends BlocBase {
     List<Titles> titlesPaga = [];
     List<Titles> titlesAberta = [];
     Map<String, List<Titles>> allTitles = {};
-    
+
     for (var title in titles) {
       if (title.statusid == 1) {
         title.dataPagamento = withdrawDate(title.dataPagamento);
@@ -25,10 +25,11 @@ class InvoicesBloc extends BlocBase {
       }
     }
 
-    for (var i = titles.length-1; i >= 0; i--) {
+    for (var i = titles.length - 1; i >= 0; i--) {
       if (titles[i].statusid == 2) {
         titles[i].dataPagamento = withdrawDate(titles[i].dataPagamento);
-        titles[i].vencimentoAtualizado = withdrawDate(titles[i].vencimentoAtualizado);
+        titles[i].vencimentoAtualizado =
+            withdrawDate(titles[i].vencimentoAtualizado);
         titles[i].vencimento = withdrawDate(titles[i].vencimento);
         titlesPaga.add(titles[i]);
       }
