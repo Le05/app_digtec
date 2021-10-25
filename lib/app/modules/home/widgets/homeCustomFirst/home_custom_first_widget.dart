@@ -35,18 +35,21 @@ class HomeCustomFirstWidget extends StatelessWidget {
             imagemFundoExibir2 == 1
                 ? Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.61,
+                    height: MediaQuery.of(context).size.height,
+                    // height: MediaQuery.of(context).size.height * 0.61,
                     child: Image.network(
                       imageFundo2,
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: MediaQuery.of(context).size.height,
+                      // height: MediaQuery.of(context).size.height * 0.6,
                       fit: BoxFit.fill,
                     ),
                     // color: Colors.red,
                   )
                 : Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.6,
+                    height: MediaQuery.of(context).size.height,
+                    // height: MediaQuery.of(context).size.height * 0.6,
                     color: Color(int.parse(cor)),
                   ),
             SingleChildScrollView(
