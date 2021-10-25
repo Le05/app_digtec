@@ -32,6 +32,9 @@ class AppBloc extends BlocBase {
 
   Future<void> initOneSignal(String keyOneSignal) async {
     OneSignal.shared.setAppId(keyOneSignal);
+    OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+    OneSignal.shared.promptUserForPushNotificationPermission();
+    OneSignal.shared.promptLocationPermission();
     // OneSignal.shared.init(keyOneSignal, iOSSettings: {
     //   OSiOSSettings.autoPrompt: true,
     //   OSiOSSettings.inAppLaunchUrl: true
