@@ -18,6 +18,12 @@ ViewerPDFBloc viewerPDFBloc = ViewerPDFBloc();
 
 
 class _ViewerPDFPageState extends State<ViewerPDFPage> {
+
+  @override
+  void initState() {
+    FunctinsGlobals().abrirPDF(this.widget.url);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +37,9 @@ class _ViewerPDFPageState extends State<ViewerPDFPage> {
                 icon: Icon(Icons.share))
           ],
         ),
-        body: FutureBuilder(
-            future: FunctinsGlobals().abrirPDF(this.widget.url),
+        body: StreamBuilder(
+          stream:viewerPDFBloc.outputCarregamento,
+            // stream: FunctinsGlobals().abrirPDF(this.widget.url),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return WebView(
