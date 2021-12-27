@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:franet/app/BDHive/initHive.dart';
 import 'package:franet/app/modules/viewerPDF/viewerPDF_page.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:path_provider/path_provider.dart';
 
 String path;

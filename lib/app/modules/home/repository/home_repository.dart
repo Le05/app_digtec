@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class HomeRepository extends Disposable {
-  Dio dio = Dio();
   Future getPropagandaRepo(String cpfCnpj, String senha) async {
     Response response;
     dio.clear();

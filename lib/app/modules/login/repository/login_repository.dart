@@ -6,7 +6,6 @@ import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:hive/hive.dart';
 
 class LoginRepository extends Disposable {
-  Dio dio = Dio();
   Map retornos = {};
   Future login(cpfCnpj, senha) async {
     int retorno;

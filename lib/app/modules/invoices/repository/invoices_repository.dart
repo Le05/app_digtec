@@ -1,9 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class InvoicesRepository extends Disposable {
-  Dio dio = Dio();
   Response response;
   Future getInvoicesRepository(
       String cpfcnpj, String senha, int contrato, String baseUrl) async {

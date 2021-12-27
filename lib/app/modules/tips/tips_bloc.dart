@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class TipsBloc extends BlocBase {
-  Dio dio = Dio();
   Future getTips() async {
     //List retorno;
     Response response;

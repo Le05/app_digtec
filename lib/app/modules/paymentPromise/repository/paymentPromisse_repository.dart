@@ -1,8 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class PaymentPromisseRepository extends Disposable {
-  Dio dio = Dio();
 
   Future paymentPromiseRepository(
       String cpfcnpj, String senha, int contrato,String baseUrl) async {

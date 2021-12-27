@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,15 @@ import 'package:path_provider/path_provider.dart';
 
 Box box;
 AppBloc appBloc = AppBloc();
-Dio dio = Dio();
 Response response;
 Future<Map> initHive({BuildContext context}) async {
+    dio = Dio();
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+      (HttpClient client) {
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+    return client;
+  };
   cripto = "ZnJhbmV0N0s3NFAtTEJTQjMtWFlKWEEtRzZNUVM=";
   //String cor;
   //String corFonte;
@@ -253,7 +260,7 @@ Future buscarInfoPreCadastro() async {
 }
 
 Future<Box> getHiveInstance() async {
-  if (box.isOpen)
+  if (box != null && box.isOpen)
     return box;
   else {
     var boxInit = await initHive();

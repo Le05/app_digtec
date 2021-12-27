@@ -1,9 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class ExtractConsumptionRepository extends Disposable {
-  Dio dio = Dio();
 
   Future buscarConsumo(String ano,String mes) async {
     Response response =

@@ -1,6 +1,6 @@
 
 import 'dart:io';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 String key = "franet";
@@ -49,3 +49,4 @@ List telefones = [];
 int paramUseindique;
 String paramUseindiqueimg;
 String paramUseindiqueurl;
+Dio dio;

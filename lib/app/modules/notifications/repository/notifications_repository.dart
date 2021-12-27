@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class NotificationsRepository extends Disposable {
-  Dio dio = Dio();
-
   Future readNotificationRepository(int contrato) async {
     dio.clear();
     Response response;

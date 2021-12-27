@@ -145,8 +145,8 @@ TextEditingController cpfCnpjController = TextEditingController();
 
   verifyInternetAndBox() async {
      box = await getHiveInstance();
-     var repository = LoginModule.to.getDependency<LoginRepository>();
-     await repository.verificaInternet();
+    //  var repository = LoginModule.to.getDependency<LoginRepository>();
+     //await repository.verificaInternet();
      return 0;
   }
   @override

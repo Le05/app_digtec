@@ -1,10 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:franet/app/BDHive/initHive.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class PaymentCreditCardRepository extends Disposable {
-  Dio dio = Dio();
-
   Future buscarCartoes() async {
     Response response =
         await dio.post(box.get("baseUrl") + '/cartao/list', data: {

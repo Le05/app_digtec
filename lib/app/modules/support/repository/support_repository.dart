@@ -1,9 +1,8 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
+import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
 class SupportRepository extends Disposable {
-  Dio dio = Dio();
-
   Future openCall(
       String baseUrl,
       int contato,
