@@ -10,7 +10,18 @@ class RecommendationPage extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(top:0, left: 0, right: 0),
         width: MediaQuery.of(context).size.width,
-        child: Image.network(paramUseindiqueimg),
+        child: FutureBuilder(builder: (context,snapshot){
+            if(!snapshot.hasData){
+              return Container();
+            }
+
+            if(snapshot.hasError){
+              return Center(child: Text("Ocorreu um erro"),);
+            }
+
+            return Image.file(snapshot.data);
+        }),
+        // child: Image.network(paramUseindiqueimg),
       ),
       onTap: () async {
         await recommendationBloc.openLink(paramUseindiqueurl);

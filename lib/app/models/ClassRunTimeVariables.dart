@@ -50,3 +50,4 @@ int paramUseindique;
 String paramUseindiqueimg;
 String paramUseindiqueurl;
 Dio dio;
+String tempDirPath;

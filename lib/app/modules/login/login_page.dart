@@ -79,8 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                 child: Stack(
                   children: <Widget>[
                     imagemFundoExibir == "1"
-                        ? Image.network(
-                            imagemFundo,
+                        ? Image.file(
+                            snapshot.data,
                             fit: BoxFit.cover,
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height,

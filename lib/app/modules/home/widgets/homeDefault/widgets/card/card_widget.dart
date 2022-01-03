@@ -12,7 +12,7 @@ class CardWidget extends StatelessWidget {
       this.paramNomeIconeDefault, this.paramNomeLabel, this.paramNomeGrande);
   @override
   Widget build(BuildContext context) {
-    print(paramNomeLabel.split("<br>").length);
+    // print(paramNomeLabel.split("<br>").length);
     return Card(
       elevation: 15,
       child: Column(

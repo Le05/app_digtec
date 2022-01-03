@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:franet/app/modules/home/home_module.dart';
 import 'package:franet/app/modules/login/login_module.dart';
 import 'package:franet/app/modules/login/repository/login_repository.dart';
 import 'package:hive/hive.dart';
+
 import 'package:rxdart/rxdart.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 
@@ -101,15 +104,17 @@ TextEditingController cpfCnpjController = TextEditingController();
 
   Future getImageLogin() async {
     box = await getHiveInstance();
-    var file =
-        await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
-    logoTipo = file.file;
-    if (logoTipo == null) {
-      await DefaultCacheManager().downloadFile(box.get("param_logotipo"));
-      return await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
-    } else {
-      return logoTipo;
-    }
+                  // String fullPath = tempDir.path + "/boo2.pdf'";
+    await dio.download(box.get("param_logotipo"), "$tempDirPath/logo.jpg");
+    // var file =
+        // await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
+    // logoTipo = file.file;
+    // if (logoTipo == null) {
+    //   await DefaultCacheManager().downloadFile(box.get("param_logotipo"));
+    //   return await DefaultCacheManager().getFileFromCache(box.get("param_logotipo"));
+    // } else {
+      return File("$tempDirPath/logo.jpg");
+    // }
   }
 
   Future getpassword() async {
@@ -145,9 +150,10 @@ TextEditingController cpfCnpjController = TextEditingController();
 
   verifyInternetAndBox() async {
      box = await getHiveInstance();
-    //  var repository = LoginModule.to.getDependency<LoginRepository>();
-     //await repository.verificaInternet();
-     return 0;
+     var repository = LoginModule.to.getDependency<LoginRepository>();
+     await repository.verificaInternet();
+     await dio.download(imagemFundo, "$tempDirPath/$imagemFundo");
+     return File("$tempDirPath/$imagemFundo");
   }
   @override
   void dispose() {

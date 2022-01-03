@@ -4,7 +4,7 @@ import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:franet/app/app_bloc.dart';
 import 'package:franet/app/models/ClassRunTimeVariables.dart';
 import 'package:hive/hive.dart';
@@ -28,6 +28,8 @@ Future<Map> initHive({BuildContext context}) async {
   try {
     box = await Hive.openBox('Configs');
   } catch (e) {
+    var tempDir = await getTemporaryDirectory();
+    tempDirPath = tempDir.path;
     var link;
     var resposta = await getParams();
     if (resposta == null) {
@@ -211,11 +213,12 @@ Future<Map> initHive({BuildContext context}) async {
         var linkParam = resposta["param_logotipo"];
         if (link != linkParam) {
           box.put("param_logotipo", resposta["param_logotipo"]);
-          await DefaultCacheManager().downloadFile(resposta["param_logotipo"]);
+          // await DefaultCacheManager().downloadFile(resposta["param_logotipo"]);
         }
       } else {
         box.put("param_logotipo", resposta["param_logotipo"]);
-        await DefaultCacheManager().downloadFile(resposta["param_logotipo"]);
+        // dio.download(urlPath, savePath)
+        // await DefaultCacheManager().downloadFile(resposta["param_logotipo"]);
       }
     }
   }
