@@ -57,7 +57,7 @@ class _InvoicesNotPaidWidgetState extends State<InvoicesNotPaidWidget> {
             itemCount: snapshot.data["titlesAberta"].length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                margin: EdgeInsets.only(bottom: 5),
+                margin: EdgeInsets.only(bottom: index == snapshot.data["titlesAberta"].length-1 ? 60 :5),
                 child: Card(
                   elevation: 10,
                   child: ExpansionTile(
