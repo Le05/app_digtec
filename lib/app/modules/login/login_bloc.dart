@@ -152,7 +152,8 @@ TextEditingController cpfCnpjController = TextEditingController();
      box = await getHiveInstance();
      var repository = LoginModule.to.getDependency<LoginRepository>();
      await repository.verificaInternet();
-     await dio.download(imagemFundo, "$tempDirPath/$imagemFundo");
+     if(imagemFundo != null && imagemFundo != "")
+        await dio.download(imagemFundo, "$tempDirPath/$imagemFundo");
      return File("$tempDirPath/$imagemFundo");
   }
   @override
