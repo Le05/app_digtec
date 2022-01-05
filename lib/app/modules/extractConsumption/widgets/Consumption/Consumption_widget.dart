@@ -123,9 +123,9 @@ class ConsumptionWidget extends StatelessWidget {
                             child: ListView.builder(
                                 itemCount: snapshot.data["list"].length,
                                 itemBuilder: (context, index) {
-                                  return Container(
+                                  return Container(                                    
                                     margin: EdgeInsets.only(
-                                        top: 10, left: 10, right: 10),
+                                        top: 10, left: 10, right: 10,bottom: index == snapshot.data["list"].length-1 ? 80 :5),
                                     padding: EdgeInsets.all(20),
                                     decoration: BoxDecoration(
                                         color: Colors.green[200],
