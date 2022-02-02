@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 
 class TipsBloc extends BlocBase {
   Future getTips() async {

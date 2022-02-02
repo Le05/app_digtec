@@ -1,7 +1,7 @@
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
-import 'package:franet/app/modules/viewerPDF/viewerPDF_bloc.dart';
+import 'package:app_digtec/app/functionsGlobals/functionsGlobals.dart';
+import 'package:app_digtec/app/modules/viewerPDF/viewerPDF_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ViewerPDFPage extends StatefulWidget {

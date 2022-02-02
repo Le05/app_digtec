@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-String key = "franet";
-String token = "7K74P-LBSB3-XYJXA-G6MQS";
+String key = "app";
+String token = "98C9A-E93F3-F3324-9D02E";
 
 Map paramIconesUse;
 String paramurltestevelocidade;

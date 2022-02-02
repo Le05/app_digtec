@@ -1,4 +1,0 @@
-lib/app/modules/extractConsumption/widgets/Consumption/Consumption_widget.dart
-test/app/modules/extractConsumption/widgets/Consumption/Consumption_widget_test.dart
-lib/app/modules/extractConsumption/widgets/Consumption/Consumption_bloc.dart
-test/app/modules/extractConsumption/widgets/Consumption/Consumption_bloc_test.dart

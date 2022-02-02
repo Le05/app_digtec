@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/modules/notifications/notifications_module.dart';
-import 'package:franet/app/modules/notifications/repository/notifications_repository.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/modules/notifications/notifications_module.dart';
+import 'package:app_digtec/app/modules/notifications/repository/notifications_repository.dart';
 
 class NotificationsBloc extends BlocBase {
   Future readNotification() async {

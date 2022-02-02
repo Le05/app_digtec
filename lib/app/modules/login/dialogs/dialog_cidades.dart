@@ -1,4 +1,4 @@
-import 'package:franet/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
+import 'package:app_digtec/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
 import 'package:flutter/material.dart';
 
 Future<void> mensagemChooseCidadeProvedor(

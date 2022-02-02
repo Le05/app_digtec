@@ -1,7 +1,7 @@
-import 'package:franet/app/modules/maintenance/maintenance_bloc.dart';
+import 'package:app_digtec/app/modules/maintenance/maintenance_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/maintenance/maintenance_page.dart';
+import 'package:app_digtec/app/modules/maintenance/maintenance_page.dart';
 
 class MaintenanceModule extends ModuleWidget {
   @override

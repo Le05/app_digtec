@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/extractConsumption/extractConsumption_bloc.dart';
-import 'package:franet/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_widget.dart';
-import 'package:franet/app/modules/extractConsumption/widgets/Consumption/Consumption_widget.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/extractConsumption/extractConsumption_bloc.dart';
+import 'package:app_digtec/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_widget.dart';
+import 'package:app_digtec/app/modules/extractConsumption/widgets/Consumption/Consumption_widget.dart';
 
 
 class ExtractConsumptionPage extends StatefulWidget {

@@ -1,7 +1,7 @@
-import 'package:franet/app/modules/precadastro/precadastro_bloc.dart';
+import 'package:app_digtec/app/modules/precadastro/precadastro_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/precadastro/precadastro_page.dart';
+import 'package:app_digtec/app/modules/precadastro/precadastro_page.dart';
 
 class PrecadastroModule extends ModuleWidget {
   final String url;

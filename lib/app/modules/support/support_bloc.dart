@@ -1,10 +1,10 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/support/repository/support_repository.dart';
-import 'package:franet/app/modules/support/support_module.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/support/repository/support_repository.dart';
+import 'package:app_digtec/app/modules/support/support_module.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 

@@ -1,2 +1,0 @@
-lib/app/modules/paymentCreditCard/repository/paymentCreditCard_repository.dart
-test/app/modules/paymentCreditCard/repository/paymentCreditCard_repository_test.dart

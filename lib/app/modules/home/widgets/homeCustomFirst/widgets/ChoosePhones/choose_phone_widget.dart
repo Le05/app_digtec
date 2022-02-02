@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/functionsGlobals/functionsGlobals.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void exibirDialogo(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 
 class InvoicesRepository extends Disposable {
   Response response;

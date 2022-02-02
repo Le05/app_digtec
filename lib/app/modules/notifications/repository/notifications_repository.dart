@@ -1,6 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 
 class NotificationsRepository extends Disposable {
   Future readNotificationRepository(int contrato) async {

@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/models/ContractsModel.dart';
-import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ContractsModel.dart';
+import 'package:app_digtec/app/modules/chooseContracts/chooseContracts_module.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeBloc extends BlocBase {

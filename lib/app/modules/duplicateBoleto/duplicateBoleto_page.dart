@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_bloc.dart';
-import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/duplicateBoleto/duplicateBoleto_bloc.dart';
+import 'package:app_digtec/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
 
 class DuplicateBoletoPage extends StatefulWidget {
   final String title;

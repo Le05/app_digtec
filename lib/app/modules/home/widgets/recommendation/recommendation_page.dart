@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/home/widgets/recommendation/recommendation_bloc.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/home/widgets/recommendation/recommendation_bloc.dart';
 
 RecommendationBloc recommendationBloc = RecommendationBloc();
 class RecommendationPage extends StatelessWidget {

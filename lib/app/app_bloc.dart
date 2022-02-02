@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:device_info/device_info.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 
 class AppBloc extends BlocBase {
   Future getAndroidOrIOS() async {

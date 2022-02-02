@@ -5,10 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:franet/app/app_bloc.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/app_bloc.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
 
 Box box;
 AppBloc appBloc = AppBloc();
@@ -21,7 +20,8 @@ Future<Map> initHive({BuildContext context}) async {
         (X509Certificate cert, String host, int port) => true;
     return client;
   };
-  cripto = "ZnJhbmV0N0s3NFAtTEJTQjMtWFlKWEEtRzZNUVM=";
+  cripto = "YXBwOThDOUEtRTkzRjMtRjMzMjQtOUQwMkU=";
+
   //String cor;
   //String corFonte;
   // tenta abrir, caso de erro, ele inicializa e tenta abrir denovo

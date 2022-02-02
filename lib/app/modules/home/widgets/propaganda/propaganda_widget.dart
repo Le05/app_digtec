@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/home/widgets/propaganda/propaganda_bloc.dart';
+import 'package:app_digtec/app/modules/home/widgets/propaganda/propaganda_bloc.dart';
 
 PropagandaBloc propagandaBloc = PropagandaBloc();
 

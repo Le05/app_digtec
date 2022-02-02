@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_bloc.dart';
+import 'package:app_digtec/app/modules/extractConsumption/widgets/ConsumptioImages/ConsumptioImages_bloc.dart';
 
 ConsumptioImagesBloc consumptioImagesBloc = ConsumptioImagesBloc();
 

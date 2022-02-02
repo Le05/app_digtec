@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/app_bloc.dart';
-import 'package:franet/app/modules/login/login_module.dart';
-import 'package:franet/app/modules/maintenance/maintenance_module.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/app_bloc.dart';
+import 'package:app_digtec/app/modules/login/login_module.dart';
+import 'package:app_digtec/app/modules/maintenance/maintenance_module.dart';
 
 AppBloc appBloc = AppBloc();
 

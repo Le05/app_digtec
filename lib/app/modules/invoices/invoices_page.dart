@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_widget.dart';
-import 'package:franet/app/modules/invoices/widgets/invoicesPaid/invoicesPaid_widget.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_widget.dart';
+import 'package:app_digtec/app/modules/invoices/widgets/invoicesPaid/invoicesPaid_widget.dart';
 
 class InvoicesPage extends StatefulWidget {
   final String title;

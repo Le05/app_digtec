@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:franet/app/modules/paymentPromise/paymentPromise_bloc.dart';
+import 'package:app_digtec/app/modules/paymentPromise/paymentPromise_bloc.dart';
 
 class PaymentPromisePage extends StatefulWidget {
   final String title;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/notifications/notifications_bloc.dart';
+import 'package:app_digtec/app/modules/notifications/notifications_bloc.dart';
 
 class NotificationsPage extends StatefulWidget {
   final String title;

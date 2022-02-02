@@ -1,6 +1,6 @@
 import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/extractConsumption/widgets/Consumption/Consumption_bloc.dart';
+import 'package:app_digtec/app/modules/extractConsumption/widgets/Consumption/Consumption_bloc.dart';
 
 ConsumptionBloc consumptionBloc = ConsumptionBloc();
 

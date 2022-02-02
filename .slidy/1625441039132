@@ -1,4 +1,0 @@
-lib/app/modules/home/widgets/homeDefault/home_default_widget.dart
-test/app/modules/home/widgets/homeDefault/home_default_widget_test.dart
-lib/app/modules/home/widgets/homeDefault/home_default_bloc.dart
-test/app/modules/home/widgets/homeDefault/home_default_bloc_test.dart

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/invoices/invoices_bloc.dart';
-import 'package:franet/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
-import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
-import 'package:franet/app/modules/paymentCreditCardExternal/payment_credit_card_external_module.dart';
-import 'package:franet/app/modules/viewerPDF/viewerPDF_module.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/invoices/invoices_bloc.dart';
+import 'package:app_digtec/app/modules/invoices/widgets/invoicesNotPaid/invoicesNotPaid_bloc.dart';
+import 'package:app_digtec/app/modules/paymentCreditCard/paymentCreditCard_module.dart';
+import 'package:app_digtec/app/modules/paymentCreditCardExternal/payment_credit_card_external_module.dart';
+import 'package:app_digtec/app/modules/viewerPDF/viewerPDF_module.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 InvoicesNotPaidBloc invoicesNotPaidBloc = InvoicesNotPaidBloc();

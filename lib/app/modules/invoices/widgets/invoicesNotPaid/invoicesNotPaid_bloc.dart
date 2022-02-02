@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/modules/invoices/invoices_module.dart';
-import 'package:franet/app/modules/invoices/repository/invoices_repository.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/modules/invoices/invoices_module.dart';
+import 'package:app_digtec/app/modules/invoices/repository/invoices_repository.dart';
 
 class InvoicesNotPaidBloc extends BlocBase {
   var repository = InvoicesModule.to.getDependency<InvoicesRepository>();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/invoices/invoices_bloc.dart';
+import 'package:app_digtec/app/modules/invoices/invoices_bloc.dart';
 
 InvoicesBloc invoicesBloc = InvoicesBloc();
 

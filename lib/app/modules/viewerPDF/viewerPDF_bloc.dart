@@ -1,5 +1,5 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/functionsGlobals/functionsGlobals.dart';
+import 'package:app_digtec/app/functionsGlobals/functionsGlobals.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:share_extend/share_extend.dart';
 

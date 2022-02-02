@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/extractConsumption/extractConsumption_module.dart';
-import 'package:franet/app/modules/extractConsumption/repository/extractConsumption_repository.dart';
+import 'package:app_digtec/app/modules/extractConsumption/extractConsumption_module.dart';
+import 'package:app_digtec/app/modules/extractConsumption/repository/extractConsumption_repository.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:rxdart/rxdart.dart';
 

@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/modules/home/home_module.dart';
-import 'package:franet/app/modules/home/repository/home_repository.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/modules/home/home_module.dart';
+import 'package:app_digtec/app/modules/home/repository/home_repository.dart';
 
 class PropagandaBloc extends BlocBase {
   Future getPropaganda() async {

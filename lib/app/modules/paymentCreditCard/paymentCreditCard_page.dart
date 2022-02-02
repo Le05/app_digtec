@@ -4,8 +4,8 @@ import 'package:awesome_card/awesome_card.dart' as awesomCard;
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart'
     as flutterCreditCard;
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/paymentCreditCard/paymentCreditCard_bloc.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/paymentCreditCard/paymentCreditCard_bloc.dart';
 
 class PaymentCreditCardPage extends StatefulWidget {
   final String title;

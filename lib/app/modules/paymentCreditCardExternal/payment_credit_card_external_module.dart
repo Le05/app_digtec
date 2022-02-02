@@ -1,7 +1,7 @@
-import 'package:franet/app/modules/paymentCreditCardExternal/payment_credit_card_external_bloc.dart';
+import 'package:app_digtec/app/modules/paymentCreditCardExternal/payment_credit_card_external_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/paymentCreditCardExternal/payment_credit_card_external_page.dart';
+import 'package:app_digtec/app/modules/paymentCreditCardExternal/payment_credit_card_external_page.dart';
 
 class PaymentCreditCardExternalModule extends ModuleWidget {
   final String url;

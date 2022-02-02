@@ -3,17 +3,16 @@ import 'dart:io';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/models/ContractsModel.dart';
-import 'package:franet/app/modules/chooseContracts/chooseContracts_module.dart';
-import 'package:franet/app/modules/home/home_module.dart';
-import 'package:franet/app/modules/login/login_module.dart';
-import 'package:franet/app/modules/login/repository/login_repository.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/models/ContractsModel.dart';
+import 'package:app_digtec/app/modules/chooseContracts/chooseContracts_module.dart';
+import 'package:app_digtec/app/modules/home/home_module.dart';
+import 'package:app_digtec/app/modules/login/login_module.dart';
+import 'package:app_digtec/app/modules/login/repository/login_repository.dart';
 import 'package:hive/hive.dart';
 
 import 'package:rxdart/rxdart.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 
 class LoginBloc extends BlocBase {
 TextEditingController cpfCnpjController = TextEditingController();

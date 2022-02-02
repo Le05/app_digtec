@@ -1,4 +1,4 @@
-import 'package:franet/app/modules/precadastro/precadastro_module.dart';
+import 'package:app_digtec/app/modules/precadastro/precadastro_module.dart';
 import 'package:flutter/material.dart';
 
 Future<void> mensagemChooseTipoPessoa(

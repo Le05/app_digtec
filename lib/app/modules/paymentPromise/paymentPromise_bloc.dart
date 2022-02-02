@@ -1,7 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/BDHive/initHive.dart';
-import 'package:franet/app/modules/paymentPromise/paymentPromise_module.dart';
-import 'package:franet/app/modules/paymentPromise/repository/paymentPromisse_repository.dart';
+import 'package:app_digtec/app/BDHive/initHive.dart';
+import 'package:app_digtec/app/modules/paymentPromise/paymentPromise_module.dart';
+import 'package:app_digtec/app/modules/paymentPromise/repository/paymentPromisse_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PaymentPromiseBloc extends BlocBase {

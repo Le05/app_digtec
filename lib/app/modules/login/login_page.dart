@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:franet/app/app_module.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/login/dialogs/dialog_cidades.dart';
-import 'package:franet/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
-import 'package:franet/app/modules/login/login_bloc.dart';
+import 'package:app_digtec/app/app_module.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/login/dialogs/dialog_cidades.dart';
+import 'package:app_digtec/app/modules/login/dialogs/dialog_tipo_pessoa.dart';
+import 'package:app_digtec/app/modules/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
-import 'package:franet/app/modules/duplicateBoleto/duplicateBoleto_module.dart';
-import 'package:franet/app/modules/duplicateBoleto/repository/duplicate_repository.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/modules/duplicateBoleto/duplicateBoleto_module.dart';
+import 'package:app_digtec/app/modules/duplicateBoleto/repository/duplicate_repository.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DuplicateBoletoBloc extends BlocBase {

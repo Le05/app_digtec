@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/tips/tips_bloc.dart';
-import 'package:franet/app/modules/tips/widgets/moreTips/moreTips_widget.dart';
+import 'package:app_digtec/app/modules/tips/tips_bloc.dart';
+import 'package:app_digtec/app/modules/tips/widgets/moreTips/moreTips_widget.dart';
 
 class TipsPage extends StatefulWidget {
   final String title;

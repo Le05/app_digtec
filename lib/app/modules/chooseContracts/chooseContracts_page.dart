@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:franet/app/models/ContractsModel.dart';
-import 'package:franet/app/modules/chooseContracts/chooseContracts_bloc.dart';
-import 'package:franet/app/modules/home/home_module.dart';
-import 'package:franet/app/modules/login/login_module.dart';
+import 'package:app_digtec/app/models/ContractsModel.dart';
+import 'package:app_digtec/app/modules/chooseContracts/chooseContracts_bloc.dart';
+import 'package:app_digtec/app/modules/home/home_module.dart';
+import 'package:app_digtec/app/modules/login/login_module.dart';
 import 'package:intl/intl.dart';
 
 class ChooseContractsPage extends StatefulWidget {

@@ -1,4 +1,0 @@
-lib/app/modules/home/widgets/homeDefault/widgets/cards/cards_widget.dart
-test/app/modules/home/widgets/homeDefault/widgets/cards/cards_widget_test.dart
-lib/app/modules/home/widgets/homeDefault/widgets/cards/cards_bloc.dart
-test/app/modules/home/widgets/homeDefault/widgets/cards/cards_bloc_test.dart

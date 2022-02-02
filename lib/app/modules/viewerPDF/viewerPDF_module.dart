@@ -1,7 +1,7 @@
-import 'package:franet/app/modules/viewerPDF/viewerPDF_bloc.dart';
+import 'package:app_digtec/app/modules/viewerPDF/viewerPDF_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:franet/app/modules/viewerPDF/viewerPDF_page.dart';
+import 'package:app_digtec/app/modules/viewerPDF/viewerPDF_page.dart';
 
 class ViewerPDFModule extends ModuleWidget {
   final String url;

@@ -1,4 +1,4 @@
-import 'package:franet/app/models/ClassRunTimeVariables.dart';
+import 'package:app_digtec/app/models/ClassRunTimeVariables.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
